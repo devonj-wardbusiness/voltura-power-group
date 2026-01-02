@@ -7,13 +7,14 @@
   <title>Voltura Power Group | Commercial & Residential Electrical</title>
   <meta name="description" content="Voltura Power Group provides commercial and residential electrical services including multifamily, tenant finish, service upgrades, EV charging, lighting, generators, and new construction." />
 
-  <link rel="icon" href="assets/logo.jpg" />
+  <!-- To update favicon: replace /assets/logo.png with new image (same filename) -->
+  <link rel="icon" href="assets/logo.png" />
   <link rel="stylesheet" href="styles/main.css" />
 
   <meta property="og:title" content="Voltura Power Group | Commercial & Residential Electrical" />
   <meta property="og:description" content="Voltura Power Group provides commercial and residential electrical services including multifamily, tenant finish, service upgrades, EV charging, lighting, generators, and new construction." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/logo.jpg" />
+  <meta property="og:image" content="assets/logo.png" />
 </head>
 
 <body>
@@ -41,7 +42,8 @@
 
     <div class="header-main">
       <a class="brand" href="#top" aria-label="Voltura Power Group Home">
-        <img src="assets/logo.jpg" alt="Voltura Power Group" />
+        <!-- To update logo: replace /assets/logo.png with new image (same filename) -->
+        <img src="assets/logo.png" alt="Voltura Power Group" />
         <div class="brand__text">
           <span class="brand__name">VOLTURA</span>
           <span class="brand__tag">Commercial & Residential Electrical</span>
@@ -150,6 +152,52 @@
         </article>
       </div>
     </section>
+
+    <!-- PROJECT PHOTOS -->
+    <section id="photos" class="section section--alt">
+      <div class="section-head">
+        <h2>Project Photos</h2>
+        <p class="muted">Real work. Clean installs. Code-compliant.</p>
+      </div>
+
+      <div class="photoGrid">
+        <!-- Add more <figure class="photoCard">...</figure> here -->
+        <figure class="photoCard" tabindex="0" role="button" aria-label="View project photo">
+          <img src="assets/photos/photo-1.jpg" alt="Project photo 1" loading="lazy" />
+          <figcaption>EV Charger Installation</figcaption>
+        </figure>
+        <figure class="photoCard" tabindex="0" role="button" aria-label="View project photo">
+          <img src="assets/photos/photo-2.jpg" alt="Project photo 2" loading="lazy" />
+          <figcaption>Panel Upgrade</figcaption>
+        </figure>
+        <figure class="photoCard" tabindex="0" role="button" aria-label="View project photo">
+          <img src="assets/photos/photo-3.jpg" alt="Project photo 3" loading="lazy" />
+          <figcaption>Clean Install Work</figcaption>
+        </figure>
+        <figure class="photoCard" tabindex="0" role="button" aria-label="View project photo">
+          <img src="assets/photos/photo-4.jpg" alt="Project photo 4" loading="lazy" />
+          <figcaption>Lighting Project</figcaption>
+        </figure>
+        <figure class="photoCard" tabindex="0" role="button" aria-label="View project photo">
+          <img src="assets/photos/photo-5.jpg" alt="Project photo 5" loading="lazy" />
+          <figcaption>Troubleshooting Complete</figcaption>
+        </figure>
+        <figure class="photoCard" tabindex="0" role="button" aria-label="View project photo">
+          <img src="assets/photos/photo-6.jpg" alt="Project photo 6" loading="lazy" />
+          <figcaption>Code-Compliant Work</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="photoLightbox" aria-hidden="true" role="dialog">
+      <div class="lightbox__backdrop"></div>
+      <div class="lightbox__container">
+        <button class="lightbox__close" aria-label="Close lightbox">✕</button>
+        <img class="lightbox__image" src="" alt="" />
+        <div class="lightbox__caption"></div>
+      </div>
+    </div>
 
     <!-- WHY -->
     <section id="why" class="section section--alt">
@@ -425,6 +473,50 @@
         submitBtn.textContent = "Submit & route to dispatcher";
       }
     });
-  </script>
+    // Lightbox for photos
+    const lightbox = document.getElementById("photoLightbox");
+    const lightboxImage = lightbox.querySelector(".lightbox__image");
+    const lightboxCaption = lightbox.querySelector(".lightbox__caption");
+    const photoCards = document.querySelectorAll(".photoCard");
+
+    function openLightbox(e) {
+      const card = e.currentTarget;
+      const img = card.querySelector("img");
+      const caption = card.querySelector("figcaption");
+      
+      lightboxImage.src = img.src;
+      lightboxImage.alt = img.alt;
+      lightboxCaption.textContent = caption ? caption.textContent : "";
+      lightbox.classList.add("is-open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove("is-open");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("modal-open");
+    }
+
+    photoCards.forEach(card => {
+      card.addEventListener("click", openLightbox);
+      card.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openLightbox(e);
+        }
+      });
+    });
+
+    // Close lightbox on backdrop click
+    lightbox.querySelector(".lightbox__backdrop").addEventListener("click", closeLightbox);
+    lightbox.querySelector(".lightbox__close").addEventListener("click", closeLightbox);
+
+    // Close lightbox on ESC key
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && lightbox.classList.contains("is-open")) {
+        closeLightbox();
+      }
+    });  </script>
 </body>
 </html>
