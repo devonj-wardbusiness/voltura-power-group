@@ -350,16 +350,33 @@
     function openModal(){
       modal.classList.add("is-open");
       modal.setAttribute("aria-hidden","false");
+      document.body.classList.add("modal-open");
       const first = modal.querySelector("input,select,textarea,button");
       if(first) setTimeout(()=>first.focus(), 50);
     }
     function closeModal(){
       modal.classList.remove("is-open");
       modal.setAttribute("aria-hidden","true");
+      document.body.classList.remove("modal-open");
     }
-    openBtns.forEach(b => b.addEventListener("click", openModal));
-    closeBtns.forEach(b => b.addEventListener("click", closeModal));
-    window.addEventListener("keydown", (e)=>{ if(e.key==="Escape") closeModal(); });
+    openBtns.forEach(b => b.addEventListener("click", (e) => {
+      e.preventDefault();
+      openModal();
+    }));
+    closeBtns.forEach(b => b.addEventListener("click", (e) => {
+      e.preventDefault();
+      closeModal();
+    }));
+    
+    // Close on backdrop click
+    const backdrop = document.getElementById("closeBooking");
+    if(backdrop) {
+      backdrop.addEventListener("click", (e) => {
+        if(e.target === backdrop) closeModal();
+      });
+    }
+    
+    window.addEventListener("keydown", (e)=>{ if(e.key==="Escape" && modal.classList.contains("is-open")) closeModal(); });
 
     // Submit to n8n (JSON)
     const form = document.getElementById("bookingForm");
