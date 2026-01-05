@@ -770,3 +770,37 @@ label{
     min-height: 90px;
   }
 }
+
+/* Quick Book select fixes: make dropdown options readable */
+.qb-select {
+  width: 100%;
+  background: #0f1a24;          /* match your dark theme */
+  color: #ffffff;               /* visible text */
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+  padding: 12px 14px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: relative;
+  z-index: 10000;
+}
+
+/* IMPORTANT: options don't always inherit styles */
+.qb-select option {
+  background: #ffffff !important;   /* force readable list */
+  color: #111111 !important;
+}
+
+/* If your browser shows a weird selected highlight */
+.qb-select option:checked {
+  background: #f2f2f2 !important;
+  color: #111111 !important;
+}
+
+/* Make sure the modal sits above everything */
+.quickbook-modal,
+.modal-overlay,
+.booking-modal {
+  z-index: 9999;
+}
