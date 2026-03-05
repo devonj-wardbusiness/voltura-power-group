@@ -11,10 +11,17 @@
   <link rel="icon" href="assets/logo.png" />
   <link rel="stylesheet" href="styles/main.css" />
 
+  <link rel="canonical" href="https://www.volturapower.energy" />
   <meta property="og:title" content="Voltura Power Group | Commercial & Residential Electrical" />
   <meta property="og:description" content="Voltura Power Group provides commercial and residential electrical services including multifamily, tenant finish, service upgrades, EV charging, lighting, generators, and new construction." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/logo.png" />
+  <meta property="og:url" content="https://www.volturapower.energy" />
+  <meta property="og:image" content="https://www.volturapower.energy/assets/logo.png" />
+  <meta property="og:site_name" content="Voltura Power Group" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Voltura Power Group | Commercial & Residential Electrical" />
+  <meta name="twitter:description" content="Voltura Power Group provides commercial and residential electrical services including multifamily, tenant finish, service upgrades, EV charging, lighting, generators, and new construction." />
+  <meta name="twitter:image" content="https://www.volturapower.energy/assets/logo.png" />
 
   <!-- JSON-LD Schema Markup -->
   <script type="application/ld+json">
@@ -112,8 +119,14 @@
   </div>
 
   <header class="site-header">
+    <!-- Emergency availability banner (dismissible, persists via sessionStorage) -->
+    <div class="emergency-banner" id="emergencyBanner" role="alert">
+      <span>⚡ Electrical emergency? We're available — <a href="tel:+19154870660">Call 915-487-0660</a></span>
+      <button class="emergency-banner__close" onclick="dismissEmergency()" aria-label="Dismiss emergency banner">✕</button>
+    </div>
+
     <div class="top-bar" role="note">
-      Same-day availability • Licensed & Insured • Serving Colorado Springs + Falcon/Peyton + Woodland Park + Pueblo
+      Same-day availability • Licensed #3001608 & Insured • Serving Colorado Springs + Falcon/Peyton + Woodland Park + Pueblo
     </div>
 
     <div class="header-main">
@@ -158,7 +171,7 @@
         </p>
 
         <div class="trust">
-          <span class="pill">Licensed & Insured</span>
+          <span class="pill">Licensed #3001608</span>
           <span class="pill">Same-Day Options</span>
           <span class="pill">Upfront Pricing</span>
           <span class="pill">EV Charger Specialist</span>
@@ -200,6 +213,14 @@
       </div>
     </section>
 
+    <!-- TRUST STRIP -->
+    <div class="trust-strip" role="list" aria-label="Trust indicators">
+      <span><span class="ts-check" aria-hidden="true">✓</span> License #3001608</span>
+      <span><span class="ts-check" aria-hidden="true">✓</span> Fully Insured</span>
+      <span><span class="ts-check" aria-hidden="true">✓</span> Locally Owned</span>
+      <span><span class="ts-check" aria-hidden="true">✓</span> Colorado Springs Based</span>
+    </div>
+
     <!-- SERVICES -->
     <section id="services" class="section">
       <div class="section-head">
@@ -209,27 +230,27 @@
 
       <div class="cards">
         <article class="card">
-          <h3>EV Charger Installs</h3>
+          <h3><a href="ev-charger-install.html">EV Charger Installs</a></h3>
           <p>Level 2 installs, load checks, breaker sizing, conduit/wire routing, clean commissioning.</p>
         </article>
         <article class="card">
-          <h3>Panels & Service Upgrades</h3>
+          <h3><a href="panel-upgrade.html">Panels & Service Upgrades</a></h3>
           <p>Panel swaps, meter/main coordination, load calculations, surge protection, future-proofing.</p>
         </article>
         <article class="card">
-          <h3>Troubleshooting</h3>
+          <h3><a href="troubleshooting.html">Troubleshooting</a></h3>
           <p>Tripping breakers, dead outlets, flickering lights, weird voltage, burning smells.</p>
         </article>
         <article class="card">
-          <h3>Dedicated Circuits</h3>
+          <h3><a href="dedicated-circuits.html">Dedicated Circuits</a></h3>
           <p>Garage circuits, microwaves, disposals, HVAC, shop tools, hot tubs (site dependent).</p>
         </article>
         <article class="card">
-          <h3>Lighting</h3>
+          <h3><a href="lighting.html">Lighting</a></h3>
           <p>LED upgrades, recessed cans, under-cabinet, smart switches, landscape lighting.</p>
         </article>
         <article class="card">
-          <h3>Safety & Code Fixes</h3>
+          <h3><a href="safety-code-fixes.html">Safety & Code Fixes</a></h3>
           <p>GFCI/AFCI corrections, bonding/grounding fixes, smoke/CO, service hazards.</p>
         </article>
       </div>
@@ -391,7 +412,7 @@
         </details>
         <details class="faq-item">
           <summary class="faq-q">Are you licensed and insured?</summary>
-          <p class="faq-a">Yes — licensed electrician, fully insured. We can provide proof of insurance for commercial work or HOA requirements on request.</p>
+          <p class="faq-a">Yes — licensed electrician (License #3001608), fully insured. We can provide proof of license and insurance for commercial work or HOA requirements on request.</p>
         </details>
         <details class="faq-item">
           <summary class="faq-q">Can you work on my panel if it's older?</summary>
@@ -431,6 +452,14 @@
       <p>&copy; <span id="year"></span> Voltura Power Group. All rights reserved.</p>
     </footer>
   </main>
+
+  <!-- Mobile bottom call bar (phones only, dismissible) -->
+  <div class="mobile-call-bar" id="mobileCallBar">
+    <a class="mobile-call-bar__btn" href="tel:+19154870660">
+      <span aria-hidden="true">📞</span> Call Now — 915-487-0660
+    </a>
+    <button class="mobile-call-bar__close" onclick="dismissCallBar()" aria-label="Dismiss call bar">✕</button>
+  </div>
 
   <!-- BOOKING MODAL -->
   <div class="modal" id="bookingModal" aria-hidden="true">
@@ -527,6 +556,32 @@
     // CONFIG
     // Use the production webhook URL for n8n (remove '-test' for production)
     const WEBHOOK_URL = "https://wards-electrical.app.n8n.cloud/webhook/0c41a587-89af-4066-9aa8-365de46e1906";
+
+    // Emergency banner dismiss (persists for session)
+    (function() {
+      if (sessionStorage.getItem('emergencyDismissed')) {
+        const b = document.getElementById('emergencyBanner');
+        if (b) b.style.display = 'none';
+      }
+    })();
+    function dismissEmergency() {
+      sessionStorage.setItem('emergencyDismissed', '1');
+      const b = document.getElementById('emergencyBanner');
+      if (b) b.style.display = 'none';
+    }
+
+    // Mobile call bar dismiss (persists for session)
+    (function() {
+      if (sessionStorage.getItem('callBarDismissed')) {
+        const b = document.getElementById('mobileCallBar');
+        if (b) b.style.display = 'none';
+      }
+    })();
+    function dismissCallBar() {
+      sessionStorage.setItem('callBarDismissed', '1');
+      const b = document.getElementById('mobileCallBar');
+      if (b) b.style.display = 'none';
+    }
 
     // Year
     document.getElementById("year").textContent = new Date().getFullYear();

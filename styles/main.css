@@ -889,3 +889,121 @@ label{
 .booking-modal {
   z-index: 9999;
 }
+
+/* ============================
+   EMERGENCY BANNER
+   ============================ */
+.emergency-banner {
+  background: #B91C1C;
+  color: #fff;
+  text-align: center;
+  padding: 9px 16px;
+  font-size: .88rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  line-height: 1.3;
+}
+.emergency-banner a {
+  color: #fff;
+  text-decoration: underline;
+  font-weight: 800;
+}
+.emergency-banner a:hover { opacity: 0.85; color: #fff; }
+.emergency-banner__close {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.5);
+  color: #fff;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  font-size: .8rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 150ms ease;
+}
+.emergency-banner__close:hover { background: rgba(255,255,255,0.18); }
+
+/* ============================
+   TRUST STRIP
+   ============================ */
+.trust-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 14px 20px;
+  background: rgba(242,193,78,0.06);
+  border: 1px solid rgba(242,193,78,0.18);
+  border-radius: 12px;
+  margin-top: 26px;
+  font-size: .88rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+.trust-strip span {
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.ts-check { color: var(--accent); font-size: 1rem; }
+
+/* ============================
+   MOBILE CALL BAR (bottom, phones only)
+   ============================ */
+.mobile-call-bar {
+  display: none;
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 3000;
+  background: var(--accent);
+  align-items: center;
+  min-height: 56px;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.35);
+}
+.mobile-call-bar__btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--brand);
+  font-weight: 900;
+  font-size: 1rem;
+  text-decoration: none;
+  min-height: 56px;
+  letter-spacing: .01em;
+}
+.mobile-call-bar__btn:hover { color: var(--brand); opacity: 0.9; }
+.mobile-call-bar__close {
+  background: transparent;
+  border: none;
+  color: var(--brand);
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 0 14px;
+  min-height: 56px;
+  opacity: 0.65;
+  transition: opacity 150ms;
+  flex-shrink: 0;
+}
+.mobile-call-bar__close:hover { opacity: 1; }
+
+/* Service card links */
+.card h3 a {
+  color: var(--text);
+  text-decoration: none;
+}
+.card h3 a:hover { color: var(--accent); }
+
+@media (max-width: 920px) {
+  .mobile-call-bar { display: flex; }
+  .page { padding-bottom: 70px; }
+}
