@@ -126,10 +126,16 @@
         </div>
       </a>
 
-      <nav class="nav" aria-label="Primary">
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav" id="mainNav" aria-label="Primary">
         <a href="#services">Services</a>
         <a href="#why">Why Us</a>
+        <a href="#reviews">Reviews</a>
         <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
       </nav>
 
@@ -153,7 +159,7 @@
 
         <div class="trust">
           <span class="pill">Licensed & Insured</span>
-          <span the="pill">Same-Day Options</span>
+          <span class="pill">Same-Day Options</span>
           <span class="pill">Upfront Pricing</span>
           <span class="pill">EV Charger Specialist</span>
         </div>
@@ -275,6 +281,32 @@
       </div>
     </div>
 
+    <!-- REVIEWS -->
+    <section id="reviews" class="section">
+      <div class="section-head">
+        <h2>What customers say</h2>
+        <p class="muted">Real feedback from real jobs — no fluff.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="review-stars">★★★★★</div>
+          <p>"Called in the morning, they were out by noon. Fixed our tripping breaker, explained exactly what was wrong, and the price was fair. Will 100% use again."</p>
+          <div class="review-author">— Sarah M., Colorado Springs</div>
+        </article>
+        <article class="card">
+          <div class="review-stars">★★★★★</div>
+          <p>"Got our Level 2 EV charger installed last week. Super clean run, permit handled, no mess left behind. These guys know what they're doing."</p>
+          <div class="review-author">— James T., Falcon</div>
+        </article>
+        <article class="card">
+          <div class="review-stars">★★★★★</div>
+          <p>"Panel upgrade was smooth start to finish. They walked me through everything before touching anything, labeled every breaker, and were done ahead of schedule."</p>
+          <div class="review-author">— Mike R., Pueblo</div>
+        </article>
+      </div>
+    </section>
+
     <!-- WHY -->
     <section id="why" class="section section--alt">
       <div class="section-head">
@@ -330,6 +362,41 @@
           <div class="price">Free Quote</div>
           <p class="muted">We check panel capacity + route + materials and give a clean scope.</p>
         </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section section--alt">
+      <div class="section-head">
+        <h2>Common questions</h2>
+        <p class="muted">Fast answers before you pick up the phone.</p>
+      </div>
+
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary class="faq-q">Do I need a permit for an EV charger install?</summary>
+          <p class="faq-a">Usually yes — most jurisdictions require a permit for new circuits. We handle the permit coordination and know what inspectors look for. A properly permitted install also protects your home insurance coverage.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">What areas do you serve?</summary>
+          <p class="faq-a">Colorado Springs, Falcon, Peyton, Woodland Park, and Pueblo. Not sure if we cover your area? Call or text and we'll let you know quickly.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">How fast can you get out to my place?</summary>
+          <p class="faq-a">For emergencies (burning smell, no power, hazardous situation) we prioritize same-day. For standard work we're typically within 2–5 business days depending on schedule. Book online and we'll confirm availability fast.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Do you charge for estimates?</summary>
+          <p class="faq-a">EV charger quotes are free — we check your panel, route, and materials and give you a clean written scope. For diagnostic/troubleshooting work, there's a $65 service call that applies toward labor if we fix it same visit.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Are you licensed and insured?</summary>
+          <p class="faq-a">Yes — licensed electrician, fully insured. We can provide proof of insurance for commercial work or HOA requirements on request.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Can you work on my panel if it's older?</summary>
+          <p class="faq-a">Yes. We handle older panels regularly — Federal Pacific, Zinsco, split-bus, and undersized service. We'll tell you honestly what's safe to work with and what needs replacing, no pressure either way.</p>
+        </details>
       </div>
     </section>
 
@@ -463,6 +530,21 @@
 
     // Year
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Hamburger nav toggle
+    const navToggle = document.getElementById("navToggle");
+    const mainNav = document.getElementById("mainNav");
+    navToggle.addEventListener("click", () => {
+      const open = mainNav.classList.toggle("nav--open");
+      navToggle.classList.toggle("nav-toggle--open", open);
+      navToggle.setAttribute("aria-expanded", open);
+    });
+    // Close nav when a link is clicked
+    mainNav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+      mainNav.classList.remove("nav--open");
+      navToggle.classList.remove("nav-toggle--open");
+      navToggle.setAttribute("aria-expanded", "false");
+    }));
 
     // Modal logic
     const modal = document.getElementById("bookingModal");
