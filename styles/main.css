@@ -77,7 +77,7 @@ a:hover{color:var(--electric)}
 }
 
 /* Header */
-.site-header{background-color: rgba(7,14,26,0.92); backdrop-filter: blur(6px); color:#fff}
+.site-header{background-color: rgba(7,14,26,0.92); backdrop-filter: blur(6px); color:#fff; padding-top: 44px;}
 .top-bar{
   background: var(--accent);
   color: var(--brand);
@@ -766,6 +766,7 @@ label{
   .contactGrid{grid-template-columns:1fr}
   .header-main{flex-direction:row; align-items:center; flex-wrap:wrap}
   .action-bar__inner{flex-direction:column; align-items:flex-start}
+  .site-header{padding-top: 88px;}
   .page{margin-top: 118px}
   .brand img { height: 40px; }
 
