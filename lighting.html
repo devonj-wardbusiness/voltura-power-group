@@ -130,10 +130,10 @@
     </section>
 
     <div class="trust-strip">
-      <span><span class="ts-check" aria-hidden="true">✓</span> License #3001608</span>
-      <span><span class="ts-check" aria-hidden="true">✓</span> Fully Insured</span>
-      <span><span class="ts-check" aria-hidden="true">✓</span> Locally Owned</span>
-      <span><span class="ts-check" aria-hidden="true">✓</span> Clean Installs</span>
+      <span><span class="ts-check" aria-hidden="true">✓</span> Licensed #3001608</span>
+      <span><span class="ts-check" aria-hidden="true">✓</span> Colorado Springs &amp; Surrounding Areas</span>
+      <span><span class="ts-check" aria-hidden="true">✓</span> Permitted &amp; Inspected Every Time</span>
+      <span><span class="ts-check" aria-hidden="true">✓</span> 5&#9733; Google Rated</span>
     </div>
 
     <section class="section">
@@ -183,6 +183,46 @@
         <div class="ctaPanel__row">
           <a class="btn btn--ghost w-full" href="tel:+19154870660">Call</a>
           <a class="btn btn--ghost w-full" href="sms:+19154870660?&body=Hi%20Voltura%20Power%20Group%20-%20I%20need%20lighting%20work">Text</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- INLINE QUOTE FORM -->
+    <section class="section quote-section" id="free-quote">
+      <div class="section-head">
+        <h2>Get a Free Quote</h2>
+        <p class="muted">Tell us what you need and we'll get back to you with a real number — no pressure.</p>
+      </div>
+      <div class="quote-wrap">
+        <form id="quoteForm" class="form" novalidate>
+          <div class="grid">
+            <div><label for="qf-name">Name</label><input id="qf-name" name="name" required autocomplete="name" placeholder="Your name" /></div>
+            <div><label for="qf-phone">Phone</label><input id="qf-phone" name="phone" type="tel" required autocomplete="tel" placeholder="(719) 555-0100" /></div>
+          </div>
+          <div>
+            <label for="qf-service">Service Type</label>
+            <select id="qf-service" name="serviceType" class="qb-select" required>
+              <option value="">Select a service…</option>
+              <option value="EV Charger Install">EV Charger Install</option>
+              <option value="Panel / Service Upgrade">Panel / Service Upgrade</option>
+              <option value="Troubleshooting">Troubleshooting</option>
+              <option value="Dedicated Circuit">Dedicated Circuit</option>
+              <option value="Lighting" selected>Lighting</option>
+              <option value="Safety / Code Fix">Safety / Code Fix</option>
+              <option value="Generator / Backup Power">Generator / Backup Power</option>
+            </select>
+          </div>
+          <div>
+            <label for="qf-message">Message</label>
+            <textarea id="qf-message" name="message" rows="3" placeholder="Briefly describe your project…"></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--lg w-full" id="quoteSubmitBtn">Get My Free Quote</button>
+          <p class="muted small quote-status" id="quoteStatus"></p>
+        </form>
+        <div class="quote-success" id="quoteSuccess" hidden>
+          <p class="quote-success__icon">✅</p>
+          <h3>Got it — we'll reach out shortly.</h3>
+          <p class="muted">Expect a call or text within 1 business day.</p>
         </div>
       </div>
     </section>
@@ -296,6 +336,27 @@
         setTimeout(() => { closeModal(); form.reset(); submitBtn.disabled = false; submitBtn.textContent = "Submit & route to dispatcher"; statusText.textContent = ""; }, 1200);
       } catch (err) { statusText.textContent = "⚠️ Didn't send. Try again or call/text us."; submitBtn.disabled = false; submitBtn.textContent = "Submit & route to dispatcher"; }
     });
+    (function(){
+      const qf = document.getElementById('quoteForm');
+      if (!qf) return;
+      qf.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('quoteSubmitBtn');
+        const status = document.getElementById('quoteStatus');
+        btn.disabled = true; btn.textContent = 'Sending…';
+        const data = Object.fromEntries(new FormData(qf).entries());
+        data.source = 'quote-form'; data.page = 'lighting'; data.timestamp = new Date().toISOString();
+        try {
+          const res = await fetch(WEBHOOK_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+          if (!res.ok) throw new Error();
+          qf.style.display = 'none';
+          document.getElementById('quoteSuccess').hidden = false;
+        } catch(err) {
+          status.textContent = '⚠️ Didn\'t send. Try calling us directly.';
+          btn.disabled = false; btn.textContent = 'Get My Free Quote';
+        }
+      });
+    })();
   </script>
 </body>
 </html>
