@@ -964,29 +964,40 @@ label{
   position: fixed;
   bottom: 0; left: 0; right: 0;
   z-index: 3000;
-  background: var(--accent);
+  background: #1A1F6E;
   align-items: center;
   min-height: 56px;
-  box-shadow: 0 -4px 20px rgba(0,0,0,0.35);
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.45);
 }
-.mobile-call-bar__btn {
+.mobile-call-bar__link {
   flex: 1;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-  color: var(--brand);
-  font-weight: 900;
-  font-size: 1rem;
+  justify-content: space-between;
+  padding: 0 16px;
   text-decoration: none;
   min-height: 56px;
+  color: #ffffff;
+}
+.mobile-call-bar__link:hover { color: #ffffff; opacity: 0.92; }
+.mobile-call-bar__number {
+  font-weight: 700;
+  font-size: 1rem;
   letter-spacing: .01em;
 }
-.mobile-call-bar__btn:hover { color: var(--brand); opacity: 0.9; }
+.mobile-call-bar__cta {
+  background: var(--accent);
+  color: #070E1A;
+  font-weight: 900;
+  font-size: 0.95rem;
+  padding: 8px 18px;
+  border-radius: 8px;
+  white-space: nowrap;
+}
 .mobile-call-bar__close {
   background: transparent;
   border: none;
-  color: var(--brand);
+  color: rgba(255,255,255,0.7);
   font-size: 1.3rem;
   cursor: pointer;
   padding: 0 14px;
@@ -1038,7 +1049,7 @@ label{
 }
 .card h3 a:hover { color: var(--accent); }
 
-@media (max-width: 920px) {
+@media (max-width: 768px) {
   .mobile-call-bar { display: flex; }
   .page { padding-bottom: 70px; }
 }

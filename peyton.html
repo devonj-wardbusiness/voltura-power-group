@@ -204,8 +204,11 @@
   </main>
 
   <div class="mobile-call-bar" id="mobileCallBar">
-    <a class="mobile-call-bar__btn" href="tel:+17194459074"><span aria-hidden="true">📞</span> Call Now — (719) 445-9074</a>
-    <button class="mobile-call-bar__close" onclick="dismissCallBar()" aria-label="Dismiss call bar">✕</button>
+    <a class="mobile-call-bar__link" href="tel:+17194459074">
+      <span class="mobile-call-bar__number">(719) 445-9074</span>
+      <span class="mobile-call-bar__cta">Call Now</span>
+    </a>
+    <button class="mobile-call-bar__close" onclick="dismissCallBar()" aria-label="Dismiss">✕</button>
   </div>
 
   <div class="modal" id="bookingModal" aria-hidden="true">
