@@ -398,6 +398,27 @@
         submitBtn.textContent = 'Submit & Route to Dispatcher';
       }
     });
+    (function(){
+      const qf = document.getElementById('quoteForm');
+      if (!qf) return;
+      qf.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('quoteSubmitBtn');
+        const status = document.getElementById('quoteStatus');
+        btn.disabled = true; btn.textContent = 'Sending…';
+        const data = Object.fromEntries(new FormData(qf).entries());
+        data.source = 'quote-form'; data.page = 'ev-charger-install'; data.timestamp = new Date().toISOString();
+        try {
+          const res = await fetch(WEBHOOK_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+          if (!res.ok) throw new Error();
+          qf.style.display = 'none';
+          document.getElementById('quoteSuccess').hidden = false;
+        } catch(err) {
+          status.textContent = '⚠️ Didn\'t send. Try calling us directly.';
+          btn.disabled = false; btn.textContent = 'Get My Free Quote';
+        }
+      });
+    })();
   </script>
 </body>
 </html>
