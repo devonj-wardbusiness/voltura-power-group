@@ -2,78 +2,335 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Voltura Power Group | Commercial & Residential Electrical</title>
-  <meta name="description" content="Voltura Power Group provides commercial and residential electrical services including multifamily, tenant finish, service upgrades, EV charging, lighting, generators, and new construction." />
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
-      padding: 40px;
-    }
-    .container {
-      max-width: 600px;
-      margin: auto;
-      background-color: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    }
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    label {
-      display: block;
-      margin-top: 15px;
-      font-weight: bold;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
-    }
-    button {
-      margin-top: 20px;
-      width: 100%;
-      background-color: #0078d4;
-      color: white;
-      padding: 12px;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #005ea6;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | Voltura Power Group — Colorado Springs Electrician</title>
+  <meta name="description" content="Contact Voltura Power Group. Call, text, or send a message to schedule electrical service in Colorado Springs and surrounding areas. License #3001608." />
+  <link rel="canonical" href="https://volturapower.energy/contact.html" />
+  <link rel="icon" href="assets/favicon.ico" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/main.css" />
 </head>
 <body>
-  <div class="container">
-    <h2>Contact Voltura Power Group</h2>
-   <form action="https://formsubmit.co/service@volturapower.energy" method="POST">
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_next" value="https://devonj-wardbusiness.github.io/My-website-wards-electrical-gpt-connect/thank-you.html">
 
-
-      <label for="name">Name:</label>
-      <input type="text" name="name" placeholder="Your name" required>
-
-      <label for="email">Email:</label>
-      <input type="email" name="email" placeholder="you@example.com" required>
-
-      <label for="phone">Phone Number:</label>
-      <input type="text" name="phone" placeholder="Your number (optional)">
-
-      <label for="message">Message:</label>
-      <textarea name="message" placeholder="What do you need help with?" rows="5" required></textarea>
-
-      <button type="submit">Send Message</button>
-    </form>
+<!-- ACTION BAR -->
+<div class="action-bar">
+  <span class="action-bar-brand">Voltura Power Group &bull; Colorado Springs</span>
+  <div class="action-bar-actions">
+    <a href="tel:9154870660" class="action-bar-btn">&#9742; Call</a>
+    <a href="sms:9154870660" class="action-bar-btn">&#9997; Text</a>
+    <button class="action-bar-btn action-bar-book" onclick="openModal()">Book Now</button>
   </div>
+</div>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo.png" alt="Voltura Power Group logo" />
+      <span>VOLTURA <span class="nav-logo-sub">POWER GROUP</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#commercial">Commercial</a></li>
+      <li><a href="index.html#why-us">Why Us</a></li>
+      <li><a href="index.html#reviews">Reviews</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+      <li><a href="index.html#service-area">Service Area</a></li>
+      <li><a href="contact.html" class="nav-active">Contact</a></li>
+    </ul>
+    <a href="tel:9154870660" class="nav-cta btn-primary">915-487-0660</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu">&times;</button>
+  <ul>
+    <li><a href="index.html#services" onclick="closeMenu()">Services</a></li>
+    <li><a href="index.html#commercial" onclick="closeMenu()">Commercial</a></li>
+    <li><a href="index.html#why-us" onclick="closeMenu()">Why Us</a></li>
+    <li><a href="index.html#reviews" onclick="closeMenu()">Reviews</a></li>
+    <li><a href="index.html#faq" onclick="closeMenu()">FAQ</a></li>
+    <li><a href="index.html#service-area" onclick="closeMenu()">Service Area</a></li>
+    <li><a href="contact.html" onclick="closeMenu()">Contact</a></li>
+  </ul>
+  <a href="tel:9154870660" class="btn-primary" style="margin-top:2rem;display:inline-block;">Call 915-487-0660</a>
+</div>
+
+<!-- PAGE HERO (compact) -->
+<section style="padding:4rem 0 2rem;background:var(--bg-alt);border-bottom:1px solid var(--border);">
+  <div class="container">
+    <p class="section-eyebrow fade-up">Get in touch</p>
+    <h1 class="section-title fade-up" style="text-align:left;max-width:600px;">Let&rsquo;s talk about your project.</h1>
+    <p class="fade-up" style="color:var(--text-mid);max-width:540px;line-height:1.8;">Call or text any time. Send a message below and we'll respond within the hour during business hours. No obligation, no pressure — just a straight answer about what you need and what it costs.</p>
+  </div>
+</section>
+
+<!-- CONTACT CONTENT -->
+<section class="section">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;">
+
+      <!-- CONTACT INFO -->
+      <div class="fade-up">
+        <h2 style="font-family:var(--serif);font-size:1.75rem;margin-bottom:2rem;">Contact information</h2>
+
+        <div style="display:flex;flex-direction:column;gap:1.5rem;">
+          <div style="display:flex;gap:1rem;align-items:flex-start;">
+            <div style="width:44px;height:44px;background:var(--gold-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem;">&#9742;</div>
+            <div>
+              <p style="font-weight:600;margin-bottom:.25rem;">Phone &amp; Text</p>
+              <a href="tel:9154870660" style="color:var(--gold);font-size:1.15rem;font-weight:600;">915-487-0660</a>
+              <p style="color:var(--text-mid);font-size:.9rem;margin-top:.25rem;">Call or text — we respond fast</p>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:1rem;align-items:flex-start;">
+            <div style="width:44px;height:44px;background:var(--gold-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem;">&#9993;</div>
+            <div>
+              <p style="font-weight:600;margin-bottom:.25rem;">Email</p>
+              <a href="mailto:service@volturapower.energy" style="color:var(--gold);">service@volturapower.energy</a>
+              <p style="color:var(--text-mid);font-size:.9rem;margin-top:.25rem;">For quotes, questions, and scheduling</p>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:1rem;align-items:flex-start;">
+            <div style="width:44px;height:44px;background:var(--gold-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem;">&#128205;</div>
+            <div>
+              <p style="font-weight:600;margin-bottom:.25rem;">Service Area</p>
+              <p style="color:var(--text-mid);line-height:1.7;font-size:.95rem;">Colorado Springs, Falcon, Monument, Pueblo, Woodland Park, Black Forest, Fountain, Manitou Springs, Cimarron Hills, Security-Widefield, Peyton, Cañon City</p>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:1rem;align-items:flex-start;">
+            <div style="width:44px;height:44px;background:var(--gold-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem;">&#9989;</div>
+            <div>
+              <p style="font-weight:600;margin-bottom:.25rem;">License</p>
+              <p style="color:var(--text-mid);font-size:.95rem;">Colorado Electrical License #3001608<br>Fully insured — residential &amp; commercial</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- QUICK LINKS -->
+        <div style="margin-top:2.5rem;padding:1.5rem;background:var(--bg-alt);border-radius:var(--radius);border:1px solid var(--border);">
+          <p style="font-weight:600;margin-bottom:1rem;">Quick links</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.5rem;">
+            <a href="ev-charger-install.html" class="area-pill">EV Charger Install</a>
+            <a href="panel-upgrade.html" class="area-pill">Panel Upgrade</a>
+            <a href="troubleshooting.html" class="area-pill">Troubleshooting</a>
+            <a href="dedicated-circuits.html" class="area-pill">Dedicated Circuits</a>
+            <a href="lighting.html" class="area-pill">Lighting</a>
+            <a href="safety-code-fixes.html" class="area-pill">Safety &amp; Code Fixes</a>
+            <a href="generator-backup.html" class="area-pill">Generator &amp; Backup</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTACT FORM (formsubmit.co) -->
+      <div class="fade-up">
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;">
+          <h2 style="font-family:var(--serif);font-size:1.5rem;margin-bottom:.5rem;">Send us a message</h2>
+          <p style="color:var(--text-mid);font-size:.9rem;margin-bottom:1.5rem;">We respond within the hour during business hours.</p>
+
+          <form
+            action="https://formsubmit.co/service@volturapower.energy"
+            method="POST"
+            id="contactForm"
+          >
+            <!-- formsubmit config -->
+            <input type="hidden" name="_subject" value="New contact from volturapower.energy" />
+            <input type="hidden" name="_next" value="https://volturapower.energy/thank-you.html" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="text" name="_honey" style="display:none;" />
+
+            <div style="display:flex;flex-direction:column;gap:1rem;">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                <div>
+                  <label style="display:block;font-size:.85rem;font-weight:500;margin-bottom:.4rem;color:var(--text-mid);">Name *</label>
+                  <input type="text" name="name" placeholder="Your name" required style="width:100%;padding:.75rem 1rem;border:1px solid var(--border);border-radius:var(--radius);font-family:var(--sans);font-size:.95rem;background:var(--bg);color:var(--text);outline:none;transition:border-color var(--transition);box-sizing:border-box;" />
+                </div>
+                <div>
+                  <label style="display:block;font-size:.85rem;font-weight:500;margin-bottom:.4rem;color:var(--text-mid);">Phone *</label>
+                  <input type="tel" name="phone" placeholder="Phone number" required style="width:100%;padding:.75rem 1rem;border:1px solid var(--border);border-radius:var(--radius);font-family:var(--sans);font-size:.95rem;background:var(--bg);color:var(--text);outline:none;transition:border-color var(--transition);box-sizing:border-box;" />
+                </div>
+              </div>
+
+              <div>
+                <label style="display:block;font-size:.85rem;font-weight:500;margin-bottom:.4rem;color:var(--text-mid);">Email</label>
+                <input type="email" name="email" placeholder="Email address" style="width:100%;padding:.75rem 1rem;border:1px solid var(--border);border-radius:var(--radius);font-family:var(--sans);font-size:.95rem;background:var(--bg);color:var(--text);outline:none;transition:border-color var(--transition);box-sizing:border-box;" />
+              </div>
+
+              <div>
+                <label style="display:block;font-size:.85rem;font-weight:500;margin-bottom:.4rem;color:var(--text-mid);">Service needed</label>
+                <select name="service" style="width:100%;padding:.75rem 1rem;border:1px solid var(--border);border-radius:var(--radius);font-family:var(--sans);font-size:.95rem;background:var(--bg);color:var(--text);outline:none;transition:border-color var(--transition);box-sizing:border-box;">
+                  <option value="">Select a service…</option>
+                  <option value="EV Charger Install">EV Charger Install</option>
+                  <option value="Panel / Service Upgrade">Panel / Service Upgrade</option>
+                  <option value="Troubleshooting">Troubleshooting / Diagnostics</option>
+                  <option value="Dedicated Circuit">Dedicated Circuit</option>
+                  <option value="Lighting">Lighting</option>
+                  <option value="Safety / Code Fix">Safety / Code Fix</option>
+                  <option value="Generator / Backup Power">Generator / Backup Power</option>
+                  <option value="Other">Other / Not Sure</option>
+                </select>
+              </div>
+
+              <div>
+                <label style="display:block;font-size:.85rem;font-weight:500;margin-bottom:.4rem;color:var(--text-mid);">Message</label>
+                <textarea name="message" rows="4" placeholder="Tell us about your project…" style="width:100%;padding:.75rem 1rem;border:1px solid var(--border);border-radius:var(--radius);font-family:var(--sans);font-size:.95rem;background:var(--bg);color:var(--text);outline:none;transition:border-color var(--transition);resize:vertical;box-sizing:border-box;"></textarea>
+              </div>
+
+              <button type="submit" class="btn-primary" style="width:100%;padding:1rem;font-size:1rem;">Send Message</button>
+              <p style="text-align:center;font-size:.8rem;color:var(--text-lt);">No spam. We only use this to respond to your inquiry.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="cta-band-inner container">
+    <p class="cta-band-text">Prefer to call? We&rsquo;re ready.</p>
+    <a href="tel:9154870660" class="btn-primary">Call 915-487-0660</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="section-dark" style="padding:4rem 0 2rem;">
+  <div class="container footer-inner">
+    <div class="footer-col">
+      <div class="footer-logo">
+        <img src="assets/logo.png" alt="Voltura Power Group" />
+        <span>VOLTURA <span class="footer-logo-sub">POWER GROUP</span></span>
+      </div>
+      <p style="color:var(--text-lt);font-size:.9rem;margin-top:1rem;line-height:1.6;">Licensed electricians serving Colorado Springs and surrounding areas. Power done properly.</p>
+      <p style="color:var(--text-lt);font-size:.85rem;margin-top:1rem;">License #3001608 &bull; Colorado</p>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-heading">Contact</h4>
+      <ul class="footer-links">
+        <li><a href="tel:9154870660">915-487-0660</a></li>
+        <li><a href="sms:9154870660">Text Us</a></li>
+        <li><a href="mailto:service@volturapower.energy">service@volturapower.energy</a></li>
+        <li><a href="contact.html">Contact Page</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-heading">Services</h4>
+      <ul class="footer-links">
+        <li><a href="ev-charger-install.html">EV Charger Install</a></li>
+        <li><a href="panel-upgrade.html">Panel Upgrade</a></li>
+        <li><a href="troubleshooting.html">Troubleshooting</a></li>
+        <li><a href="dedicated-circuits.html">Dedicated Circuits</a></li>
+        <li><a href="lighting.html">Lighting</a></li>
+        <li><a href="safety-code-fixes.html">Safety &amp; Code Fixes</a></li>
+        <li><a href="generator-backup.html">Generator &amp; Backup Power</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-heading">Service Areas</h4>
+      <ul class="footer-links">
+        <li><a href="colorado-springs.html">Colorado Springs</a></li>
+        <li><a href="falcon.html">Falcon</a></li>
+        <li><a href="monument.html">Monument</a></li>
+        <li><a href="pueblo.html">Pueblo</a></li>
+        <li><a href="woodland-park.html">Woodland Park</a></li>
+        <li><a href="black-forest.html">Black Forest</a></li>
+        <li><a href="fountain.html">Fountain</a></li>
+        <li><a href="manitou-springs.html">Manitou Springs</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container" style="border-top:1px solid rgba(255,255,255,.08);margin-top:3rem;padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+    <p style="color:var(--text-lt);font-size:.85rem;">&copy; <span id="yr"></span> Voltura Power Group &bull; All rights reserved.</p>
+    <p style="color:var(--text-lt);font-size:.85rem;">Colorado Springs, CO &bull; License #3001608</p>
+  </div>
+</footer>
+
+<!-- MOBILE CALL BAR -->
+<div class="mobile-call-bar" id="mobileCallBar">
+  <a href="tel:9154870660" class="btn-primary" style="flex:1;text-align:center;">&#9742; Call Now</a>
+  <a href="sms:9154870660" class="btn-outline" style="flex:1;text-align:center;">&#9997; Text Us</a>
+  <button class="mobile-call-bar-close" id="callBarClose" aria-label="Dismiss">&times;</button>
+</div>
+
+<!-- BOOKING MODAL -->
+<div class="modal-overlay" id="modalOverlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+    <h2 class="modal-title" id="modal-title">Book in 60 seconds</h2>
+    <p class="modal-sub">We'll confirm within the hour during business hours.</p>
+    <form id="bookingForm" class="modal-form">
+      <div class="form-row">
+        <input type="text" name="name" placeholder="Your name" required />
+        <input type="tel" name="phone" placeholder="Phone number" required />
+      </div>
+      <input type="email" name="email" placeholder="Email address" />
+      <select name="service">
+        <option value="">Select a service…</option>
+        <option value="EV Charger Install">EV Charger Install</option>
+        <option value="Panel / Service Upgrade">Panel / Service Upgrade</option>
+        <option value="Troubleshooting">Troubleshooting / Diagnostics</option>
+        <option value="Dedicated Circuit">Dedicated Circuit</option>
+        <option value="Lighting">Lighting</option>
+        <option value="Safety / Code Fix">Safety / Code Fix</option>
+        <option value="Generator / Backup Power">Generator / Backup Power</option>
+        <option value="Other">Other / Not Sure</option>
+      </select>
+      <textarea name="message" rows="3" placeholder="Brief description (optional)"></textarea>
+      <button type="submit" class="btn-primary" style="width:100%;">Send Request</button>
+      <p class="modal-disclaimer">No spam. We only use this to schedule your appointment.</p>
+    </form>
+    <div id="bookingSuccess" style="display:none;text-align:center;padding:2rem 0;">
+      <p style="font-size:1.5rem;color:var(--gold);">&#10003;</p>
+      <p style="font-weight:600;margin-top:.5rem;">Request sent!</p>
+      <p style="color:var(--text-mid);margin-top:.5rem;">We'll be in touch within the hour.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SCROLL TO TOP -->
+<button class="scroll-top" id="scrollTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 10));
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+const mobileClose = document.getElementById('mobile-menu-close');
+function openMenu() { mobileMenu.classList.add('open'); mobileMenu.setAttribute('aria-hidden','false'); hamburger.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+function closeMenu() { mobileMenu.classList.remove('open'); mobileMenu.setAttribute('aria-hidden','true'); hamburger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+hamburger.addEventListener('click', openMenu);
+mobileClose.addEventListener('click', closeMenu);
+const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }), { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+const scrollTopBtn = document.getElementById('scrollTop');
+window.addEventListener('scroll', () => scrollTopBtn.classList.toggle('visible', window.scrollY > 400));
+const callBar = document.getElementById('mobileCallBar');
+const callBarClose = document.getElementById('callBarClose');
+if (sessionStorage.getItem('callBarDismissed')) callBar.style.display = 'none';
+callBarClose.addEventListener('click', () => { callBar.style.display='none'; sessionStorage.setItem('callBarDismissed','1'); });
+const overlay = document.getElementById('modalOverlay');
+function openModal() { overlay.classList.add('open'); overlay.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+function closeModal() { overlay.classList.remove('open'); overlay.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+document.getElementById('bookingForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(this));
+  data.page = 'contact';
+  try { await fetch('https://wards-electrical.app.n8n.cloud/webhook/0c41a587-89af-4066-9aa8-365de46e1906', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) }); } catch(_) {}
+  this.style.display = 'none';
+  document.getElementById('bookingSuccess').style.display = 'block';
+});
+</script>
 </body>
 </html>

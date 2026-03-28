@@ -1,23 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thanks — Voltura Power Group</title>
-  <link rel="icon" href="assets/logo.jpg">
-  <link rel="stylesheet" href="styles/main.css">
-  <meta name="description" content="Voltura Power Group provides commercial and residential electrical services including multifamily, tenant finish, service upgrades, EV charging, lighting, generators, and new construction." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Message Received | Voltura Power Group</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="assets/favicon.ico" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/main.css" />
+  <style>
+    .ty-wrap {
+      min-height: calc(100vh - 102px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 1.5rem;
+      background: var(--bg);
+    }
+    .ty-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 3rem 2.5rem;
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 4px 24px rgba(0,0,0,.06);
+    }
+    .ty-icon {
+      width: 72px;
+      height: 72px;
+      background: var(--gold-pale);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 1.5rem;
+      color: var(--gold-deep);
+    }
+    .ty-title {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: .75rem;
+    }
+    .ty-sub {
+      color: var(--text-mid);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+    .ty-steps {
+      background: var(--bg-alt);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      text-align: left;
+      margin-bottom: 2rem;
+    }
+    .ty-steps p {
+      font-weight: 600;
+      font-size: .9rem;
+      margin-bottom: .75rem;
+      color: var(--text);
+    }
+    .ty-steps ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+    .ty-steps li {
+      font-size: .9rem;
+      color: var(--text-mid);
+      display: flex;
+      gap: .5rem;
+      align-items: flex-start;
+    }
+    .ty-steps li span:first-child {
+      color: var(--gold);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .ty-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  </style>
 </head>
 <body>
-  <main style="max-width:720px;margin:10vh auto;background:var(--card);border-radius:14px;box-shadow:0 8px 28px rgba(0,0,0,.25);padding:28px 5vw;text-align:center;">
-    <img src="assets/logo.jpg" alt="Voltura Power Group" style="height:80px;border-radius:10px;">
-    <h1 style="color:var(--accent)">Thanks! We got your request.</h1>
-    <p>Our dispatcher will reach out shortly at the contact info you provided. If this is urgent, call us now:</p>
-    <p><a class="cta-btn" href="tel:+19154870660">Call 915-487-0660</a></p>
-    <p class="help">Want to speed things up? Reply to our email with photos of the issue and the best time window.</p>
-    <p><a href="/" class="cta-btn" style="margin-top:10px;">Back to Home</a></p>
-  </main>
-  <footer><p>&copy; <span id="y"></span> Voltura Power Group.</p></footer>
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+
+<!-- ACTION BAR -->
+<div class="action-bar">
+  <span class="action-bar-brand">Voltura Power Group &bull; Colorado Springs</span>
+  <div class="action-bar-actions">
+    <a href="tel:9154870660" class="action-bar-btn">&#9742; Call</a>
+    <a href="sms:9154870660" class="action-bar-btn">&#9997; Text</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo.png" alt="Voltura Power Group logo" />
+      <span>VOLTURA <span class="nav-logo-sub">POWER GROUP</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#commercial">Commercial</a></li>
+      <li><a href="index.html#why-us">Why Us</a></li>
+      <li><a href="index.html#reviews">Reviews</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+      <li><a href="index.html#service-area">Service Area</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="tel:9154870660" class="nav-cta btn-primary">915-487-0660</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu">&times;</button>
+  <ul>
+    <li><a href="index.html#services" onclick="closeMenu()">Services</a></li>
+    <li><a href="index.html#commercial" onclick="closeMenu()">Commercial</a></li>
+    <li><a href="index.html#why-us" onclick="closeMenu()">Why Us</a></li>
+    <li><a href="index.html#reviews" onclick="closeMenu()">Reviews</a></li>
+    <li><a href="index.html#faq" onclick="closeMenu()">FAQ</a></li>
+    <li><a href="index.html#service-area" onclick="closeMenu()">Service Area</a></li>
+    <li><a href="contact.html" onclick="closeMenu()">Contact</a></li>
+  </ul>
+  <a href="tel:9154870660" class="btn-primary" style="margin-top:2rem;display:inline-block;">Call 915-487-0660</a>
+</div>
+
+<!-- THANK YOU CONTENT -->
+<div class="ty-wrap">
+  <div class="ty-card">
+    <div class="ty-icon">&#10003;</div>
+    <h1 class="ty-title">Message received.</h1>
+    <p class="ty-sub">Thanks for reaching out. We've got your information and we'll be in touch shortly — typically within the hour during business hours.</p>
+
+    <div class="ty-steps">
+      <p>What happens next</p>
+      <ul>
+        <li><span>1.</span><span>We review your request and confirm availability</span></li>
+        <li><span>2.</span><span>We call or text you to confirm details and schedule a visit</span></li>
+        <li><span>3.</span><span>We come out, assess the work, and give you a straight estimate</span></li>
+        <li><span>4.</span><span>You decide — no pressure, no obligation</span></li>
+      </ul>
+    </div>
+
+    <p style="color:var(--text-mid);font-size:.9rem;margin-bottom:1.5rem;">Need to reach us right now? Call or text directly:</p>
+    <div class="ty-actions">
+      <a href="tel:9154870660" class="btn-primary">&#9742; Call 915-487-0660</a>
+      <a href="sms:9154870660" class="btn-outline">&#9997; Text Us</a>
+    </div>
+    <p style="margin-top:2rem;"><a href="index.html" style="color:var(--text-lt);font-size:.85rem;">&#8592; Back to homepage</a></p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="section-dark" style="padding:3rem 0 2rem;">
+  <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+    <div style="display:flex;align-items:center;gap:.75rem;">
+      <img src="assets/logo.png" alt="Voltura Power Group" style="height:32px;width:auto;" />
+      <span style="color:var(--text-lt);font-size:.9rem;font-weight:500;letter-spacing:.05em;">VOLTURA POWER GROUP</span>
+    </div>
+    <p style="color:var(--text-lt);font-size:.85rem;">&copy; <span id="yr"></span> Voltura Power Group &bull; License #3001608 &bull; Colorado Springs, CO</p>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 10));
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+const mobileClose = document.getElementById('mobile-menu-close');
+function openMenu() { mobileMenu.classList.add('open'); mobileMenu.setAttribute('aria-hidden','false'); hamburger.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+function closeMenu() { mobileMenu.classList.remove('open'); mobileMenu.setAttribute('aria-hidden','true'); hamburger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+hamburger.addEventListener('click', openMenu);
+mobileClose.addEventListener('click', closeMenu);
+</script>
 </body>
 </html>

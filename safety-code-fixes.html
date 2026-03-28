@@ -3,296 +3,391 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Electrical Safety & Code Fixes Colorado Springs | Voltura Power Group</title>
-  <meta name="description" content="GFCI/AFCI corrections, grounding fixes, bonding, smoke/CO detectors in Colorado Springs. Code-compliant electrical safety work, no pressure. License #3001608. Call 915-487-0660." />
-  <link rel="canonical" href="https://www.volturapower.energy/safety-code-fixes.html" />
-  <link rel="icon" href="assets/logo.png" />
+  <title>Electrical Safety & Code Fixes | Voltura Power Group — Colorado Springs</title>
+  <meta name="description" content="Failed inspection? Outdated wiring? Voltura Power Group brings Colorado Springs homes and businesses up to code — permits pulled, work done right." />
+  <link rel="canonical" href="https://volturapower.energy/safety-code-fixes.html" />
+  <link rel="icon" href="assets/favicon.ico" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles/main.css" />
-  <meta property="og:title" content="Electrical Safety & Code Fixes Colorado Springs | Voltura Power Group" />
-  <meta property="og:description" content="GFCI/AFCI corrections, grounding fixes, and smoke/CO detectors in Colorado Springs. Code-compliant work without pressure tactics." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.volturapower.energy/safety-code-fixes.html" />
-  <meta property="og:image" content="https://www.volturapower.energy/assets/logo.png" />
-  <meta property="og:site_name" content="Voltura Power Group" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Electrical Safety & Code Fixes Colorado Springs | Voltura Power Group" />
-  <meta name="twitter:description" content="GFCI/AFCI corrections, grounding fixes, and smoke/CO detectors in Colorado Springs." />
-  <meta name="twitter:image" content="https://www.volturapower.energy/assets/logo.png" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Service",
     "name": "Electrical Safety & Code Fixes",
-    "description": "GFCI/AFCI corrections, grounding and bonding fixes, smoke/CO detector installation, and hazard identification.",
     "provider": {
       "@type": "LocalBusiness",
       "name": "Voltura Power Group",
-      "telephone": "915-487-0660",
-      "url": "https://www.volturapower.energy"
+      "telephone": "+1-915-487-0660",
+      "address": { "@type": "PostalAddress", "addressLocality": "Colorado Springs", "addressRegion": "CO" }
     },
-    "areaServed": ["Colorado Springs, CO", "Falcon, CO", "Peyton, CO", "Woodland Park, CO", "Pueblo, CO"],
-    "url": "https://www.volturapower.energy/safety-code-fixes.html"
+    "areaServed": "Colorado Springs, CO",
+    "description": "Code compliance repairs, failed inspection corrections, outdated wiring remediation, and safety upgrades for homes and businesses in Colorado Springs."
   }
   </script>
 </head>
 <body>
-  <a class="sr-only" href="#main">Skip to content</a>
 
-  <div class="action-bar" role="region" aria-label="Quick actions">
-    <div class="action-bar__inner">
-      <div class="action-bar__left">
-        <span class="dot"></span>
-        <span><strong>Voltura Power Group</strong> • Colorado Springs</span>
+<!-- ACTION BAR -->
+<div class="action-bar">
+  <span class="action-bar-brand">Voltura Power Group &bull; Colorado Springs</span>
+  <div class="action-bar-actions">
+    <a href="tel:9154870660" class="action-bar-btn">&#9742; Call</a>
+    <a href="sms:9154870660" class="action-bar-btn">&#9997; Text</a>
+    <button class="action-bar-btn action-bar-book" onclick="openModal()">Book Now</button>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo.png" alt="Voltura Power Group logo" />
+      <span>VOLTURA <span class="nav-logo-sub">POWER GROUP</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#commercial">Commercial</a></li>
+      <li><a href="index.html#why-us">Why Us</a></li>
+      <li><a href="index.html#reviews">Reviews</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+      <li><a href="index.html#service-area">Service Area</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="tel:9154870660" class="nav-cta btn-primary">915-487-0660</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu">&times;</button>
+  <ul>
+    <li><a href="index.html#services" onclick="closeMenu()">Services</a></li>
+    <li><a href="index.html#commercial" onclick="closeMenu()">Commercial</a></li>
+    <li><a href="index.html#why-us" onclick="closeMenu()">Why Us</a></li>
+    <li><a href="index.html#reviews" onclick="closeMenu()">Reviews</a></li>
+    <li><a href="index.html#faq" onclick="closeMenu()">FAQ</a></li>
+    <li><a href="index.html#service-area" onclick="closeMenu()">Service Area</a></li>
+    <li><a href="contact.html" onclick="closeMenu()">Contact</a></li>
+  </ul>
+  <a href="tel:9154870660" class="btn-primary" style="margin-top:2rem;display:inline-block;">Call 915-487-0660</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-inner container">
+    <div class="page-hero-copy fade-up">
+      <p class="section-eyebrow">Safety &amp; Code Compliance</p>
+      <h1>If it's not safe, we won't leave it that way.</h1>
+      <p class="page-hero-sub">Failed inspection? Outdated knob-and-tube? Aluminum wiring? We find every issue, pull the permits, and bring your property fully up to code — with documentation to prove it.</p>
+      <div class="page-hero-btns">
+        <button class="btn-primary" onclick="openModal()">Book a Safety Inspection</button>
+        <a href="tel:9154870660" class="btn-outline">Call 915-487-0660</a>
       </div>
-      <div class="action-bar__right">
-        <a class="btn btn--ghost" href="tel:+19154870660">Call</a>
-        <a class="btn btn--ghost" href="sms:+19154870660?&body=Hi%20Voltura%20Power%20Group%20-%20I%20need%20help%20with%20">Text</a>
-        <button class="btn btn--primary" id="openBooking">Book in 60 seconds</button>
+    </div>
+    <div class="page-hero-aside fade-up">
+      <div class="quote-card">
+        <p class="quote-card-eyebrow">Free estimate</p>
+        <p class="quote-card-title">Safety &amp; Code Inspection</p>
+        <ul class="quote-card-list">
+          <li>&#10003; Full panel &amp; wiring assessment</li>
+          <li>&#10003; Code violations documented</li>
+          <li>&#10003; Written estimate before any work</li>
+          <li>&#10003; Permits pulled, inspections scheduled</li>
+          <li>&#10003; Licensed &amp; insured — #3001608</li>
+        </ul>
+        <button class="btn-primary" style="width:100%;margin-top:1rem;" onclick="openModal()">Schedule Inspection</button>
+        <p style="text-align:center;margin-top:.75rem;font-size:.85rem;color:var(--text-mid);">Or call/text <a href="tel:9154870660" style="color:var(--gold);">915-487-0660</a></p>
       </div>
     </div>
   </div>
+</section>
 
-  <header class="site-header">
-    <div class="emergency-banner" id="emergencyBanner" role="alert">
-      <span>⚡ Electrical emergency? We're available — <a href="tel:+19154870660">Call 915-487-0660</a></span>
-      <button class="emergency-banner__close" onclick="dismissEmergency()" aria-label="Dismiss">✕</button>
+<!-- TRUST STRIP -->
+<div class="trust-strip section-dark">
+  <div class="container trust-strip-inner">
+    <span>&#10003; Licensed &amp; Insured — #3001608</span>
+    <span>&#10003; Permits Pulled on Every Job</span>
+    <span>&#10003; Code-Compliant Repairs</span>
+    <span>&#10003; Inspection-Ready Documentation</span>
+  </div>
+</div>
+
+<!-- WHAT WE FIX -->
+<section class="section" id="services">
+  <div class="container">
+    <p class="section-eyebrow fade-up">What we handle</p>
+    <h2 class="section-title fade-up">Code violations we fix every day</h2>
+    <p class="section-sub fade-up">From minor permit issues to full rewires, we handle the full range of electrical code compliance work in El Paso County.</p>
+    <div class="services-grid fade-up">
+
+      <div class="svc-card">
+        <div class="svc-card-icon">&#9888;</div>
+        <h3>Failed Inspection Repairs</h3>
+        <p>Inspector left a red tag? We review the report, correct every violation, and coordinate the re-inspection so you can close on time.</p>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-card-icon">&#128268;</div>
+        <h3>Knob &amp; Tube Wiring Removal</h3>
+        <p>Uninsulated, ungrounded, and unsafe — knob-and-tube is a fire and insurance risk. We remove it fully and replace with modern NM-B cable.</p>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-card-icon">&#9889;</div>
+        <h3>Aluminum Wiring Remediation</h3>
+        <p>Aluminum branch circuit wiring requires CO/ALR devices or pigtail splices at every connection. We do it right — not just the quick fix.</p>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-card-icon">&#128274;</div>
+        <h3>AFCI / GFCI Upgrades</h3>
+        <p>Modern NEC requires arc-fault and ground-fault protection in bedrooms, kitchens, bathrooms, garages, and more. We bring you up to current code.</p>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-card-icon">&#128190;</div>
+        <h3>Unpermitted Work Correction</h3>
+        <p>Previous owner DIY'd the garage panel or added circuits without a permit? We assess, document, correct deficiencies, and get it legalized.</p>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-card-icon">&#128161;</div>
+        <h3>Overloaded Panel &amp; Circuit Fixes</h3>
+        <p>Double-tapped breakers, undersized feeders, and overloaded circuits are code violations and fire hazards. We correct them and document everything.</p>
+      </div>
+
     </div>
-    <div class="top-bar" role="note">
-      Same-day availability • Licensed #3001608 & Insured • Serving Colorado Springs + Falcon/Peyton + Woodland Park + Pueblo
+  </div>
+</section>
+
+<!-- WARNING SIGNS -->
+<section class="section section-alt">
+  <div class="container">
+    <p class="section-eyebrow fade-up">Red flags</p>
+    <h2 class="section-title fade-up">Signs your wiring isn't up to code</h2>
+    <div class="checklist-grid fade-up">
+      <ul class="checklist">
+        <li>&#9888; Inspector flagged violations at closing</li>
+        <li>&#9888; Home is pre-1980s with original wiring</li>
+        <li>&#9888; Two-prong (ungrounded) outlets throughout</li>
+        <li>&#9888; No GFCI in bathrooms, kitchen, or garage</li>
+        <li>&#9888; Breakers that trip repeatedly or won't reset</li>
+        <li>&#9888; Breaker box has more breakers than spaces</li>
+        <li>&#9888; Wires spliced in walls without junction boxes</li>
+      </ul>
+      <ul class="checklist">
+        <li>&#9888; Insurance company requiring electrical update</li>
+        <li>&#9888; Smoke or burning smell near outlets or panel</li>
+        <li>&#9888; Lights flicker when appliances turn on</li>
+        <li>&#9888; Extension cords used as permanent wiring</li>
+        <li>&#9888; Panel brand flagged as defective (Zinsco, FPE)</li>
+        <li>&#9888; New addition or remodel added without permits</li>
+        <li>&#9888; Homebuyer inspection report has electrical items</li>
+      </ul>
     </div>
-    <div class="header-main">
-      <a class="brand" href="index.html" aria-label="Voltura Power Group Home">
+  </div>
+</section>
+
+<!-- CTA PANEL -->
+<section class="section section-dark">
+  <div class="container" style="text-align:center;max-width:640px;">
+    <p class="section-eyebrow fade-up">Get it done right</p>
+    <h2 class="section-title fade-up" style="color:var(--white);">We pull the permits. We pass the inspection.</h2>
+    <p class="section-sub fade-up" style="color:var(--text-lt);">No shortcuts. No hiding violations behind drywall. We document every fix and stand behind the work with a signed inspection record.</p>
+    <div class="fade-up" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem;">
+      <button class="btn-primary" onclick="openModal()">Book Safety Inspection</button>
+      <a href="tel:9154870660" class="btn-dark">Call 915-487-0660</a>
+      <a href="sms:9154870660" class="btn-dark">Text Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="cta-band-inner container">
+    <p class="cta-band-text">Electrical problem? Let&rsquo;s fix it today.</p>
+    <a href="tel:9154870660" class="btn-primary">Call 915-487-0660</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="section-dark" style="padding:4rem 0 2rem;">
+  <div class="container footer-inner">
+    <div class="footer-col">
+      <div class="footer-logo">
         <img src="assets/logo.png" alt="Voltura Power Group" />
-        <div class="brand__text">
-          <span class="brand__name">VOLTURA</span>
-          <span class="brand__tag">Commercial & Residential Electrical</span>
-        </div>
-      </a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <nav class="nav" id="mainNav" aria-label="Primary">
-        <a href="index.html#services">Services</a>
-        <a href="index.html#commercial">Commercial</a>
-        <a href="index.html#why">Why Us</a>
-        <a href="index.html#reviews">Reviews</a>
-        <a href="index.html#pricing">Pricing</a>
-        <a href="index.html#faq">FAQ</a>
-        <a href="index.html#area">Service Area</a>
-        <a href="index.html#contact">Contact</a>
-      </nav>
-      <div class="header-cta">
-        <a class="btn btn--ghost" href="mailto:service@volturapower.energy">Email</a>
-        <a class="btn btn--primary" href="tel:+19154870660">Call 915-487-0660</a>
+        <span>VOLTURA <span class="footer-logo-sub">POWER GROUP</span></span>
       </div>
+      <p style="color:var(--text-lt);font-size:.9rem;margin-top:1rem;line-height:1.6;">Licensed electricians serving Colorado Springs and surrounding areas. Power done properly.</p>
+      <p style="color:var(--text-lt);font-size:.85rem;margin-top:1rem;">License #3001608 &bull; Colorado</p>
     </div>
-  </header>
-
-  <main id="main" class="page" role="main">
-    <section class="hero" id="top">
-      <div class="hero__copy">
-        <p class="kicker">Safety & Code Fixes</p>
-        <h1>Electrical Safety & Code Fixes in Colorado Springs</h1>
-        <p class="subhead">
-          GFCI/AFCI protection, grounding corrections, bonding, smoke and CO detectors —
-          we fix what's actually wrong without selling you work you don't need.
-        </p>
-        <div class="hero__actions">
-          <button class="btn btn--primary btn--lg" id="openBooking2">Schedule an assessment</button>
-          <a class="btn btn--ghost btn--lg" href="tel:+19154870660">Call 915-487-0660</a>
-        </div>
-        <div class="mini">
-          <div class="mini__item">
-            <div class="mini__title">Phone</div>
-            <a href="tel:+19154870660">915-487-0660</a>
-          </div>
-          <div class="mini__item">
-            <div class="mini__title">Pricing</div>
-            <div>Priced per item after visual assessment</div>
-          </div>
-          <div class="mini__item">
-            <div class="mini__title">Service Area</div>
-            <div>Springs • Falcon/Peyton • Woodland Park • Pueblo</div>
-          </div>
-        </div>
-      </div>
-      <div class="hero__card">
-        <div class="hero__cardBody">
-          <h2 class="h3">Inspection flagged issues?</h2>
-          <p class="muted">
-            Whether it's a home inspector list, insurance requirement, or something you noticed —
-            we'll tell you what's critical, what's optional, and what it costs. Straight talk.
-          </p>
-          <button class="btn btn--primary w-full" id="openBooking3">Schedule an assessment</button>
-          <p class="muted small">Takes ~60 seconds. No spam.</p>
-        </div>
-      </div>
-    </section>
-
-    <div class="trust-strip">
-      <span><span class="ts-check" aria-hidden="true">✓</span> License #3001608</span>
-      <span><span class="ts-check" aria-hidden="true">✓</span> Fully Insured</span>
-      <span><span class="ts-check" aria-hidden="true">✓</span> Code-First Work</span>
-      <span><span class="ts-check" aria-hidden="true">✓</span> No Scare Tactics</span>
+    <div class="footer-col">
+      <h4 class="footer-heading">Contact</h4>
+      <ul class="footer-links">
+        <li><a href="tel:9154870660">915-487-0660</a></li>
+        <li><a href="sms:9154870660">Text Us</a></li>
+        <li><a href="mailto:service@volturapower.energy">service@volturapower.energy</a></li>
+        <li><a href="contact.html">Contact Page</a></li>
+      </ul>
     </div>
-
-    <section class="section">
-      <div class="section-head">
-        <h2>What we fix</h2>
-        <p class="muted">Common safety and code issues, done properly.</p>
-      </div>
-      <div class="cards">
-        <article class="card">
-          <h3>GFCI & AFCI Corrections</h3>
-          <p>Required in bathrooms, kitchens, garages, and exterior locations. We bring existing wiring into compliance without unnecessary gut-jobs.</p>
-        </article>
-        <article class="card">
-          <h3>Grounding & Bonding</h3>
-          <p>Missing or improper grounds are a real shock hazard. We trace the issue and correct it at the source — not just at the outlet.</p>
-        </article>
-        <article class="card">
-          <h3>Smoke & CO Detection</h3>
-          <p>Interconnected detector placement to meet current code. Hardwired or battery-backup options depending on your setup.</p>
-        </article>
-        <article class="card">
-          <h3>Hazard Identification</h3>
-          <p>We document what we find and give you options — what's critical now, what can wait, and what the cost is. No forced upgrades.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section section--alt">
-      <div class="section-head">
-        <h2>Signs you may need safety work</h2>
-      </div>
-      <div class="list">
-        <div class="check">✅ Outlets in bathrooms, kitchen, or garage have no GFCI protection</div>
-        <div class="check">✅ Outlet tester shows "hot/neutral reversed" or "open ground"</div>
-        <div class="check">✅ Older home (pre-1990s) with original wiring never updated</div>
-        <div class="check">✅ Home inspector or insurance flagged electrical issues</div>
-        <div class="check">✅ Smoke detectors are more than 10 years old</div>
-        <div class="check">✅ Getting ready to sell and want the electrical clean before listing</div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="ctaPanel">
-        <h3>Safety work is priced per item after assessment</h3>
-        <p class="muted">We look at what's there, tell you what needs fixing, and give you a line-item price. You decide what to move on.</p>
-        <button class="btn btn--primary w-full" id="openBooking4">Schedule an assessment</button>
-        <div class="ctaPanel__row">
-          <a class="btn btn--ghost w-full" href="tel:+19154870660">Call</a>
-          <a class="btn btn--ghost w-full" href="sms:+19154870660?&body=Hi%20Voltura%20Power%20Group%20-%20I%20need%20safety%20and%20code%20work">Text</a>
-        </div>
-      </div>
-    </section>
-
-    <div style="text-align:center; margin: 20px 0">
-      <a href="index.html" class="btn btn--ghost">← Back to Home</a>
+    <div class="footer-col">
+      <h4 class="footer-heading">Services</h4>
+      <ul class="footer-links">
+        <li><a href="ev-charger-install.html">EV Charger Install</a></li>
+        <li><a href="panel-upgrade.html">Panel Upgrade</a></li>
+        <li><a href="troubleshooting.html">Troubleshooting</a></li>
+        <li><a href="dedicated-circuits.html">Dedicated Circuits</a></li>
+        <li><a href="lighting.html">Lighting</a></li>
+        <li><a href="safety-code-fixes.html">Safety &amp; Code Fixes</a></li>
+        <li><a href="generator-backup.html">Generator &amp; Backup Power</a></li>
+      </ul>
     </div>
-
-    <footer class="footer">
-      <p>&copy; <span id="year"></span> Voltura Power Group. All rights reserved.</p>
-    </footer>
-  </main>
-
-  <div class="mobile-call-bar" id="mobileCallBar">
-    <a class="mobile-call-bar__btn" href="tel:+19154870660"><span aria-hidden="true">📞</span> Call Now — 915-487-0660</a>
-    <button class="mobile-call-bar__close" onclick="dismissCallBar()" aria-label="Dismiss call bar">✕</button>
-  </div>
-
-  <div class="modal" id="bookingModal" aria-hidden="true">
-    <div class="modal__backdrop" id="closeBooking"></div>
-    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="bookingTitle">
-      <div class="modal__head">
-        <div><div class="kicker">Book in ~60 seconds</div><h2 id="bookingTitle">Tell us what you need</h2></div>
-        <button class="x" id="closeBooking2" aria-label="Close">✕</button>
-      </div>
-      <form id="bookingForm" class="form">
-        <div class="grid">
-          <div><label>Full name</label><input name="name" required autocomplete="name" /></div>
-          <div><label>Phone</label><input name="phone" required autocomplete="tel" /></div>
-          <div><label>Email</label><input name="email" type="email" autocomplete="email" /></div>
-          <div><label>Service address</label><input name="address" autocomplete="street-address" /></div>
-        </div>
-        <div class="grid">
-          <div>
-            <label>Service type</label>
-            <select name="serviceType" class="qb-select" required>
-              <option value="">Select…</option>
-              <option>EV Charger Install</option>
-              <option>Panel / Service Upgrade</option>
-              <option>Troubleshooting</option>
-              <option>Dedicated Circuit</option>
-              <option>Lighting</option>
-              <option selected>Safety / Code Fix</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div>
-            <label>Urgency</label>
-            <select name="urgency" class="qb-select" required>
-              <option value="">Select…</option>
-              <option>Emergency (hazard / burning smell / outage)</option>
-              <option>ASAP (today/tomorrow)</option>
-              <option>This week</option>
-              <option>Not urgent</option>
-            </select>
-          </div>
-        </div>
-        <div class="grid">
-          <div><label>Preferred day</label><input name="preferredDay" placeholder="e.g., Monday" /></div>
-          <div><label>Preferred time</label><input name="preferredTime" placeholder="e.g., after 3pm" /></div>
-        </div>
-        <div>
-          <label>Details</label>
-          <textarea name="message" required placeholder="What issues were flagged? By whom? Home age, any known wiring concerns?"></textarea>
-        </div>
-        <label class="consent">
-          <input type="checkbox" name="consent" required />
-          <span>I agree to be contacted by call/text/email about this request.</span>
-        </label>
-        <div class="form__actions">
-          <button type="submit" class="btn btn--primary btn--lg w-full" id="submitBtn">Submit & route to dispatcher</button>
-          <p class="muted small" id="statusText"></p>
-        </div>
-      </form>
+    <div class="footer-col">
+      <h4 class="footer-heading">Service Areas</h4>
+      <ul class="footer-links">
+        <li><a href="colorado-springs.html">Colorado Springs</a></li>
+        <li><a href="falcon.html">Falcon</a></li>
+        <li><a href="monument.html">Monument</a></li>
+        <li><a href="pueblo.html">Pueblo</a></li>
+        <li><a href="woodland-park.html">Woodland Park</a></li>
+        <li><a href="black-forest.html">Black Forest</a></li>
+        <li><a href="fountain.html">Fountain</a></li>
+        <li><a href="manitou-springs.html">Manitou Springs</a></li>
+      </ul>
     </div>
   </div>
+  <div class="container" style="border-top:1px solid rgba(255,255,255,.08);margin-top:3rem;padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+    <p style="color:var(--text-lt);font-size:.85rem;">&copy; <span id="yr"></span> Voltura Power Group &bull; All rights reserved.</p>
+    <p style="color:var(--text-lt);font-size:.85rem;">Colorado Springs, CO &bull; License #3001608</p>
+  </div>
+</footer>
 
-  <script>
-    const WEBHOOK_URL = "https://wards-electrical.app.n8n.cloud/webhook/0c41a587-89af-4066-9aa8-365de46e1906";
-    (function() { if (sessionStorage.getItem('emergencyDismissed')) { const b = document.getElementById('emergencyBanner'); if (b) b.style.display = 'none'; } })();
-    function dismissEmergency() { sessionStorage.setItem('emergencyDismissed', '1'); const b = document.getElementById('emergencyBanner'); if (b) b.style.display = 'none'; }
-    (function() { if (sessionStorage.getItem('callBarDismissed')) { const b = document.getElementById('mobileCallBar'); if (b) b.style.display = 'none'; } })();
-    function dismissCallBar() { sessionStorage.setItem('callBarDismissed', '1'); const b = document.getElementById('mobileCallBar'); if (b) b.style.display = 'none'; }
-    document.getElementById("year").textContent = new Date().getFullYear();
-    const navToggle = document.getElementById("navToggle");
-    const mainNav = document.getElementById("mainNav");
-    navToggle.addEventListener("click", () => { const open = mainNav.classList.toggle("nav--open"); navToggle.classList.toggle("nav-toggle--open", open); navToggle.setAttribute("aria-expanded", open); });
-    mainNav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => { mainNav.classList.remove("nav--open"); navToggle.classList.remove("nav-toggle--open"); navToggle.setAttribute("aria-expanded", "false"); }));
-    const modal = document.getElementById("bookingModal");
-    const openBtns = ["openBooking","openBooking2","openBooking3","openBooking4"].map(id => document.getElementById(id)).filter(Boolean);
-    const closeBtns = [document.getElementById("closeBooking"), document.getElementById("closeBooking2")].filter(Boolean);
-    function openModal(){ modal.classList.add("is-open"); modal.setAttribute("aria-hidden","false"); document.body.classList.add("modal-open"); }
-    function closeModal(){ modal.classList.remove("is-open"); modal.setAttribute("aria-hidden","true"); document.body.classList.remove("modal-open"); }
-    openBtns.forEach(b => b.addEventListener("click", e => { e.preventDefault(); openModal(); }));
-    closeBtns.forEach(b => b.addEventListener("click", e => { e.preventDefault(); closeModal(); }));
-    window.addEventListener("keydown", e => { if(e.key==="Escape" && modal.classList.contains("is-open")) closeModal(); });
-    const form = document.getElementById("bookingForm");
-    const statusText = document.getElementById("statusText");
-    const submitBtn = document.getElementById("submitBtn");
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault(); statusText.textContent = ""; submitBtn.disabled = true; submitBtn.textContent = "Sending…";
-      const data = Object.fromEntries(new FormData(form).entries());
-      data.source = "website"; data.page = "safety-code-fixes"; data.timestamp = new Date().toISOString();
-      try {
-        const res = await fetch(WEBHOOK_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
-        if (!res.ok) throw new Error("Webhook failed");
-        statusText.textContent = "✅ Sent. We'll reach out shortly."; submitBtn.textContent = "Submitted";
-        setTimeout(() => { closeModal(); form.reset(); submitBtn.disabled = false; submitBtn.textContent = "Submit & route to dispatcher"; statusText.textContent = ""; }, 1200);
-      } catch (err) { statusText.textContent = "⚠️ Didn't send. Try again or call/text us."; submitBtn.disabled = false; submitBtn.textContent = "Submit & route to dispatcher"; }
+<!-- MOBILE CALL BAR -->
+<div class="mobile-call-bar" id="mobileCallBar">
+  <a href="tel:9154870660" class="btn-primary" style="flex:1;text-align:center;">&#9742; Call Now</a>
+  <button class="btn-outline" onclick="openModal()" style="flex:1;">Book Online</button>
+  <button class="mobile-call-bar-close" id="callBarClose" aria-label="Dismiss">&times;</button>
+</div>
+
+<!-- BOOKING MODAL -->
+<div class="modal-overlay" id="modalOverlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+    <h2 class="modal-title" id="modal-title">Book in 60 seconds</h2>
+    <p class="modal-sub">We'll confirm within the hour during business hours.</p>
+    <form id="bookingForm" class="modal-form">
+      <div class="form-row">
+        <input type="text" name="name" placeholder="Your name" required />
+        <input type="tel" name="phone" placeholder="Phone number" required />
+      </div>
+      <input type="email" name="email" placeholder="Email address" />
+      <select name="service" id="modalService">
+        <option value="">Select a service…</option>
+        <option value="EV Charger Install">EV Charger Install</option>
+        <option value="Panel / Service Upgrade">Panel / Service Upgrade</option>
+        <option value="Troubleshooting">Troubleshooting / Diagnostics</option>
+        <option value="Dedicated Circuit">Dedicated Circuit</option>
+        <option value="Lighting">Lighting</option>
+        <option value="Safety / Code Fix" selected>Safety / Code Fix</option>
+        <option value="Generator / Backup Power">Generator / Backup Power</option>
+        <option value="Other">Other / Not Sure</option>
+      </select>
+      <textarea name="message" rows="3" placeholder="Brief description (optional)"></textarea>
+      <button type="submit" class="btn-primary" style="width:100%;">Send Request</button>
+      <p class="modal-disclaimer">No spam. We only use this to schedule your appointment.</p>
+    </form>
+    <div id="bookingSuccess" style="display:none;text-align:center;padding:2rem 0;">
+      <p style="font-size:1.5rem;color:var(--gold);">&#10003;</p>
+      <p style="font-weight:600;margin-top:.5rem;">Request sent!</p>
+      <p style="color:var(--text-mid);margin-top:.5rem;">We'll be in touch within the hour.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SCROLL TO TOP -->
+<button class="scroll-top" id="scrollTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+// Year
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// Nav scroll shadow
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 10);
+});
+
+// Mobile menu
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+const mobileClose = document.getElementById('mobile-menu-close');
+function openMenu() {
+  mobileMenu.classList.add('open');
+  mobileMenu.setAttribute('aria-hidden','false');
+  hamburger.setAttribute('aria-expanded','true');
+  document.body.style.overflow = 'hidden';
+}
+function closeMenu() {
+  mobileMenu.classList.remove('open');
+  mobileMenu.setAttribute('aria-hidden','true');
+  hamburger.setAttribute('aria-expanded','false');
+  document.body.style.overflow = '';
+}
+hamburger.addEventListener('click', openMenu);
+mobileClose.addEventListener('click', closeMenu);
+
+// Fade-up
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+// Scroll-to-top
+const scrollTopBtn = document.getElementById('scrollTop');
+window.addEventListener('scroll', () => {
+  scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+});
+
+// Mobile call bar dismiss
+const callBar = document.getElementById('mobileCallBar');
+const callBarClose = document.getElementById('callBarClose');
+if (sessionStorage.getItem('callBarDismissed')) callBar.style.display = 'none';
+callBarClose.addEventListener('click', () => {
+  callBar.style.display = 'none';
+  sessionStorage.setItem('callBarDismissed','1');
+});
+
+// Booking modal
+const overlay = document.getElementById('modalOverlay');
+function openModal() {
+  overlay.classList.add('open');
+  overlay.setAttribute('aria-hidden','false');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  overlay.classList.remove('open');
+  overlay.setAttribute('aria-hidden','true');
+  document.body.style.overflow = '';
+}
+overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// Booking form submit
+document.getElementById('bookingForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(this));
+  data.page = 'safety-code-fixes';
+  try {
+    await fetch('https://wards-electrical.app.n8n.cloud/webhook/0c41a587-89af-4066-9aa8-365de46e1906', {
+      method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(data)
     });
-  </script>
+  } catch(_) {}
+  this.style.display = 'none';
+  document.getElementById('bookingSuccess').style.display = 'block';
+});
+</script>
 </body>
 </html>

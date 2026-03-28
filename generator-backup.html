@@ -3,296 +3,383 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Generator & Backup Power Colorado Springs | Voltura Power Group</title>
-  <meta name="description" content="Whole-home standby generators, transfer switches, and backup power installs in Colorado Springs. Licensed electricians. License #3001608. Call 915-487-0660." />
-  <link rel="canonical" href="https://www.volturapower.energy/generator-backup.html" />
-  <link rel="icon" href="assets/logo.png" />
+  <title>Generator &amp; Backup Power Install | Voltura Power Group — Colorado Springs</title>
+  <meta name="description" content="Standby generator installation, transfer switch wiring, and backup power systems for Colorado Springs homes and businesses. Never lose power again." />
+  <link rel="canonical" href="https://volturapower.energy/generator-backup.html" />
+  <link rel="icon" href="assets/favicon.ico" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles/main.css" />
-  <meta property="og:title" content="Generator & Backup Power Colorado Springs | Voltura Power Group" />
-  <meta property="og:description" content="Whole-home standby generators, transfer switches, and backup power installs in Colorado Springs by licensed electricians." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.volturapower.energy/generator-backup.html" />
-  <meta property="og:image" content="https://www.volturapower.energy/assets/logo.png" />
-  <meta property="og:site_name" content="Voltura Power Group" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Generator & Backup Power Colorado Springs | Voltura Power Group" />
-  <meta name="twitter:description" content="Whole-home standby generators and transfer switch installs by licensed electricians in Colorado Springs." />
-  <meta name="twitter:image" content="https://www.volturapower.energy/assets/logo.png" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Service",
     "name": "Generator & Backup Power Installation",
-    "description": "Whole-home standby generator installation, transfer switch wiring, manual interlock installs, and load-shedding circuit design.",
     "provider": {
       "@type": "LocalBusiness",
       "name": "Voltura Power Group",
-      "telephone": "915-487-0660",
-      "url": "https://www.volturapower.energy"
+      "telephone": "+1-915-487-0660",
+      "address": { "@type": "PostalAddress", "addressLocality": "Colorado Springs", "addressRegion": "CO" }
     },
-    "areaServed": ["Colorado Springs, CO", "Falcon, CO", "Peyton, CO", "Woodland Park, CO", "Pueblo, CO"],
-    "url": "https://www.volturapower.energy/generator-backup.html"
+    "areaServed": "Colorado Springs, CO",
+    "description": "Standby generator installation, automatic transfer switch wiring, and whole-home backup power systems in Colorado Springs."
   }
   </script>
 </head>
 <body>
-  <a class="sr-only" href="#main">Skip to content</a>
 
-  <div class="action-bar" role="region" aria-label="Quick actions">
-    <div class="action-bar__inner">
-      <div class="action-bar__left">
-        <span class="dot"></span>
-        <span><strong>Voltura Power Group</strong> • Colorado Springs</span>
+<!-- ACTION BAR -->
+<div class="action-bar">
+  <span class="action-bar-brand">Voltura Power Group &bull; Colorado Springs</span>
+  <div class="action-bar-actions">
+    <a href="tel:9154870660" class="action-bar-btn">&#9742; Call</a>
+    <a href="sms:9154870660" class="action-bar-btn">&#9997; Text</a>
+    <button class="action-bar-btn action-bar-book" onclick="openModal()">Book Now</button>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo.png" alt="Voltura Power Group logo" />
+      <span>VOLTURA <span class="nav-logo-sub">POWER GROUP</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#commercial">Commercial</a></li>
+      <li><a href="index.html#why-us">Why Us</a></li>
+      <li><a href="index.html#reviews">Reviews</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+      <li><a href="index.html#service-area">Service Area</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="tel:9154870660" class="nav-cta btn-primary">915-487-0660</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu">&times;</button>
+  <ul>
+    <li><a href="index.html#services" onclick="closeMenu()">Services</a></li>
+    <li><a href="index.html#commercial" onclick="closeMenu()">Commercial</a></li>
+    <li><a href="index.html#why-us" onclick="closeMenu()">Why Us</a></li>
+    <li><a href="index.html#reviews" onclick="closeMenu()">Reviews</a></li>
+    <li><a href="index.html#faq" onclick="closeMenu()">FAQ</a></li>
+    <li><a href="index.html#service-area" onclick="closeMenu()">Service Area</a></li>
+    <li><a href="contact.html" onclick="closeMenu()">Contact</a></li>
+  </ul>
+  <a href="tel:9154870660" class="btn-primary" style="margin-top:2rem;display:inline-block;">Call 915-487-0660</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-inner container">
+    <div class="page-hero-copy fade-up">
+      <p class="section-eyebrow">Generator &amp; Backup Power</p>
+      <h1>Power stays on. No matter what.</h1>
+      <p class="page-hero-sub">Colorado weather is unpredictable. A properly installed standby generator with an automatic transfer switch means your lights, heat, and refrigerator keep running — automatically, within seconds of an outage.</p>
+      <div class="page-hero-btns">
+        <button class="btn-primary" onclick="openModal()">Get a Free Estimate</button>
+        <a href="tel:9154870660" class="btn-outline">Call 915-487-0660</a>
       </div>
-      <div class="action-bar__right">
-        <a class="btn btn--ghost" href="tel:+19154870660">Call</a>
-        <a class="btn btn--ghost" href="sms:+19154870660?&body=Hi%20Voltura%20Power%20Group%20-%20I%20need%20help%20with%20">Text</a>
-        <button class="btn btn--primary" id="openBooking">Book in 60 seconds</button>
+    </div>
+    <div class="page-hero-aside fade-up">
+      <div class="quote-card">
+        <p class="quote-card-eyebrow">Free estimate</p>
+        <p class="quote-card-title">Generator Installation</p>
+        <ul class="quote-card-list">
+          <li>&#10003; Whole-home &amp; partial-home options</li>
+          <li>&#10003; Automatic transfer switch included</li>
+          <li>&#10003; Permit pulled, inspection coordinated</li>
+          <li>&#10003; Generac, Kohler, Briggs &amp; Stratton</li>
+          <li>&#10003; Licensed &amp; insured — #3001608</li>
+        </ul>
+        <button class="btn-primary" style="width:100%;margin-top:1rem;" onclick="openModal()">Request Estimate</button>
+        <p style="text-align:center;margin-top:.75rem;font-size:.85rem;color:var(--text-mid);">Or call/text <a href="tel:9154870660" style="color:var(--gold);">915-487-0660</a></p>
       </div>
     </div>
   </div>
+</section>
 
-  <header class="site-header">
-    <div class="emergency-banner" id="emergencyBanner" role="alert">
-      <span>⚡ Electrical emergency? We're available — <a href="tel:+19154870660">Call 915-487-0660</a></span>
-      <button class="emergency-banner__close" onclick="dismissEmergency()" aria-label="Dismiss">✕</button>
+<!-- TRUST STRIP -->
+<div class="trust-strip section-dark">
+  <div class="container trust-strip-inner">
+    <span>&#10003; Licensed &amp; Insured — #3001608</span>
+    <span>&#10003; Automatic Transfer Switches</span>
+    <span>&#10003; Whole-Home &amp; Partial Coverage</span>
+    <span>&#10003; Permit &amp; Inspection Handled</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="container">
+    <p class="section-eyebrow fade-up">What we install</p>
+    <h2 class="section-title fade-up">Backup power solutions we specialize in</h2>
+    <p class="section-sub fade-up">We handle every step — sizing, placement, gas line coordination, transfer switch wiring, and final inspection. You don't manage a single trade.</p>
+    <div class="services-grid fade-up">
+
+      <div class="svc-card">
+        <div class="svc-card-icon">&#9889;</div>
+        <h3>Standby Generator Install</h3>
+        <p>Permanent, automatic standby generators that start themselves within 10 seconds of an outage. We handle siting, electrical, and gas line tie-in coordination.</p>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-card-icon">&#128260;</div>
+        <h3>Automatic Transfer Switch</h3>
+        <p>The ATS is the brain of your backup system. We wire it correctly so utility and generator power never mix — protecting your equipment and the grid workers outside.</p>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-card-icon">&#127968;</div>
+        <h3>Whole-Home Backup</h3>
+        <p>Full-load transfer means every circuit in your home stays live during an outage — HVAC, refrigerator, medical equipment, lighting, and security systems.</p>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-card-icon">&#9878;</div>
+        <h3>Critical-Circuit Panels</h3>
+        <p>Don't need the whole home covered? We install a critical-load sub-panel that routes only essential circuits through the generator — a cost-effective option for most homes.</p>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-card-icon">&#128268;</div>
+        <h3>Portable Generator Hook-Up</h3>
+        <p>Already have a portable generator? We install a properly wired inlet box and interlock kit so you can plug in safely — no back-feeding the grid, no electrocution risk.</p>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-card-icon">&#128203;</div>
+        <h3>Maintenance &amp; Load Testing</h3>
+        <p>Generators need annual exercise and load testing. We service existing systems, replace batteries, test the ATS, and document everything so you know it'll work when you need it.</p>
+      </div>
+
     </div>
-    <div class="top-bar" role="note">
-      Same-day availability • Licensed #3001608 & Insured • Serving Colorado Springs + Falcon/Peyton + Woodland Park + Pueblo
+  </div>
+</section>
+
+<!-- WARNING SIGNS -->
+<section class="section section-alt">
+  <div class="container">
+    <p class="section-eyebrow fade-up">Is it time?</p>
+    <h2 class="section-title fade-up">Reasons Colorado homeowners install backup power</h2>
+    <div class="checklist-grid fade-up">
+      <ul class="checklist">
+        <li>&#10003; Power outages happen multiple times per year</li>
+        <li>&#10003; Someone in the home uses medical equipment</li>
+        <li>&#10003; You work from home and can't afford downtime</li>
+        <li>&#10003; You have a sump pump that needs to run</li>
+        <li>&#10003; Freezing temps make furnace loss dangerous</li>
+        <li>&#10003; You lost a refrigerator or freezer full of food</li>
+        <li>&#10003; You have livestock or animals that need power</li>
+      </ul>
+      <ul class="checklist">
+        <li>&#10003; You're tired of manual extension cord setups</li>
+        <li>&#10003; Security system needs to stay online</li>
+        <li>&#10003; You want automatic protection, not reactive</li>
+        <li>&#10003; Your business can't close during an outage</li>
+        <li>&#10003; You have a second home or rental property</li>
+        <li>&#10003; You want to add value to your property</li>
+        <li>&#10003; Gas prices make a standby unit cost-effective</li>
+      </ul>
     </div>
-    <div class="header-main">
-      <a class="brand" href="index.html" aria-label="Voltura Power Group Home">
+  </div>
+</section>
+
+<!-- CTA PANEL -->
+<section class="section section-dark">
+  <div class="container" style="text-align:center;max-width:640px;">
+    <p class="section-eyebrow fade-up">Never be caught off guard</p>
+    <h2 class="section-title fade-up" style="color:var(--white);">We size it right. Install it right. Document everything.</h2>
+    <p class="section-sub fade-up" style="color:var(--text-lt);">A generator install done by an unlicensed handyman creates code violations, insurance voids, and real danger. Our installs are permitted, inspected, and built to last.</p>
+    <div class="fade-up" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem;">
+      <button class="btn-primary" onclick="openModal()">Get a Free Estimate</button>
+      <a href="tel:9154870660" class="btn-dark">Call 915-487-0660</a>
+      <a href="sms:9154870660" class="btn-dark">Text Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="cta-band-inner container">
+    <p class="cta-band-text">Ready to stop worrying about outages?</p>
+    <a href="tel:9154870660" class="btn-primary">Call 915-487-0660</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="section-dark" style="padding:4rem 0 2rem;">
+  <div class="container footer-inner">
+    <div class="footer-col">
+      <div class="footer-logo">
         <img src="assets/logo.png" alt="Voltura Power Group" />
-        <div class="brand__text">
-          <span class="brand__name">VOLTURA</span>
-          <span class="brand__tag">Commercial & Residential Electrical</span>
-        </div>
-      </a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <nav class="nav" id="mainNav" aria-label="Primary">
-        <a href="index.html#services">Services</a>
-        <a href="index.html#commercial">Commercial</a>
-        <a href="index.html#why">Why Us</a>
-        <a href="index.html#reviews">Reviews</a>
-        <a href="index.html#pricing">Pricing</a>
-        <a href="index.html#faq">FAQ</a>
-        <a href="index.html#area">Service Area</a>
-        <a href="index.html#contact">Contact</a>
-      </nav>
-      <div class="header-cta">
-        <a class="btn btn--ghost" href="mailto:service@volturapower.energy">Email</a>
-        <a class="btn btn--primary" href="tel:+19154870660">Call 915-487-0660</a>
+        <span>VOLTURA <span class="footer-logo-sub">POWER GROUP</span></span>
       </div>
+      <p style="color:var(--text-lt);font-size:.9rem;margin-top:1rem;line-height:1.6;">Licensed electricians serving Colorado Springs and surrounding areas. Power done properly.</p>
+      <p style="color:var(--text-lt);font-size:.85rem;margin-top:1rem;">License #3001608 &bull; Colorado</p>
     </div>
-  </header>
-
-  <main id="main" class="page" role="main">
-    <section class="hero" id="top">
-      <div class="hero__copy">
-        <p class="kicker">Generator & Backup Power</p>
-        <h1>Whole-Home Generator & Backup Power in Colorado Springs</h1>
-        <p class="subhead">
-          Standby generators, transfer switches, manual interlocks, and load-shedding circuits — wired right
-          so your backup power actually works when you need it.
-        </p>
-        <div class="hero__actions">
-          <button class="btn btn--primary btn--lg" id="openBooking2">Get a generator quote</button>
-          <a class="btn btn--ghost btn--lg" href="tel:+19154870660">Call 915-487-0660</a>
-        </div>
-        <div class="mini">
-          <div class="mini__item">
-            <div class="mini__title">Phone</div>
-            <a href="tel:+19154870660">915-487-0660</a>
-          </div>
-          <div class="mini__item">
-            <div class="mini__title">Consult</div>
-            <div>Free quote — we assess your panel, loads, and placement</div>
-          </div>
-          <div class="mini__item">
-            <div class="mini__title">Service Area</div>
-            <div>Springs • Falcon/Peyton • Woodland Park • Pueblo</div>
-          </div>
-        </div>
-      </div>
-      <div class="hero__card">
-        <div class="hero__cardBody">
-          <h2 class="h3">Ready to stop worrying about outages?</h2>
-          <p class="muted">
-            We'll assess your panel, recommend the right generator size for your loads, and handle the full electrical install — including permit coordination.
-          </p>
-          <button class="btn btn--primary w-full" id="openBooking3">Book a site visit</button>
-          <p class="muted small">Takes ~60 seconds. No spam.</p>
-        </div>
-      </div>
-    </section>
-
-    <div class="trust-strip" role="list" aria-label="Trust indicators">
-      <span><span class="ts-check" aria-hidden="true">✓</span> License #3001608</span>
-      <span><span class="ts-check" aria-hidden="true">✓</span> Fully Insured</span>
-      <span><span class="ts-check" aria-hidden="true">✓</span> Locally Owned</span>
-      <span><span class="ts-check" aria-hidden="true">✓</span> Permit-Ready Installs</span>
+    <div class="footer-col">
+      <h4 class="footer-heading">Contact</h4>
+      <ul class="footer-links">
+        <li><a href="tel:9154870660">915-487-0660</a></li>
+        <li><a href="sms:9154870660">Text Us</a></li>
+        <li><a href="mailto:service@volturapower.energy">service@volturapower.energy</a></li>
+        <li><a href="contact.html">Contact Page</a></li>
+      </ul>
     </div>
-
-    <section class="section">
-      <div class="section-head">
-        <h2>What we install</h2>
-        <p class="muted">Every situation is different — we'll spec what's right for your home and loads.</p>
-      </div>
-      <div class="cards">
-        <article class="card">
-          <h3>Standby Generator Hookup</h3>
-          <p>Electrical connection for natural gas or propane standby generators (Generac, Kohler, Briggs & Stratton, etc.). Includes load calculations and transfer switch wiring.</p>
-        </article>
-        <article class="card">
-          <h3>Automatic Transfer Switch (ATS)</h3>
-          <p>Whole-home or critical-load ATS that senses a power outage and starts the generator automatically. No manual steps required.</p>
-        </article>
-        <article class="card">
-          <h3>Manual Interlock</h3>
-          <p>A code-compliant interlock kit on your existing panel that safely allows a portable generator to feed your home circuits without backfeeding the grid.</p>
-        </article>
-        <article class="card">
-          <h3>Load-Shedding Circuits</h3>
-          <p>Identify and wire the circuits that matter most — HVAC, refrigerator, medical equipment, well pump — so your generator runs only what's needed.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section section--alt">
-      <div class="section-head">
-        <h2>Is a generator right for you?</h2>
-      </div>
-      <div class="list">
-        <div class="check">✅ You've lost power more than once in the past year</div>
-        <div class="check">✅ You rely on medical equipment that can't go down</div>
-        <div class="check">✅ You have a well pump, sump pump, or livestock operation</div>
-        <div class="check">✅ You work from home and can't afford downtime</div>
-        <div class="check">✅ Colorado weather (ice, wind, wildfire seasons) affects your area</div>
-        <div class="check">✅ You're buying or building and want backup built in from the start</div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="ctaPanel">
-        <h3>Generator installs start with a site visit</h3>
-        <p class="muted">We need to see your panel, fuel source, and placement options before we can scope it properly. Book a visit and we'll give you a real number.</p>
-        <button class="btn btn--primary w-full" id="openBooking4">Schedule a generator consult</button>
-        <div class="ctaPanel__row">
-          <a class="btn btn--ghost w-full" href="tel:+19154870660">Call</a>
-          <a class="btn btn--ghost w-full" href="sms:+19154870660?&body=Hi%20Voltura%20Power%20Group%20-%20I%20need%20a%20generator%20install%20quote">Text</a>
-        </div>
-      </div>
-    </section>
-
-    <div style="text-align:center; margin: 20px 0">
-      <a href="index.html" class="btn btn--ghost">← Back to Home</a>
+    <div class="footer-col">
+      <h4 class="footer-heading">Services</h4>
+      <ul class="footer-links">
+        <li><a href="ev-charger-install.html">EV Charger Install</a></li>
+        <li><a href="panel-upgrade.html">Panel Upgrade</a></li>
+        <li><a href="troubleshooting.html">Troubleshooting</a></li>
+        <li><a href="dedicated-circuits.html">Dedicated Circuits</a></li>
+        <li><a href="lighting.html">Lighting</a></li>
+        <li><a href="safety-code-fixes.html">Safety &amp; Code Fixes</a></li>
+        <li><a href="generator-backup.html">Generator &amp; Backup Power</a></li>
+      </ul>
     </div>
-
-    <footer class="footer">
-      <p>&copy; <span id="year"></span> Voltura Power Group. All rights reserved.</p>
-    </footer>
-  </main>
-
-  <div class="mobile-call-bar" id="mobileCallBar">
-    <a class="mobile-call-bar__btn" href="tel:+19154870660"><span aria-hidden="true">📞</span> Call Now — 915-487-0660</a>
-    <button class="mobile-call-bar__close" onclick="dismissCallBar()" aria-label="Dismiss call bar">✕</button>
-  </div>
-
-  <div class="modal" id="bookingModal" aria-hidden="true">
-    <div class="modal__backdrop" id="closeBooking"></div>
-    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="bookingTitle">
-      <div class="modal__head">
-        <div><div class="kicker">Book in ~60 seconds</div><h2 id="bookingTitle">Tell us what you need</h2></div>
-        <button class="x" id="closeBooking2" aria-label="Close">✕</button>
-      </div>
-      <form id="bookingForm" class="form">
-        <div class="grid">
-          <div><label>Full name</label><input name="name" required autocomplete="name" /></div>
-          <div><label>Phone</label><input name="phone" required autocomplete="tel" /></div>
-          <div><label>Email</label><input name="email" type="email" autocomplete="email" /></div>
-          <div><label>Service address</label><input name="address" autocomplete="street-address" /></div>
-        </div>
-        <div class="grid">
-          <div>
-            <label>Service type</label>
-            <select name="serviceType" class="qb-select" required>
-              <option value="">Select…</option>
-              <option>EV Charger Install</option>
-              <option>Panel / Service Upgrade</option>
-              <option>Troubleshooting</option>
-              <option>Dedicated Circuit</option>
-              <option>Lighting</option>
-              <option>Safety / Code Fix</option>
-              <option selected>Generator / Backup Power</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div>
-            <label>Urgency</label>
-            <select name="urgency" class="qb-select" required>
-              <option value="">Select…</option>
-              <option>Emergency (hazard / burning smell / outage)</option>
-              <option>ASAP (today/tomorrow)</option>
-              <option>This week</option>
-              <option>Not urgent</option>
-            </select>
-          </div>
-        </div>
-        <div class="grid">
-          <div><label>Preferred day</label><input name="preferredDay" placeholder="e.g., Monday" /></div>
-          <div><label>Preferred time</label><input name="preferredTime" placeholder="e.g., after 3pm" /></div>
-        </div>
-        <div>
-          <label>Details</label>
-          <textarea name="message" required placeholder="Generator brand/model if known, fuel type (gas/propane), panel size, any existing transfer switch…"></textarea>
-        </div>
-        <label class="consent">
-          <input type="checkbox" name="consent" required />
-          <span>I agree to be contacted by call/text/email about this request.</span>
-        </label>
-        <div class="form__actions">
-          <button type="submit" class="btn btn--primary btn--lg w-full" id="submitBtn">Submit & route to dispatcher</button>
-          <p class="muted small" id="statusText"></p>
-        </div>
-      </form>
+    <div class="footer-col">
+      <h4 class="footer-heading">Service Areas</h4>
+      <ul class="footer-links">
+        <li><a href="colorado-springs.html">Colorado Springs</a></li>
+        <li><a href="falcon.html">Falcon</a></li>
+        <li><a href="monument.html">Monument</a></li>
+        <li><a href="pueblo.html">Pueblo</a></li>
+        <li><a href="woodland-park.html">Woodland Park</a></li>
+        <li><a href="black-forest.html">Black Forest</a></li>
+        <li><a href="fountain.html">Fountain</a></li>
+        <li><a href="manitou-springs.html">Manitou Springs</a></li>
+      </ul>
     </div>
   </div>
+  <div class="container" style="border-top:1px solid rgba(255,255,255,.08);margin-top:3rem;padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+    <p style="color:var(--text-lt);font-size:.85rem;">&copy; <span id="yr"></span> Voltura Power Group &bull; All rights reserved.</p>
+    <p style="color:var(--text-lt);font-size:.85rem;">Colorado Springs, CO &bull; License #3001608</p>
+  </div>
+</footer>
 
-  <script>
-    const WEBHOOK_URL = "https://wards-electrical.app.n8n.cloud/webhook/0c41a587-89af-4066-9aa8-365de46e1906";
-    (function() { if (sessionStorage.getItem('emergencyDismissed')) { const b = document.getElementById('emergencyBanner'); if (b) b.style.display = 'none'; } })();
-    function dismissEmergency() { sessionStorage.setItem('emergencyDismissed', '1'); const b = document.getElementById('emergencyBanner'); if (b) b.style.display = 'none'; }
-    (function() { if (sessionStorage.getItem('callBarDismissed')) { const b = document.getElementById('mobileCallBar'); if (b) b.style.display = 'none'; } })();
-    function dismissCallBar() { sessionStorage.setItem('callBarDismissed', '1'); const b = document.getElementById('mobileCallBar'); if (b) b.style.display = 'none'; }
-    document.getElementById("year").textContent = new Date().getFullYear();
-    const navToggle = document.getElementById("navToggle");
-    const mainNav = document.getElementById("mainNav");
-    navToggle.addEventListener("click", () => { const open = mainNav.classList.toggle("nav--open"); navToggle.classList.toggle("nav-toggle--open", open); navToggle.setAttribute("aria-expanded", open); });
-    mainNav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => { mainNav.classList.remove("nav--open"); navToggle.classList.remove("nav-toggle--open"); navToggle.setAttribute("aria-expanded", "false"); }));
-    const modal = document.getElementById("bookingModal");
-    const openBtns = ["openBooking","openBooking2","openBooking3","openBooking4"].map(id => document.getElementById(id)).filter(Boolean);
-    const closeBtns = [document.getElementById("closeBooking"), document.getElementById("closeBooking2")].filter(Boolean);
-    function openModal(){ modal.classList.add("is-open"); modal.setAttribute("aria-hidden","false"); document.body.classList.add("modal-open"); }
-    function closeModal(){ modal.classList.remove("is-open"); modal.setAttribute("aria-hidden","true"); document.body.classList.remove("modal-open"); }
-    openBtns.forEach(b => b.addEventListener("click", e => { e.preventDefault(); openModal(); }));
-    closeBtns.forEach(b => b.addEventListener("click", e => { e.preventDefault(); closeModal(); }));
-    window.addEventListener("keydown", e => { if(e.key==="Escape" && modal.classList.contains("is-open")) closeModal(); });
-    const form = document.getElementById("bookingForm");
-    const statusText = document.getElementById("statusText");
-    const submitBtn = document.getElementById("submitBtn");
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault(); statusText.textContent = ""; submitBtn.disabled = true; submitBtn.textContent = "Sending…";
-      const data = Object.fromEntries(new FormData(form).entries());
-      data.source = "website"; data.page = "generator-backup"; data.timestamp = new Date().toISOString();
-      try {
-        const res = await fetch(WEBHOOK_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
-        if (!res.ok) throw new Error("Webhook failed");
-        statusText.textContent = "✅ Sent. We'll reach out shortly."; submitBtn.textContent = "Submitted";
-        setTimeout(() => { closeModal(); form.reset(); submitBtn.disabled = false; submitBtn.textContent = "Submit & route to dispatcher"; statusText.textContent = ""; }, 1200);
-      } catch (err) { statusText.textContent = "⚠️ Didn't send. Try again or call/text us."; submitBtn.disabled = false; submitBtn.textContent = "Submit & route to dispatcher"; }
+<!-- MOBILE CALL BAR -->
+<div class="mobile-call-bar" id="mobileCallBar">
+  <a href="tel:9154870660" class="btn-primary" style="flex:1;text-align:center;">&#9742; Call Now</a>
+  <button class="btn-outline" onclick="openModal()" style="flex:1;">Book Online</button>
+  <button class="mobile-call-bar-close" id="callBarClose" aria-label="Dismiss">&times;</button>
+</div>
+
+<!-- BOOKING MODAL -->
+<div class="modal-overlay" id="modalOverlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+    <h2 class="modal-title" id="modal-title">Book in 60 seconds</h2>
+    <p class="modal-sub">We'll confirm within the hour during business hours.</p>
+    <form id="bookingForm" class="modal-form">
+      <div class="form-row">
+        <input type="text" name="name" placeholder="Your name" required />
+        <input type="tel" name="phone" placeholder="Phone number" required />
+      </div>
+      <input type="email" name="email" placeholder="Email address" />
+      <select name="service" id="modalService">
+        <option value="">Select a service…</option>
+        <option value="EV Charger Install">EV Charger Install</option>
+        <option value="Panel / Service Upgrade">Panel / Service Upgrade</option>
+        <option value="Troubleshooting">Troubleshooting / Diagnostics</option>
+        <option value="Dedicated Circuit">Dedicated Circuit</option>
+        <option value="Lighting">Lighting</option>
+        <option value="Safety / Code Fix">Safety / Code Fix</option>
+        <option value="Generator / Backup Power" selected>Generator / Backup Power</option>
+        <option value="Other">Other / Not Sure</option>
+      </select>
+      <textarea name="message" rows="3" placeholder="Brief description (optional)"></textarea>
+      <button type="submit" class="btn-primary" style="width:100%;">Send Request</button>
+      <p class="modal-disclaimer">No spam. We only use this to schedule your appointment.</p>
+    </form>
+    <div id="bookingSuccess" style="display:none;text-align:center;padding:2rem 0;">
+      <p style="font-size:1.5rem;color:var(--gold);">&#10003;</p>
+      <p style="font-weight:600;margin-top:.5rem;">Request sent!</p>
+      <p style="color:var(--text-mid);margin-top:.5rem;">We'll be in touch within the hour.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SCROLL TO TOP -->
+<button class="scroll-top" id="scrollTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 10);
+});
+
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+const mobileClose = document.getElementById('mobile-menu-close');
+function openMenu() {
+  mobileMenu.classList.add('open');
+  mobileMenu.setAttribute('aria-hidden','false');
+  hamburger.setAttribute('aria-expanded','true');
+  document.body.style.overflow = 'hidden';
+}
+function closeMenu() {
+  mobileMenu.classList.remove('open');
+  mobileMenu.setAttribute('aria-hidden','true');
+  hamburger.setAttribute('aria-expanded','false');
+  document.body.style.overflow = '';
+}
+hamburger.addEventListener('click', openMenu);
+mobileClose.addEventListener('click', closeMenu);
+
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+const scrollTopBtn = document.getElementById('scrollTop');
+window.addEventListener('scroll', () => {
+  scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+});
+
+const callBar = document.getElementById('mobileCallBar');
+const callBarClose = document.getElementById('callBarClose');
+if (sessionStorage.getItem('callBarDismissed')) callBar.style.display = 'none';
+callBarClose.addEventListener('click', () => {
+  callBar.style.display = 'none';
+  sessionStorage.setItem('callBarDismissed','1');
+});
+
+const overlay = document.getElementById('modalOverlay');
+function openModal() {
+  overlay.classList.add('open');
+  overlay.setAttribute('aria-hidden','false');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  overlay.classList.remove('open');
+  overlay.setAttribute('aria-hidden','true');
+  document.body.style.overflow = '';
+}
+overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+document.getElementById('bookingForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(this));
+  data.page = 'generator-backup';
+  try {
+    await fetch('https://wards-electrical.app.n8n.cloud/webhook/0c41a587-89af-4066-9aa8-365de46e1906', {
+      method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(data)
     });
-  </script>
+  } catch(_) {}
+  this.style.display = 'none';
+  document.getElementById('bookingSuccess').style.display = 'block';
+});
+</script>
 </body>
 </html>

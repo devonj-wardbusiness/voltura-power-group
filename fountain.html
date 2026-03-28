@@ -3,298 +3,325 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Electrician Fountain CO | Voltura Power Group</title>
-  <meta name="description" content="Licensed electrician in Fountain, CO. Voltura Power Group handles panel upgrades, EV charger installs, dedicated circuits, lighting, and troubleshooting. License #3001608. Call (719) 445-9074." />
-  <link rel="canonical" href="https://www.volturapower.energy/fountain.html" />
-  <link rel="icon" href="assets/logo.png" />
+  <title>Electrician in Fountain, CO | Voltura Power Group</title>
+  <meta name="description" content="Licensed electricians serving Fountain, CO. Panel upgrades, EV charger installs, dedicated circuits, and electrical repairs for Fountain and Security-Widefield homes. Call 915-487-0660." />
+  <link rel="canonical" href="https://volturapower.energy/fountain.html" />
+  <link rel="icon" href="assets/favicon.ico" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles/main.css" />
-  <meta property="og:title" content="Electrician Fountain CO | Voltura Power Group" />
-  <meta property="og:description" content="Licensed electrician in Fountain, CO. Panel upgrades, EV chargers, dedicated circuits and more. License #3001608." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.volturapower.energy/fountain.html" />
-  <meta property="og:image" content="https://www.volturapower.energy/assets/logo.png" />
-  <meta property="og:site_name" content="Voltura Power Group" />
-  <meta name="twitter:card" content="summary_large_image" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Voltura Power Group",
-    "description": "Licensed electrician serving Fountain, CO with residential and commercial electrical services.",
-    "url": "https://www.volturapower.energy",
-    "telephone": "(719) 445-9074",
+    "telephone": "+1-915-487-0660",
     "email": "service@volturapower.energy",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Colorado Springs",
-      "addressRegion": "CO",
-      "addressCountry": "US"
-    },
-    "areaServed": "Fountain, CO",
-    "sameAs": []
+    "url": "https://volturapower.energy",
+    "areaServed": { "@type": "City", "name": "Fountain", "addressRegion": "CO" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Fountain", "addressRegion": "CO", "addressCountry": "US" },
+    "description": "Licensed electrical contractor serving Fountain and Security-Widefield, CO. Panel upgrades, EV chargers, dedicated circuits, and safety repairs."
   }
   </script>
 </head>
 <body>
-  <a class="sr-only" href="#main">Skip to content</a>
 
-  <div class="action-bar" role="region" aria-label="Quick actions">
-    <div class="action-bar__inner">
-      <div class="action-bar__left">
-        <span class="dot"></span>
-        <span><strong>Voltura Power Group</strong> &bull; Fountain, CO</span>
+<!-- ACTION BAR -->
+<div class="action-bar">
+  <span class="action-bar-brand">Voltura Power Group &bull; Fountain, CO</span>
+  <div class="action-bar-actions">
+    <a href="tel:9154870660" class="action-bar-btn">&#9742; Call</a>
+    <a href="sms:9154870660" class="action-bar-btn">&#9997; Text</a>
+    <button class="action-bar-btn action-bar-book" onclick="openModal()">Book Now</button>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo.png" alt="Voltura Power Group logo" />
+      <span>VOLTURA <span class="nav-logo-sub">POWER GROUP</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#commercial">Commercial</a></li>
+      <li><a href="index.html#why-us">Why Us</a></li>
+      <li><a href="index.html#reviews">Reviews</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+      <li><a href="index.html#service-area">Service Area</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="tel:9154870660" class="nav-cta btn-primary">915-487-0660</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu">&times;</button>
+  <ul>
+    <li><a href="index.html#services" onclick="closeMenu()">Services</a></li>
+    <li><a href="index.html#commercial" onclick="closeMenu()">Commercial</a></li>
+    <li><a href="index.html#why-us" onclick="closeMenu()">Why Us</a></li>
+    <li><a href="index.html#reviews" onclick="closeMenu()">Reviews</a></li>
+    <li><a href="index.html#faq" onclick="closeMenu()">FAQ</a></li>
+    <li><a href="index.html#service-area" onclick="closeMenu()">Service Area</a></li>
+    <li><a href="contact.html" onclick="closeMenu()">Contact</a></li>
+  </ul>
+  <a href="tel:9154870660" class="btn-primary" style="margin-top:2rem;display:inline-block;">Call 915-487-0660</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-inner container">
+    <div class="page-hero-copy fade-up">
+      <p class="section-eyebrow">Fountain &amp; Security-Widefield, CO</p>
+      <h1>Electrician serving Fountain, Security, and Widefield.</h1>
+      <p class="page-hero-sub">The south-side communities of Fountain, Security, and Widefield are growing fast — new builds alongside older homes that need panel upgrades, safety repairs, and modern circuits. Voltura Power Group handles all of it, fully permitted, done right.</p>
+      <div class="page-hero-btns">
+        <button class="btn-primary" onclick="openModal()">Get a Free Estimate</button>
+        <a href="tel:9154870660" class="btn-outline">Call 915-487-0660</a>
       </div>
-      <div class="action-bar__right">
-        <a class="btn btn--ghost" href="tel:+17194459074">Call</a>
-        <a class="btn btn--ghost" href="sms:+17194459074?&body=Hi%20Voltura%20Power%20Group%20-%20I%20need%20help%20with%20">Text</a>
-        <button class="btn btn--primary" id="openBooking">Book in 60 seconds</button>
+    </div>
+    <div class="page-hero-aside fade-up">
+      <div class="quote-card">
+        <p class="quote-card-eyebrow">Serving Fountain &amp; Security-Widefield</p>
+        <p class="quote-card-title">Free Estimate — Same Week</p>
+        <ul class="quote-card-list">
+          <li>&#10003; Residential &amp; new construction</li>
+          <li>&#10003; Panel upgrades &amp; EV chargers</li>
+          <li>&#10003; Older home safety repairs</li>
+          <li>&#10003; Permits pulled every job</li>
+          <li>&#10003; License #3001608</li>
+        </ul>
+        <button class="btn-primary" style="width:100%;margin-top:1rem;" onclick="openModal()">Book a Visit</button>
+        <p style="text-align:center;margin-top:.75rem;font-size:.85rem;color:var(--text-mid);">Or call/text <a href="tel:9154870660" style="color:var(--gold);">915-487-0660</a></p>
       </div>
     </div>
   </div>
+</section>
 
-  <header class="site-header">
-    <div class="emergency-banner" id="emergencyBanner" role="alert">
-      <span>&#x26A1; Electrical emergency? We're available &mdash; <a href="tel:+17194459074">Call (719) 445-9074</a></span>
-      <button class="emergency-banner__close" onclick="dismissEmergency()" aria-label="Dismiss">&#x2715;</button>
+<!-- TRUST STRIP -->
+<div class="trust-strip section-dark">
+  <div class="container trust-strip-inner">
+    <span>&#10003; Licensed &amp; Insured — #3001608</span>
+    <span>&#10003; Fountain, Security &amp; Widefield</span>
+    <span>&#10003; Residential &amp; New Construction</span>
+    <span>&#10003; Same-Week Estimates</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="container">
+    <p class="section-eyebrow fade-up">What we do in Fountain</p>
+    <h2 class="section-title fade-up">Electrical services for Fountain&rsquo;s growing community</h2>
+    <div class="services-grid fade-up">
+
+      <div class="svc-card">
+        <div class="svc-card-icon">&#9889;</div>
+        <h3><a href="panel-upgrade.html" style="color:inherit;text-decoration:none;">Panel Upgrades</a></h3>
+        <p>From 100A to 200A upgrades for older homes to sub-panel installs for new construction additions — we handle the full range of panel work in the Fountain area.</p>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-card-icon">&#128268;</div>
+        <h3><a href="ev-charger-install.html" style="color:inherit;text-decoration:none;">EV Charger Install</a></h3>
+        <p>Level 2 charger installs for all vehicle makes. We pull the permit, handle the inspection, and make sure your panel has the capacity before we start.</p>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-card-icon">&#128204;</div>
+        <h3><a href="dedicated-circuits.html" style="color:inherit;text-decoration:none;">Dedicated Circuits</a></h3>
+        <p>Hot tubs, garage heaters, shop equipment, and kitchen appliances all need their own circuits. We run them correctly and to code every time.</p>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-card-icon">&#9888;</div>
+        <h3><a href="safety-code-fixes.html" style="color:inherit;text-decoration:none;">Safety &amp; Code Fixes</a></h3>
+        <p>Older Security-Widefield and Fountain homes often have outdated wiring, missing GFCI, or panels that need replacing. We bring everything up to current code.</p>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-card-icon">&#128270;</div>
+        <h3><a href="troubleshooting.html" style="color:inherit;text-decoration:none;">Troubleshooting</a></h3>
+        <p>Tripping breakers, dead outlets, partial outages — $65 service call with diagnostic included. Fixed same day when possible.</p>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-card-icon">&#128161;</div>
+        <h3><a href="lighting.html" style="color:inherit;text-decoration:none;">Lighting</a></h3>
+        <p>Recessed lighting, LED upgrades, exterior security lighting, and smart switches for Fountain and Security-Widefield homes old and new.</p>
+      </div>
+
     </div>
-    <div class="top-bar" role="note">
-      Same-day availability &bull; Licensed #3001608 &amp; Insured &bull; Serving Colorado Springs + Falcon/Peyton + Woodland Park + Pueblo
+  </div>
+</section>
+
+<!-- LOCAL COPY -->
+<section class="section section-alt">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;" class="fade-up">
+      <div>
+        <p class="section-eyebrow">South Colorado Springs corridor</p>
+        <h2 class="section-title" style="text-align:left;">A growing community with real electrical needs.</h2>
+        <p style="color:var(--text-mid);line-height:1.8;margin-top:1rem;">Fountain, Security, and Widefield have grown significantly over the past two decades. New subdivisions sit alongside older neighborhoods from the 1960s through 1980s — creating a wide range of electrical situations from brand-new panels to old fuse boxes that should have been replaced years ago.</p>
+        <p style="color:var(--text-mid);line-height:1.8;margin-top:1rem;">We know both sides. New construction circuits, EV chargers, and smart home wiring for the new builds — safety upgrades, rewires, and panel replacements for the older stock. Permitted and inspected every time.</p>
+        <button class="btn-primary" style="margin-top:2rem;" onclick="openModal()">Get a Free Estimate</button>
+      </div>
+      <div>
+        <div class="svc-card" style="margin-bottom:1rem;">
+          <h4 style="font-family:var(--serif);font-size:1.15rem;margin-bottom:.5rem;">Areas We Serve Near Fountain</h4>
+          <p style="color:var(--text-mid);font-size:.9rem;line-height:1.7;">Fountain &bull; Security &bull; Widefield &bull; Stratmoor &bull; Mesa Ridge &bull; Cross Creek &bull; Venetucci &bull; Fort Carson corridor</p>
+        </div>
+        <div class="svc-card">
+          <h4 style="font-family:var(--serif);font-size:1.15rem;margin-bottom:.5rem;">Permits &amp; Inspections</h4>
+          <p style="color:var(--text-mid);font-size:.9rem;line-height:1.7;">Fountain has its own municipal permit office. Security and Widefield fall under El Paso County. We know which authority to use and handle the filing for every job.</p>
+        </div>
+      </div>
     </div>
-    <div class="header-main">
-      <a class="brand" href="index.html" aria-label="Voltura Power Group Home">
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="cta-band-inner container">
+    <p class="cta-band-text">Fountain&rsquo;s electrician — licensed, local, ready now.</p>
+    <a href="tel:9154870660" class="btn-primary">Call 915-487-0660</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="section-dark" style="padding:4rem 0 2rem;">
+  <div class="container footer-inner">
+    <div class="footer-col">
+      <div class="footer-logo">
         <img src="assets/logo.png" alt="Voltura Power Group" />
-        <div class="brand__text">
-          <span class="brand__name">VOLTURA</span>
-          <span class="brand__tag">Commercial &amp; Residential Electrical</span>
-        </div>
-      </a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <nav class="nav" id="mainNav" aria-label="Primary">
-        <a href="index.html#services">Services</a>
-        <a href="index.html#commercial">Commercial</a>
-        <a href="index.html#why">Why Us</a>
-        <a href="index.html#reviews">Reviews</a>
-        <a href="index.html#pricing">Pricing</a>
-        <a href="index.html#faq">FAQ</a>
-        <a href="index.html#area">Service Area</a>
-        <a href="index.html#contact">Contact</a>
-      </nav>
-      <div class="header-cta">
-        <a class="btn btn--ghost" href="mailto:service@volturapower.energy">Email</a>
-        <a class="btn btn--primary" href="tel:+17194459074">Call (719) 445-9074</a>
+        <span>VOLTURA <span class="footer-logo-sub">POWER GROUP</span></span>
       </div>
+      <p style="color:var(--text-lt);font-size:.9rem;margin-top:1rem;line-height:1.6;">Licensed electricians serving Colorado Springs and surrounding areas. Power done properly.</p>
+      <p style="color:var(--text-lt);font-size:.85rem;margin-top:1rem;">License #3001608 &bull; Colorado</p>
     </div>
-  </header>
-
-  <main id="main" class="page" role="main">
-    <section class="hero" id="top">
-      <div class="hero__copy">
-        <p class="kicker">Electrician in Fountain, CO</p>
-        <h1>Licensed Electrician Serving Fountain, Colorado</h1>
-        <p class="subhead">Voltura Power Group serves Fountain, CO with residential and commercial electrical work. Panel upgrades, EV charger installs, dedicated circuits, lighting, and troubleshooting — all permitted and inspected.</p>
-        <div class="hero__actions">
-          <button class="btn btn--primary btn--lg" id="openBooking2">Schedule a visit</button>
-          <a class="btn btn--ghost btn--lg" href="tel:+17194459074">Call (719) 445-9074</a>
-        </div>
-        <div class="mini">
-          <div class="mini__item">
-            <div class="mini__title">Phone</div>
-            <a href="tel:+17194459074">(719) 445-9074</a>
-          </div>
-          <div class="mini__item">
-            <div class="mini__title">License</div>
-            <div>#3001608 &mdash; Licensed &amp; Insured</div>
-          </div>
-          <div class="mini__item">
-            <div class="mini__title">Service Area</div>
-            <div>Fountain, Security &amp; south El Paso County</div>
-          </div>
-        </div>
-      </div>
-      <div class="hero__card">
-        <div class="hero__cardBody">
-          <h2 class="h3">Need an electrician in Fountain?</h2>
-          <p class="muted">Tell us what you need and we'll get back to you fast. Same-day availability for most jobs.</p>
-          <button class="btn btn--primary w-full" id="openBooking3">Book a visit</button>
-          <p class="muted small">Takes ~60 seconds. No spam.</p>
-        </div>
-      </div>
-    </section>
-
-    <div class="trust-strip">
-      <span><span class="ts-check" aria-hidden="true">&#x2713;</span> License #3001608</span>
-      <span><span class="ts-check" aria-hidden="true">&#x2713;</span> Fully Insured</span>
-      <span><span class="ts-check" aria-hidden="true">&#x2713;</span> Locally Owned</span>
-      <span><span class="ts-check" aria-hidden="true">&#x2713;</span> Inspected &amp; Closed</span>
+    <div class="footer-col">
+      <h4 class="footer-heading">Contact</h4>
+      <ul class="footer-links">
+        <li><a href="tel:9154870660">915-487-0660</a></li>
+        <li><a href="sms:9154870660">Text Us</a></li>
+        <li><a href="mailto:service@volturapower.energy">service@volturapower.energy</a></li>
+        <li><a href="contact.html">Contact Page</a></li>
+      </ul>
     </div>
-
-    <section class="section">
-      <div class="section-head">
-        <h2>Electrical Services in Fountain, CO</h2>
-        <p class="muted">Full-service residential and commercial electrical work.</p>
-      </div>
-      <div class="cards">
-        <article class="card">
-          <h3>Panel &amp; Service Upgrades</h3>
-          <p>200A service upgrades, load calculations, and utility coordination. Fountain's growing community means lots of new construction and upgrade work.</p>
-        </article>
-        <article class="card">
-          <h3>EV Charger Install</h3>
-          <p>Level 2 charger installation for any EV — Tesla, Rivian, Ford, Chevy, and more. Permit included.</p>
-        </article>
-        <article class="card">
-          <h3>Dedicated Circuits</h3>
-          <p>Hot tubs, workshops, ranges, dryers, HVAC — any load that needs its own circuit run clean and to code.</p>
-        </article>
-        <article class="card">
-          <h3>Lighting</h3>
-          <p>Recessed, under-cabinet, accent, outdoor, and commercial lighting. Switch and dimmer upgrades too.</p>
-        </article>
-        <article class="card">
-          <h3>Troubleshooting</h3>
-          <p>Tripping breakers, dead outlets, flickering lights, burning smells &mdash; diagnosed and fixed same visit when possible.</p>
-        </article>
-        <article class="card">
-          <h3>Safety &amp; Code Fixes</h3>
-          <p>GFCI/AFCI upgrades, smoke detector wiring, aluminum wiring remediation, and pre-sale inspection corrections.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section section--alt">
-      <div class="section-head">
-        <h2>Why Fountain customers choose Voltura</h2>
-      </div>
-      <div class="list">
-        <div class="check">&#x2705; Licensed Colorado electrical contractor &mdash; #3001608</div>
-        <div class="check">&#x2705; Permits pulled and inspections closed &mdash; every time</div>
-        <div class="check">&#x2705; Serving Fountain and surrounding south county communities</div>
-        <div class="check">&#x2705; Same-day availability most days</div>
-        <div class="check">&#x2705; Flat-rate pricing on common jobs &mdash; no surprise bills</div>
-        <div class="check">&#x2705; Commercial and residential &mdash; one contractor for all your work</div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="ctaPanel">
-        <h3>Serving Fountain and the surrounding area</h3>
-        <p class="muted">We come to you. Book online or call/text anytime.</p>
-        <button class="btn btn--primary w-full" id="openBooking4">Book a visit</button>
-        <div class="ctaPanel__row">
-          <a class="btn btn--ghost w-full" href="tel:+17194459074">Call (719) 445-9074</a>
-          <a class="btn btn--ghost w-full" href="sms:+17194459074?&body=Hi%20Voltura%20Power%20Group%20-%20I%20need%20electrical%20work%20in%20Fountain">Text Us</a>
-        </div>
-      </div>
-    </section>
-
-    <div style="text-align:center; margin: 20px 0">
-      <a href="index.html" class="btn btn--ghost">&larr; Back to Home</a>
+    <div class="footer-col">
+      <h4 class="footer-heading">Services</h4>
+      <ul class="footer-links">
+        <li><a href="ev-charger-install.html">EV Charger Install</a></li>
+        <li><a href="panel-upgrade.html">Panel Upgrade</a></li>
+        <li><a href="troubleshooting.html">Troubleshooting</a></li>
+        <li><a href="dedicated-circuits.html">Dedicated Circuits</a></li>
+        <li><a href="lighting.html">Lighting</a></li>
+        <li><a href="safety-code-fixes.html">Safety &amp; Code Fixes</a></li>
+        <li><a href="generator-backup.html">Generator &amp; Backup Power</a></li>
+      </ul>
     </div>
-
-    <footer class="footer">
-      <p>&copy; <span id="year"></span> Voltura Power Group. All rights reserved.</p>
-    </footer>
-  </main>
-
-  <div class="mobile-call-bar" id="mobileCallBar">
-    <a class="mobile-call-bar__btn" href="tel:+17194459074"><span aria-hidden="true">&#x1F4DE;</span> Call Now &mdash; (719) 445-9074</a>
-    <button class="mobile-call-bar__close" onclick="dismissCallBar()" aria-label="Dismiss call bar">&#x2715;</button>
-  </div>
-
-  <div class="modal" id="bookingModal" aria-hidden="true">
-    <div class="modal__backdrop" id="closeBooking"></div>
-    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="bookingTitle">
-      <div class="modal__head">
-        <div><div class="kicker">Book in ~60 seconds</div><h2 id="bookingTitle">Tell us what you need</h2></div>
-        <button class="x" id="closeBooking2" aria-label="Close">&#x2715;</button>
-      </div>
-      <form id="bookingForm" class="form">
-        <div class="grid">
-          <div><label>Full name</label><input name="name" required autocomplete="name" /></div>
-          <div><label>Phone</label><input name="phone" required autocomplete="tel" /></div>
-          <div><label>Email</label><input name="email" type="email" autocomplete="email" /></div>
-          <div><label>Service address</label><input name="address" autocomplete="street-address" /></div>
-        </div>
-        <div class="grid">
-          <div>
-            <label>Service type</label>
-            <select name="serviceType" class="qb-select" required>
-              <option value="">Select&hellip;</option>
-              <option>EV Charger Install</option>
-              <option>Panel / Service Upgrade</option>
-              <option>Troubleshooting</option>
-              <option>Dedicated Circuit</option>
-              <option>Lighting</option>
-              <option>Safety / Code Fix</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div>
-            <label>Urgency</label>
-            <select name="urgency" class="qb-select" required>
-              <option value="">Select&hellip;</option>
-              <option>Emergency (hazard / burning smell / outage)</option>
-              <option>ASAP (today/tomorrow)</option>
-              <option>This week</option>
-              <option>Not urgent</option>
-            </select>
-          </div>
-        </div>
-        <div class="grid">
-          <div><label>Preferred day</label><input name="preferredDay" placeholder="e.g., Monday" /></div>
-          <div><label>Preferred time</label><input name="preferredTime" placeholder="e.g., after 3pm" /></div>
-        </div>
-        <div>
-          <label>Details</label>
-          <textarea name="message" required placeholder="Describe what you need done&hellip;"></textarea>
-        </div>
-        <label class="consent">
-          <input type="checkbox" name="consent" required />
-          <span>I agree to be contacted by call/text/email about this request.</span>
-        </label>
-        <div class="form__actions">
-          <button type="submit" class="btn btn--primary btn--lg w-full" id="submitBtn">Submit &amp; route to dispatcher</button>
-          <p class="muted small" id="statusText"></p>
-        </div>
-      </form>
+    <div class="footer-col">
+      <h4 class="footer-heading">Service Areas</h4>
+      <ul class="footer-links">
+        <li><a href="colorado-springs.html">Colorado Springs</a></li>
+        <li><a href="falcon.html">Falcon</a></li>
+        <li><a href="monument.html">Monument</a></li>
+        <li><a href="pueblo.html">Pueblo</a></li>
+        <li><a href="woodland-park.html">Woodland Park</a></li>
+        <li><a href="black-forest.html">Black Forest</a></li>
+        <li><a href="fountain.html">Fountain</a></li>
+        <li><a href="manitou-springs.html">Manitou Springs</a></li>
+      </ul>
     </div>
   </div>
+  <div class="container" style="border-top:1px solid rgba(255,255,255,.08);margin-top:3rem;padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+    <p style="color:var(--text-lt);font-size:.85rem;">&copy; <span id="yr"></span> Voltura Power Group &bull; All rights reserved.</p>
+    <p style="color:var(--text-lt);font-size:.85rem;">Fountain, CO &bull; License #3001608</p>
+  </div>
+</footer>
 
-  <script>
-    const WEBHOOK_URL = "https://wards-electrical.app.n8n.cloud/webhook/0c41a587-89af-4066-9aa8-365de46e1906";
-    (function() { if (sessionStorage.getItem('emergencyDismissed')) { const b = document.getElementById('emergencyBanner'); if (b) b.style.display = 'none'; } })();
-    function dismissEmergency() { sessionStorage.setItem('emergencyDismissed', '1'); const b = document.getElementById('emergencyBanner'); if (b) b.style.display = 'none'; }
-    (function() { if (sessionStorage.getItem('callBarDismissed')) { const b = document.getElementById('mobileCallBar'); if (b) b.style.display = 'none'; } })();
-    function dismissCallBar() { sessionStorage.setItem('callBarDismissed', '1'); const b = document.getElementById('mobileCallBar'); if (b) b.style.display = 'none'; }
-    document.getElementById("year").textContent = new Date().getFullYear();
-    const navToggle = document.getElementById("navToggle");
-    const mainNav = document.getElementById("mainNav");
-    navToggle.addEventListener("click", () => { const open = mainNav.classList.toggle("nav--open"); navToggle.classList.toggle("nav-toggle--open", open); navToggle.setAttribute("aria-expanded", open); });
-    mainNav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => { mainNav.classList.remove("nav--open"); navToggle.classList.remove("nav-toggle--open"); navToggle.setAttribute("aria-expanded", "false"); }));
-    const modal = document.getElementById("bookingModal");
-    const openBtns = ["openBooking","openBooking2","openBooking3","openBooking4"].map(id => document.getElementById(id)).filter(Boolean);
-    const closeBtns = [document.getElementById("closeBooking"), document.getElementById("closeBooking2")].filter(Boolean);
-    function openModal(){ modal.classList.add("is-open"); modal.setAttribute("aria-hidden","false"); document.body.classList.add("modal-open"); }
-    function closeModal(){ modal.classList.remove("is-open"); modal.setAttribute("aria-hidden","true"); document.body.classList.remove("modal-open"); }
-    openBtns.forEach(b => b.addEventListener("click", e => { e.preventDefault(); openModal(); }));
-    closeBtns.forEach(b => b.addEventListener("click", e => { e.preventDefault(); closeModal(); }));
-    window.addEventListener("keydown", e => { if(e.key==="Escape" && modal.classList.contains("is-open")) closeModal(); });
-    const form = document.getElementById("bookingForm");
-    const statusText = document.getElementById("statusText");
-    const submitBtn = document.getElementById("submitBtn");
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault(); statusText.textContent = ""; submitBtn.disabled = true; submitBtn.textContent = "Sending\u2026";
-      const data = Object.fromEntries(new FormData(form).entries());
-      data.source = "website"; data.page = "fountain"; data.timestamp = new Date().toISOString();
-      try {
-        const res = await fetch(WEBHOOK_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
-        if (!res.ok) throw new Error("Webhook failed");
-        statusText.textContent = "\u2705 Sent. We'll reach out shortly."; submitBtn.textContent = "Submitted";
-        setTimeout(() => { closeModal(); form.reset(); submitBtn.disabled = false; submitBtn.textContent = "Submit & route to dispatcher"; statusText.textContent = ""; }, 1200);
-      } catch (err) { statusText.textContent = "\u26A0\uFE0F Didn't send. Try again or call/text us."; submitBtn.disabled = false; submitBtn.textContent = "Submit & route to dispatcher"; }
-    });
-  </script>
+<!-- MOBILE CALL BAR -->
+<div class="mobile-call-bar" id="mobileCallBar">
+  <a href="tel:9154870660" class="btn-primary" style="flex:1;text-align:center;">&#9742; Call Now</a>
+  <button class="btn-outline" onclick="openModal()" style="flex:1;">Book Online</button>
+  <button class="mobile-call-bar-close" id="callBarClose" aria-label="Dismiss">&times;</button>
+</div>
+
+<!-- BOOKING MODAL -->
+<div class="modal-overlay" id="modalOverlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+    <h2 class="modal-title" id="modal-title">Book in 60 seconds</h2>
+    <p class="modal-sub">We'll confirm within the hour during business hours.</p>
+    <form id="bookingForm" class="modal-form">
+      <div class="form-row">
+        <input type="text" name="name" placeholder="Your name" required />
+        <input type="tel" name="phone" placeholder="Phone number" required />
+      </div>
+      <input type="email" name="email" placeholder="Email address" />
+      <select name="service">
+        <option value="">Select a service…</option>
+        <option value="EV Charger Install">EV Charger Install</option>
+        <option value="Panel / Service Upgrade">Panel / Service Upgrade</option>
+        <option value="Troubleshooting">Troubleshooting / Diagnostics</option>
+        <option value="Dedicated Circuit">Dedicated Circuit</option>
+        <option value="Lighting">Lighting</option>
+        <option value="Safety / Code Fix">Safety / Code Fix</option>
+        <option value="Generator / Backup Power">Generator / Backup Power</option>
+        <option value="Other">Other / Not Sure</option>
+      </select>
+      <textarea name="message" rows="3" placeholder="Brief description (optional)"></textarea>
+      <button type="submit" class="btn-primary" style="width:100%;">Send Request</button>
+      <p class="modal-disclaimer">No spam. We only use this to schedule your appointment.</p>
+    </form>
+    <div id="bookingSuccess" style="display:none;text-align:center;padding:2rem 0;">
+      <p style="font-size:1.5rem;color:var(--gold);">&#10003;</p>
+      <p style="font-weight:600;margin-top:.5rem;">Request sent!</p>
+      <p style="color:var(--text-mid);margin-top:.5rem;">We'll be in touch within the hour.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SCROLL TO TOP -->
+<button class="scroll-top" id="scrollTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 10));
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+const mobileClose = document.getElementById('mobile-menu-close');
+function openMenu() { mobileMenu.classList.add('open'); mobileMenu.setAttribute('aria-hidden','false'); hamburger.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+function closeMenu() { mobileMenu.classList.remove('open'); mobileMenu.setAttribute('aria-hidden','true'); hamburger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+hamburger.addEventListener('click', openMenu);
+mobileClose.addEventListener('click', closeMenu);
+const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }), { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+const scrollTopBtn = document.getElementById('scrollTop');
+window.addEventListener('scroll', () => scrollTopBtn.classList.toggle('visible', window.scrollY > 400));
+const callBar = document.getElementById('mobileCallBar');
+const callBarClose = document.getElementById('callBarClose');
+if (sessionStorage.getItem('callBarDismissed')) callBar.style.display = 'none';
+callBarClose.addEventListener('click', () => { callBar.style.display='none'; sessionStorage.setItem('callBarDismissed','1'); });
+const overlay = document.getElementById('modalOverlay');
+function openModal() { overlay.classList.add('open'); overlay.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+function closeModal() { overlay.classList.remove('open'); overlay.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+document.getElementById('bookingForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(this));
+  data.page = 'fountain';
+  try { await fetch('https://wards-electrical.app.n8n.cloud/webhook/0c41a587-89af-4066-9aa8-365de46e1906', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) }); } catch(_) {}
+  this.style.display = 'none';
+  document.getElementById('bookingSuccess').style.display = 'block';
+});
+</script>
 </body>
 </html>
