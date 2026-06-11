@@ -23,19 +23,24 @@ A static HTML/CSS website for **Voltura Power Group**, a licensed electrical con
 
 ## Design system (CSS variables in `main.css`)
 
+"Silver & Light" theme — light cream background, dark text, gold accent.
+
 | Variable | Value | Role |
 |---|---|---|
-| `--brand` | `#070E1A` | Navy — primary/dark |
-| `--accent` | `#F2C14E` | Warm Gold — primary accent |
-| `--electric` | `#2FB8FF` | Volt Blue — secondary accent |
-| `--card` / `--card-bg` | graphite tones | Card backgrounds |
-| `--muted` | `#C9D1D9` | Secondary text |
+| `--bg` | `#F0EFEB` | Page background (light cream) |
+| `--bg-alt` | `#E8E6E0` | Alternate section background |
+| `--bg-dark` | `#1C1C1C` | Dark sections (trust bar, reviews, footer) |
+| `--gold` / `--gold-deep` | `#C9A227` / `#8B6914` | Primary accent |
+| `--text` | `#1C1C1C` | Primary text |
+| `--text-mid` / `--text-lt` | `#534F48` / `#6E6A62` | Secondary text (keep dark enough for WCAG AA on cream) |
+| `--serif` / `--sans` | Cormorant Garamond / DM Sans | Display / body fonts |
 
 Key CSS patterns:
-- `.card-clickable` — use this class (not just `.card`) for interactive/linked cards; it's the only one with hover lift
-- `.section--alt` — alternate section background (graphite tinted)
+- `.section-alt` / `.section-dark` — alternate/dark section backgrounds
 - `.modal.is-open` / `.lightbox.is-open` — toggled by JS to show modals; `body.modal-open` disables scroll
-- Breakpoints: `920px` (tablet/mobile nav), `620px`, `600px` (small mobile)
+- `.mobile-call-bar` — sticky bottom bar on mobile (`__btn` call link + `__book` quote button); shown ≤768px
+- Form inputs are 16px+ on purpose — prevents iOS auto-zoom on focus
+- Breakpoints: `1024px`, `768px` (mobile nav + call bar), `480px`
 
 ## Adding a new page
 
