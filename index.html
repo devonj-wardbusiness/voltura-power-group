@@ -169,6 +169,10 @@
         </div>
         <div class="hero-visual fade-up delay-2">
           <div class="hero-badge">Free<br>Estimate</div>
+          <figure class="hero-photo">
+            <img src="assets/photos/photo-4.jpg" alt="Clean, labeled electrical panel upgrade by Voltura Power Group" loading="eager" decoding="async" />
+            <figcaption>Our actual work — not a stock photo</figcaption>
+          </figure>
           <div class="service-card-hero">
             <div class="svc-icon">⚡</div>
             <div>
@@ -181,13 +185,6 @@
             <div>
               <div class="svc-card-title">Panel &amp; Service Upgrades</div>
               <div class="svc-card-sub">200A service &bull; Load calculations &bull; Same-week</div>
-            </div>
-          </div>
-          <div class="service-card-hero">
-            <div class="svc-icon">🔦</div>
-            <div>
-              <div class="svc-card-title">Troubleshooting</div>
-              <div class="svc-card-sub">Tripping breakers &bull; Dead outlets &bull; Same-day</div>
             </div>
           </div>
           <div class="service-card-hero">
@@ -725,8 +722,9 @@
   <!-- MOBILE CALL BAR -->
   <div class="mobile-call-bar" id="mobileCallBar">
     <a class="mobile-call-bar__btn" href="tel:+19154870660">
-      <span aria-hidden="true">&#128222;</span> Call Now &mdash; 915-487-0660
+      <span aria-hidden="true">&#128222;</span> Call Now
     </a>
+    <button class="mobile-call-bar__book" id="openBookingMobile">Get Free Quote</button>
     <button class="mobile-call-bar__close" onclick="dismissCallBar()" aria-label="Dismiss">&#10005;</button>
   </div>
 
@@ -825,7 +823,7 @@
 
     // Booking modal
     const modal = document.getElementById('bookingModal');
-    const openIds = ['openBooking','openBooking2','openBookingCommercial'];
+    const openIds = ['openBooking','openBooking2','openBookingCommercial','openBookingMobile'];
     openIds.forEach(id => {
       const el = document.getElementById(id);
       if(el) el.addEventListener('click', e => { e.preventDefault(); openModal(); });
