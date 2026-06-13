@@ -133,8 +133,15 @@
     <!-- HERO -->
     <section class="hero" id="top">
       <div class="hero-accent"></div>
+      <div class="hero-grid"></div>
+      <div class="hero-glow"></div>
+      <div class="hero-glow-2"></div>
       <div class="hero-inner container">
         <div class="hero-content">
+          <div class="status-badge fade-up" id="statusBadge">
+            <span class="status-dot" id="statusDot"></span>
+            <span id="statusText">Checking availability…</span>
+          </div>
           <div class="hero-eyebrow fade-up">Colorado Springs Electrician</div>
           <h1 class="hero-headline fade-up delay-1">
             <em>Crafted work.</em>
@@ -799,6 +806,22 @@
 
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Live status badge (Mon–Sat, 7am–6pm = open)
+    (function () {
+      const dot = document.getElementById('statusDot');
+      const text = document.getElementById('statusText');
+      const now = new Date();
+      const day = now.getDay();
+      const hour = now.getHours();
+      const isOpen = day >= 1 && day <= 6 && hour >= 7 && hour < 18;
+      if (isOpen) {
+        dot.classList.add('online');
+        text.textContent = 'Online now — same-day slots may be open';
+      } else {
+        text.textContent = 'After hours — next-day booking available';
+      }
+    })();
 
     // Nav scroll shadow
     const navbar = document.getElementById('navbar');
