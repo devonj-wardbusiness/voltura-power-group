@@ -561,6 +561,8 @@ body { padding-top: 102px; }
 }
 
 /* ── ECOSYSTEM EXPLORER ── */
+.eco-jump-link { display:inline-flex; align-items:center; gap:0.35rem; font-size:14px; font-weight:500; color:var(--gold); text-decoration:none; margin-top:0.75rem; letter-spacing:0.01em; transition:gap var(--transition), color var(--transition); }
+.eco-jump-link:hover { gap:0.55rem; color:var(--gold-deep); }
 .eco-section { position: relative; overflow: hidden; }
 .eco-section::before {
   content: '';
