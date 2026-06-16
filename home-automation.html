@@ -165,27 +165,43 @@
       </div>
     </section>
 
-    <section class="showroom-section" id="showroom">
+    <section class="floorplan-section" id="showroom">
       <div class="container" style="text-align:center;padding-bottom:2.5rem">
-        <div class="section-eyebrow fade-up" style="justify-content:center;">Device Showroom</div>
-        <h2 class="section-title fade-up delay-1">Every device. One team.<br><em>Your home.</em></h2>
-        <p class="section-sub fade-up delay-2" style="margin:0.75rem auto 0;">We install, wire, and configure the hardware &mdash; click any glowing device below to explore what we can set up for you.</p>
+        <div class="section-eyebrow fade-up" style="justify-content:center;">Smart Home Blueprint</div>
+        <h2 class="section-title fade-up delay-1">See what we can do<br><em>in every room.</em></h2>
+        <p class="section-sub fade-up delay-2" style="margin:.75rem auto 0">Click any room below to see the exact devices we'd design and install — wired, configured, and working together from day one.</p>
       </div>
 
-      <div class="showroom-wrap fade-up delay-2" id="showroomWrap">
-        <canvas id="showroomCanvas"></canvas>
-
-        <div class="showroom-panel" id="showroomPanel">
-          <button class="showroom-close" id="showroomClose">✕</button>
-          <span class="showroom-icon" id="showroomIcon">💡</span>
-          <h3 class="showroom-name" id="showroomName">—</h3>
-          <p class="showroom-cat" id="showroomCat">—</p>
-          <p class="showroom-desc" id="showroomDesc"></p>
-          <ul class="showroom-features" id="showroomFeatures"></ul>
-          <button class="btn-primary showroom-cta">Plan this setup →</button>
+      <div class="fp-wrap fade-up delay-2">
+        <div class="fp-iso-container">
+          <div class="fp-stage">
+            <div class="fp-zone fp-living" onclick="fpSelect('living')"></div>
+            <div class="fp-zone fp-kitchen" onclick="fpSelect('kitchen')"></div>
+            <div class="fp-zone fp-master" onclick="fpSelect('master')"></div>
+            <div class="fp-zone fp-bed2" onclick="fpSelect('bed2')"></div>
+            <div class="fp-zone fp-garage" onclick="fpSelect('garage')"></div>
+            <div class="fp-hs fp-hs-g" style="top:28px;left:55px"></div>
+            <div class="fp-hs fp-hs-b" style="top:85px;left:115px"></div>
+            <div class="fp-hs fp-hs-g" style="top:35px;left:255px"></div>
+            <div class="fp-hs fp-hs-b" style="top:15px;left:295px"></div>
+            <div class="fp-hs fp-hs-g" style="top:210px;left:75px"></div>
+            <div class="fp-hs fp-hs-b" style="top:205px;left:238px"></div>
+            <div class="fp-hs fp-hs-g" style="top:343px;left:105px"></div>
+          </div>
         </div>
 
-        <div class="showroom-hint">Click any glowing device to explore</div>
+        <div class="fp-panel" id="fpPanel">
+          <div class="fp-empty" id="fpEmpty">
+            <span class="fp-arrow">←</span>
+            <p>Click any room to see<br>what we can install</p>
+          </div>
+          <div class="fp-content" id="fpContent" style="display:none">
+            <p class="fp-room-eyebrow" id="fpRoom">Room</p>
+            <h3 class="fp-panel-title" id="fpTitle">Title</h3>
+            <ul class="fp-devices" id="fpDevices"></ul>
+            <button class="btn-primary fp-cta" onclick="openModal()">Plan this room →</button>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -409,11 +425,40 @@
       }
     });
 
-    // Device Showroom — panel controls
-    document.getElementById('showroomClose').addEventListener('click', () => {
-      document.getElementById('showroomPanel').classList.remove('open');
-    });
-    document.querySelector('.showroom-cta').addEventListener('click', () => { openModal(); });
+    // Floor plan zone selector
+    const FP_DATA = {
+      living: { room:'Living Room', title:'Entertainment Hub', devices:[
+        {t:'3× Lutron Caséta dimmers',c:'g'},{t:'Apple HomePod mini (hub)',c:'b'},
+        {t:'Motorized roller shades',c:'g'},{t:'Ecobee thermostat',c:'b'},
+        {t:'"Movie Night" scene button',c:'g'}
+      ]},
+      kitchen: { room:'Kitchen', title:'Hands-Free Control', devices:[
+        {t:'Under-cabinet LED strips',c:'g'},{t:'2× smart switches',c:'g'},
+        {t:'Amazon Echo (voice control)',c:'b'},{t:'"Cooking" lighting scene',c:'g'}
+      ]},
+      master: { room:'Master Bedroom', title:'Sleep & Wake System', devices:[
+        {t:'Bedside dimmer + Pico remote',c:'g'},{t:'Schlage Encode Plus lock',c:'b'},
+        {t:'"Good Night" all-off scene',c:'g'},{t:'Gradual wake-up dimming',c:'g'}
+      ]},
+      bed2: { room:'Bedroom 2 / Office', title:'Smart & Simple', devices:[
+        {t:'1× Lutron smart dimmer',c:'g'},{t:'Smart plug for floor lamp',c:'b'},
+        {t:'Motion-activated night light',c:'g'}
+      ]},
+      garage: { room:'Garage', title:'EV + Energy Control', devices:[
+        {t:'Span Smart Panel install',c:'b'},{t:'EV charger (Level 2, 48A)',c:'g'},
+        {t:'Garage opener integration',c:'g'},{t:'Solar/battery ready wiring',c:'b'}
+      ]}
+    };
+    function fpSelect(key) {
+      document.querySelectorAll('.fp-zone').forEach(z => z.classList.toggle('active', z.classList.contains('fp-' + key)));
+      const d = FP_DATA[key]; if (!d) return;
+      document.getElementById('fpRoom').textContent = d.room;
+      document.getElementById('fpTitle').textContent = d.title;
+      document.getElementById('fpDevices').innerHTML = d.devices.map(dv => `<li class="${dv.c}">${dv.t}</li>`).join('');
+      document.getElementById('fpEmpty').style.display = 'none';
+      document.getElementById('fpContent').style.display = '';
+    }
+    window.fpSelect = fpSelect;
   </script>
 
   <!-- SMART HOME 3D VISUAL -->
@@ -542,194 +587,5 @@
     })();
   </script>
 
-  <!-- DEVICE SHOWROOM 3D -->
-  <script type="module">
-    (async () => {
-      if (!document.getElementById('showroomCanvas')) return;
-      let THREE;
-      try {
-        THREE = await import('https://unpkg.com/three@0.160.0/build/three.module.js');
-      } catch(e) { return; }
-
-      const canvas = document.getElementById('showroomCanvas');
-      const wrap = document.getElementById('showroomWrap');
-      const H = 540;
-      const W = () => wrap.clientWidth || 1200;
-
-      const scene = new THREE.Scene();
-      scene.background = new THREE.Color(0x03040a);
-      scene.fog = new THREE.FogExp2(0x03040a, 0.052);
-
-      const camera = new THREE.PerspectiveCamera(48, W() / H, 0.1, 100);
-      camera.position.set(0, 4.2, 11.5);
-      camera.lookAt(0, 0.6, 0);
-
-      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
-      renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
-      renderer.setSize(W(), H);
-      renderer.shadowMap.enabled = true;
-      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-
-      // Lighting
-      scene.add(new THREE.AmbientLight(0x050515, 3));
-      const keyLight = new THREE.DirectionalLight(0x2030aa, 0.65);
-      keyLight.position.set(-6, 9, 5);
-      keyLight.castShadow = true;
-      keyLight.shadow.mapSize.width = 1024;
-      keyLight.shadow.mapSize.height = 1024;
-      scene.add(keyLight);
-
-      // Floor
-      const floor = new THREE.Mesh(
-        new THREE.PlaneGeometry(24, 18),
-        new THREE.MeshStandardMaterial({ color: 0x070910, roughness: 0.9, metalness: 0.1 })
-      );
-      floor.rotation.x = -Math.PI / 2;
-      floor.receiveShadow = true;
-      scene.add(floor);
-      scene.add(new THREE.GridHelper(24, 24, 0x141626, 0x0d0f1e));
-
-      // Back wall
-      const bwall = new THREE.Mesh(
-        new THREE.PlaneGeometry(24, 9),
-        new THREE.MeshStandardMaterial({ color: 0x060710, roughness: 0.95 })
-      );
-      bwall.position.set(0, 4.5, -6.5);
-      scene.add(bwall);
-
-      // Left wall
-      const lwall = new THREE.Mesh(
-        new THREE.PlaneGeometry(15, 9),
-        new THREE.MeshStandardMaterial({ color: 0x050610, roughness: 0.95 })
-      );
-      lwall.position.set(-7.5, 4.5, -0.5);
-      lwall.rotation.y = Math.PI / 2;
-      scene.add(lwall);
-
-      // Device definitions
-      const DEVICES = [
-        { icon:'💡', name:'Lutron Caséta Dimmer', cat:'Lighting Control',
-          color: 0xC9A227, pos: [-3.5, 0.95, -3.8],
-          geo: new THREE.BoxGeometry(0.22, 0.38, 0.06),
-          desc: 'Replaces your existing wall switch. No neutral wire needed. Works with HomeKit, Alexa, and Google Home.',
-          fx: ['No neutral wire required', 'Works with all major ecosystems', 'Pico remote included', 'Instant ~50ms response'] },
-        { icon:'🔊', name:'Apple HomePod mini', cat:'Smart Hub / Speaker',
-          color: 0xFF5555, pos: [-1, 0.48, -4.4],
-          geo: new THREE.CylinderGeometry(0.26, 0.22, 0.52, 20),
-          desc: 'Serves as your HomeKit hub for remote access while filling any room with rich spatial audio.',
-          fx: ['HomeKit & Matter hub', 'Siri voice control always-on', 'Spatial audio', 'Auto-pairs new devices'] },
-        { icon:'🌡️', name:'Ecobee Smart Thermostat', cat:'Climate Control',
-          color: 0x2FB8FF, pos: [1.5, 0.95, -4.6],
-          geo: new THREE.BoxGeometry(0.36, 0.42, 0.06),
-          desc: 'Room occupancy sensors adjust temps zone by zone so you stop heating empty rooms.',
-          fx: ['Occupancy-based zoning', 'Works with HomeKit/Alexa/Google', 'Energy savings reports', 'Smart scheduling'] },
-        { icon:'🔐', name:'Schlage Encode Plus', cat:'Smart Lock',
-          color: 0x8899EE, pos: [-5.2, 0.88, -0.5],
-          geo: new THREE.BoxGeometry(0.1, 0.44, 0.26),
-          desc: 'Keypad entry, app control, and Apple Home Key NFC. Know exactly who came and went.',
-          fx: ['Apple Home Key NFC', 'Remote lock & unlock', 'Guest access codes', 'No hub required'] },
-        { icon:'⚡', name:'Span Smart Panel', cat:'Electrical Panel',
-          color: 0x3FEEBB, pos: [5.2, 0.95, -0.5],
-          geo: new THREE.BoxGeometry(0.1, 0.7, 0.52),
-          desc: 'Replace your breaker box with one you control from your phone — down to the individual circuit.',
-          fx: ['Circuit-level app control', 'EV charger integration', 'Solar & battery ready', 'Real-time energy data'] },
-        { icon:'📷', name:'Arlo Pro 4', cat:'Security Camera',
-          color: 0xFFAA33, pos: [0, 2.2, -5.2],
-          geo: new THREE.BoxGeometry(0.16, 0.22, 0.22),
-          desc: 'Wire-free 2K HDR camera that integrates into Apple Home for automated security routines.',
-          fx: ['2K HDR + color night vision', 'HomeKit Secure Video', 'Motion zone alerts', 'No wiring needed'] }
-      ];
-
-      const meshes = [];
-      const glows = [];
-
-      DEVICES.forEach(d => {
-        const mat = new THREE.MeshStandardMaterial({
-          color: d.color, emissive: d.color, emissiveIntensity: 0.35,
-          roughness: 0.25, metalness: 0.6
-        });
-        const mesh = new THREE.Mesh(d.geo, mat);
-        mesh.position.set(...d.pos);
-        mesh.castShadow = true;
-        mesh.userData = d;
-        scene.add(mesh);
-        meshes.push(mesh);
-
-        const pl = new THREE.PointLight(d.color, 0.7, 2.8);
-        pl.position.set(...d.pos);
-        scene.add(pl);
-        glows.push({ light: pl, mesh, base: 0.7, baseE: 0.35 });
-
-        // Floor glow ring
-        const ring = new THREE.Mesh(
-          new THREE.CircleGeometry(0.4, 32),
-          new THREE.MeshBasicMaterial({ color: d.color, transparent: true, opacity: 0.07, side: THREE.DoubleSide })
-        );
-        ring.rotation.x = -Math.PI / 2;
-        ring.position.set(d.pos[0], 0.002, d.pos[2]);
-        scene.add(ring);
-      });
-
-      // Click detection
-      const raycaster = new THREE.Raycaster();
-      const mouse = new THREE.Vector2();
-      let activeM = null;
-
-      canvas.addEventListener('click', e => {
-        const rect = canvas.getBoundingClientRect();
-        mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-        mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
-        raycaster.setFromCamera(mouse, camera);
-        const hits = raycaster.intersectObjects(meshes);
-        if (hits.length) {
-          activeM = hits[0].object;
-          const d = hits[0].object.userData;
-          document.getElementById('showroomIcon').textContent = d.icon;
-          document.getElementById('showroomName').textContent = d.name;
-          document.getElementById('showroomCat').textContent = d.cat;
-          document.getElementById('showroomDesc').textContent = d.desc;
-          document.getElementById('showroomFeatures').innerHTML = d.fx.map(f => `<li>${f}</li>`).join('');
-          document.getElementById('showroomPanel').classList.add('open');
-        }
-      });
-
-      // Cursor hint
-      canvas.addEventListener('mousemove', e => {
-        const rect = canvas.getBoundingClientRect();
-        mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-        mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
-        raycaster.setFromCamera(mouse, camera);
-        canvas.style.cursor = raycaster.intersectObjects(meshes).length ? 'pointer' : 'default';
-      });
-
-      // Only animate when visible
-      let visible = false;
-      new IntersectionObserver(e => { visible = e[0].isIntersecting; }, { threshold: 0.1 }).observe(wrap);
-
-      const clock = new THREE.Clock();
-      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      (function loop() {
-        requestAnimationFrame(loop);
-        if (!visible) return;
-        const t = clock.getElapsedTime();
-        glows.forEach((g, i) => {
-          const pulse = Math.sin(t * 1.8 + i * 1.1) * 0.28 + 1;
-          if (!reduceMotion) {
-            g.light.intensity = g.mesh === activeM ? 2.4 + Math.sin(t * 5) * 0.4 : g.base * pulse;
-            g.mesh.material.emissiveIntensity = g.mesh === activeM ? 0.9 + Math.sin(t * 5) * 0.15 : g.baseE * pulse;
-          }
-        });
-        renderer.render(scene, camera);
-      })();
-
-      window.addEventListener('resize', () => {
-        const w = W();
-        camera.aspect = w / H;
-        camera.updateProjectionMatrix();
-        renderer.setSize(w, H);
-      });
-    })();
-  </script>
 </body>
 </html>

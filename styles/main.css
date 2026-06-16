@@ -563,39 +563,42 @@ body { padding-top: 102px; }
 /* ── ECOSYSTEM EXPLORER ── */
 .eco-jump-link { display:inline-flex; align-items:center; gap:0.35rem; font-size:14px; font-weight:500; color:var(--gold); text-decoration:none; margin-top:0.75rem; letter-spacing:0.01em; transition:gap var(--transition), color var(--transition); }
 .eco-jump-link:hover { gap:0.55rem; color:var(--gold-deep); }
-.showroom-section { background:#03040a; padding:5rem 0 0; overflow:hidden; }
-.showroom-section .container { text-align:center; }
-.showroom-wrap { position:relative; width:100%; height:540px; overflow:hidden; }
-#showroomCanvas { display:block; width:100%!important; height:100%!important; }
-.showroom-panel {
-  position:absolute; right:-320px; top:50%; transform:translateY(-50%);
-  width:284px; background:rgba(3,4,15,.97);
-  border:1px solid rgba(201,162,39,.28); border-radius:12px;
-  padding:1.75rem; transition:right .45s cubic-bezier(.4,0,.2,1);
-  backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); z-index:10;
+/* ── FLOORPLAN ── */
+.floorplan-section { background:#07080f; padding:5rem 2rem 5rem; }
+.fp-wrap { display:flex; align-items:center; justify-content:center; gap:3rem; max-width:1080px; margin:2rem auto 0; flex-wrap:wrap; }
+.fp-iso-container { perspective:1000px; flex-shrink:0; }
+.fp-stage {
+  width:370px; height:410px; position:relative;
+  transform:rotateX(54deg) rotateZ(45deg);
+  transform-style:preserve-3d;
 }
-.showroom-panel.open { right:22px; }
-.showroom-close { position:absolute; top:.7rem; right:.85rem; background:none; border:none; color:#555; cursor:pointer; font-size:17px; line-height:1; }
-.showroom-icon { font-size:28px; display:block; margin-bottom:.65rem; }
-.showroom-name { font-family:var(--serif); font-size:20px; font-weight:600; color:#F5E8C0; line-height:1.2; }
-.showroom-cat { font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); margin-top:.2rem; }
-.showroom-desc { font-size:12px; color:#999; margin-top:.75rem; line-height:1.65; }
-.showroom-features { list-style:none; margin-top:.75rem; }
-.showroom-features li { font-size:11px; color:#ccc; padding:.22rem 0 .22rem 1rem; position:relative; }
-.showroom-features li::before { content:''; position:absolute; left:0; top:50%; transform:translateY(-50%); width:5px; height:5px; border-radius:50%; background:#2FB8FF; box-shadow:0 0 6px #2FB8FF; }
-.showroom-cta { margin-top:1.1rem; width:100%; font-size:12px; padding:.6rem 1rem; }
-.showroom-hint { position:absolute; bottom:18px; left:50%; transform:translateX(-50%); font-size:11px; color:#444; letter-spacing:.05em; white-space:nowrap; pointer-events:none; }
-@media (max-width:860px) {
-  .showroom-wrap { height:460px; }
-  .showroom-panel { right:-300px; width:260px; }
-  .showroom-panel.open { right:12px; }
-}
-@media (max-width:620px) {
-  .showroom-section { padding:3.5rem 0 0; }
-  .showroom-wrap { height:420px; }
-  .showroom-panel { top:auto; bottom:-240px; left:1rem; right:1rem; transform:none; width:auto; transition:bottom .45s cubic-bezier(.4,0,.2,1); }
-  .showroom-panel.open { bottom:14px; }
-}
+.fp-zone { position:absolute; border-radius:5px; cursor:pointer; border:1px solid rgba(255,255,255,.07); transition:border-color .3s, box-shadow .3s; }
+.fp-zone:hover, .fp-zone.active { border-color:rgba(201,162,39,.55); box-shadow:0 0 22px rgba(201,162,39,.18); z-index:5; }
+.fp-living  { width:200px; height:165px; top:0;    left:0;    background:linear-gradient(135deg,#0f1520,#0b0d18); }
+.fp-kitchen { width:140px; height:165px; top:0;    left:210px; background:linear-gradient(135deg,#101620,#0b0e1b); }
+.fp-master  { width:185px; height:135px; top:175px; left:0;    background:linear-gradient(135deg,#0e1420,#0a0c17); }
+.fp-bed2    { width:155px; height:135px; top:175px; left:193px; background:linear-gradient(135deg,#0d1320,#090b16); }
+.fp-garage  { width:350px; height:78px;  top:320px; left:0;    background:linear-gradient(135deg,#0c1019,#080a14); }
+.fp-hs { position:absolute; width:11px; height:11px; border-radius:50%; cursor:pointer; z-index:6; }
+.fp-hs::before { content:''; position:absolute; inset:-5px; border-radius:50%; border:1px solid currentColor; opacity:.5; animation:fphp 2.2s ease-in-out infinite; }
+.fp-hs::after { content:''; position:absolute; inset:0; border-radius:50%; background:currentColor; opacity:.9; }
+@keyframes fphp { 0%,100%{transform:scale(1);opacity:.5} 50%{transform:scale(1.8);opacity:.15} }
+.fp-hs-g { color:#C9A227; box-shadow:0 0 8px rgba(201,162,39,.5); }
+.fp-hs-b { color:#2FB8FF; box-shadow:0 0 8px rgba(47,184,255,.5); }
+.fp-panel { width:270px; min-height:260px; flex-shrink:0; background:rgba(10,12,22,.97); border:1px solid rgba(201,162,39,.2); border-radius:14px; padding:1.75rem; display:flex; flex-direction:column; justify-content:center; }
+.fp-empty { text-align:center; color:#555; }
+.fp-arrow { font-size:22px; display:block; margin-bottom:.5rem; color:#C9A227; }
+.fp-empty p { font-size:13px; line-height:1.65; }
+.fp-room-eyebrow { font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#C9A227; margin-bottom:.3rem; }
+.fp-panel-title { font-family:var(--serif); font-size:21px; font-weight:600; color:#F5E8C0; margin-bottom:.9rem; line-height:1.2; }
+.fp-devices { list-style:none; flex:1; }
+.fp-devices li { font-size:12px; color:#bbb; padding:.25rem 0 .25rem 1rem; position:relative; }
+.fp-devices li::before { content:''; position:absolute; left:0; top:50%; transform:translateY(-50%); width:6px; height:6px; border-radius:50%; }
+.fp-devices li.g::before { background:#C9A227; box-shadow:0 0 5px #C9A22780; }
+.fp-devices li.b::before { background:#2FB8FF; box-shadow:0 0 5px #2FB8FF80; }
+.fp-cta { width:100%; font-size:12px; margin-top:1.1rem; padding:.6rem; }
+@media (max-width:860px) { .fp-wrap { gap:2rem; } .fp-panel { width:100%; max-width:420px; min-height:auto; } }
+@media (max-width:520px) { .fp-stage { width:300px; height:335px; transform:rotateX(54deg) rotateZ(45deg) scale(0.82); transform-origin:top left; } }
 /* ── SECTION SHARED ── */
 .section { padding: 90px 2rem; }
 .section-alt { background: var(--bg-alt); }
