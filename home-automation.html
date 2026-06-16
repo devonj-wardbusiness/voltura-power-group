@@ -96,7 +96,7 @@
             <button class="btn-primary" id="openBooking2">Get a Quote</button>
             <a class="btn-outline" href="tel:+19154870660">Call 915-487-0660</a>
           </div>
-          <a href="#ecosystems" class="eco-jump-link fade-up delay-3">Explore smart home ecosystems ↓</a>
+          <a href="#showroom" class="eco-jump-link fade-up delay-3">Explore the device showroom ↓</a>
           <div class="mini" style="margin-top:1.5rem; max-width:420px;">
             <div class="mini__item">
               <div class="mini__title">Quote Type</div>
@@ -165,210 +165,27 @@
       </div>
     </section>
 
-    <section class="section section-alt eco-section" id="ecosystems">
-      <div class="container">
-        <div class="section-eyebrow fade-up" style="justify-content:center;">Works With Everything</div>
-        <h2 class="section-title fade-up delay-1" style="text-align:center;">Your smart home,<br><em>your way.</em></h2>
-        <p class="section-sub fade-up delay-2" style="margin:0.75rem auto 0; text-align:center;">Already use Apple, Google, or Alexa? Want Lutron-grade lighting? We install, wire, and configure the devices so the ecosystem you pick actually works together &mdash; tap a platform to see what we set up.</p>
+    <section class="showroom-section" id="showroom">
+      <div class="container" style="text-align:center;padding-bottom:2.5rem">
+        <div class="section-eyebrow fade-up" style="justify-content:center;">Device Showroom</div>
+        <h2 class="section-title fade-up delay-1">Every device. One team.<br><em>Your home.</em></h2>
+        <p class="section-sub fade-up delay-2" style="margin:0.75rem auto 0;">We install, wire, and configure the hardware &mdash; click any glowing device below to explore what we can set up for you.</p>
+      </div>
 
-        <div class="eco-explorer fade-up delay-2">
-          <div class="eco-tiles" role="tablist" aria-label="Smart home ecosystems">
-            <button class="eco-tile is-active" data-eco="homekit" role="tab" aria-selected="true" id="ecoTab-homekit" aria-controls="ecoPanel-homekit">
-              <span class="eco-tile-icon" aria-hidden="true">&#127822;</span>
-              <span class="eco-tile-text"><span class="eco-tile-name">Apple HomeKit</span><span class="eco-tile-tag">Private, iPhone-first</span></span>
-            </button>
-            <button class="eco-tile" data-eco="lutron" role="tab" aria-selected="false" id="ecoTab-lutron" aria-controls="ecoPanel-lutron">
-              <span class="eco-tile-icon" aria-hidden="true">&#127899;</span>
-              <span class="eco-tile-text"><span class="eco-tile-name">Lutron Cas&eacute;ta</span><span class="eco-tile-tag">Pro-grade lighting</span></span>
-            </button>
-            <button class="eco-tile" data-eco="google" role="tab" aria-selected="false" id="ecoTab-google" aria-controls="ecoPanel-google">
-              <span class="eco-tile-icon" aria-hidden="true">&#127777;&#65039;</span>
-              <span class="eco-tile-text"><span class="eco-tile-name">Google / Nest</span><span class="eco-tile-tag">Voice + Nest devices</span></span>
-            </button>
-            <button class="eco-tile" data-eco="alexa" role="tab" aria-selected="false" id="ecoTab-alexa" aria-controls="ecoPanel-alexa">
-              <span class="eco-tile-icon" aria-hidden="true">&#128266;</span>
-              <span class="eco-tile-text"><span class="eco-tile-name">Amazon Alexa</span><span class="eco-tile-tag">Most compatible</span></span>
-            </button>
-            <button class="eco-tile" data-eco="mesh" role="tab" aria-selected="false" id="ecoTab-mesh" aria-controls="ecoPanel-mesh">
-              <span class="eco-tile-icon" aria-hidden="true">&#128225;</span>
-              <span class="eco-tile-text"><span class="eco-tile-name">Z-Wave / Zigbee</span><span class="eco-tile-tag">Whole-home mesh</span></span>
-            </button>
-            <button class="eco-tile" data-eco="panels" role="tab" aria-selected="false" id="ecoTab-panels" aria-controls="ecoPanel-panels">
-              <span class="eco-tile-icon" aria-hidden="true">&#9889;</span>
-              <span class="eco-tile-text"><span class="eco-tile-name">Smart Panels</span><span class="eco-tile-tag">Energy-aware control</span></span>
-            </button>
-          </div>
+      <div class="showroom-wrap fade-up delay-2" id="showroomWrap">
+        <canvas id="showroomCanvas"></canvas>
 
-          <div class="eco-detail-wrap">
-            <!-- Apple HomeKit -->
-            <div class="eco-detail is-active" id="ecoPanel-homekit" role="tabpanel" aria-labelledby="ecoTab-homekit" tabindex="0">
-              <div class="eco-detail-head">
-                <span class="eco-detail-icon" aria-hidden="true">&#127822;</span>
-                <div><h3 class="eco-detail-name">Apple HomeKit</h3><p class="eco-detail-tag">Control everything from your iPhone, iPad, and Siri &mdash; private and local-first.</p></div>
-              </div>
-              <div class="eco-detail-body">
-                <div class="eco-col">
-                  <div class="eco-col-label">Devices we install</div>
-                  <ul class="eco-devices">
-                    <li>HomeKit smart switches &amp; dimmers</li>
-                    <li>Smart locks &amp; garage door controllers</li>
-                    <li>Thermostats &amp; climate sensors</li>
-                    <li>Cameras, doorbells &amp; occupancy sensors</li>
-                    <li>Adaptive &amp; scene-based lighting</li>
-                  </ul>
-                </div>
-                <div class="eco-col">
-                  <div class="eco-col-label">Works with</div>
-                  <div class="eco-badges">
-                    <span class="eco-badge">Siri</span><span class="eco-badge">Apple Home app</span><span class="eco-badge">iPhone / iPad</span><span class="eco-badge">Apple Watch</span>
-                  </div>
-                  <div class="eco-bestfor"><span class="eco-bestfor-label">Best for</span>Apple households that want privacy, local control, and tight phone &amp; watch integration.</div>
-                </div>
-              </div>
-              <div class="eco-detail-cta"><button class="btn-primary eco-book">Plan a HomeKit setup</button></div>
-            </div>
-
-            <!-- Lutron Caseta -->
-            <div class="eco-detail" id="ecoPanel-lutron" role="tabpanel" aria-labelledby="ecoTab-lutron" tabindex="0">
-              <div class="eco-detail-head">
-                <span class="eco-detail-icon" aria-hidden="true">&#127899;</span>
-                <div><h3 class="eco-detail-name">Lutron Cas&eacute;ta</h3><p class="eco-detail-tag">The gold standard for rock-solid smart lighting, dimming, and shades.</p></div>
-              </div>
-              <div class="eco-detail-body">
-                <div class="eco-col">
-                  <div class="eco-col-label">Devices we install</div>
-                  <ul class="eco-devices">
-                    <li>Smart dimmers &amp; switches</li>
-                    <li>Pico remotes &amp; scene keypads</li>
-                    <li>Motorized shades &amp; blinds</li>
-                    <li>Fan speed controls</li>
-                    <li>Smart Bridge hub &amp; wiring</li>
-                  </ul>
-                </div>
-                <div class="eco-col">
-                  <div class="eco-col-label">Works with</div>
-                  <div class="eco-badges">
-                    <span class="eco-badge">HomeKit</span><span class="eco-badge">Alexa</span><span class="eco-badge">Google</span><span class="eco-badge">Sonos</span>
-                  </div>
-                  <div class="eco-bestfor"><span class="eco-bestfor-label">Best for</span>Anyone who wants reliable, professional-grade lighting control that simply never drops offline.</div>
-                </div>
-              </div>
-              <div class="eco-detail-cta"><button class="btn-primary eco-book">Plan a Lutron install</button></div>
-            </div>
-
-            <!-- Google / Nest -->
-            <div class="eco-detail" id="ecoPanel-google" role="tabpanel" aria-labelledby="ecoTab-google" tabindex="0">
-              <div class="eco-detail-head">
-                <span class="eco-detail-icon" aria-hidden="true">&#127777;&#65039;</span>
-                <div><h3 class="eco-detail-name">Google / Nest</h3><p class="eco-detail-tag">Voice-first automation built around the Google Assistant and Nest devices.</p></div>
-              </div>
-              <div class="eco-detail-body">
-                <div class="eco-col">
-                  <div class="eco-col-label">Devices we install</div>
-                  <ul class="eco-devices">
-                    <li>Nest thermostats &amp; sensors</li>
-                    <li>Nest cameras &amp; video doorbells</li>
-                    <li>Smart speakers &amp; Nest Hub displays</li>
-                    <li>Google-compatible switches &amp; lighting</li>
-                    <li>Smart locks</li>
-                  </ul>
-                </div>
-                <div class="eco-col">
-                  <div class="eco-col-label">Works with</div>
-                  <div class="eco-badges">
-                    <span class="eco-badge">Google Assistant</span><span class="eco-badge">Google Home app</span><span class="eco-badge">Android</span><span class="eco-badge">Nest Hub</span>
-                  </div>
-                  <div class="eco-bestfor"><span class="eco-bestfor-label">Best for</span>Android households and anyone who wants to run the home by voice.</div>
-                </div>
-              </div>
-              <div class="eco-detail-cta"><button class="btn-primary eco-book">Plan a Google/Nest setup</button></div>
-            </div>
-
-            <!-- Amazon Alexa -->
-            <div class="eco-detail" id="ecoPanel-alexa" role="tabpanel" aria-labelledby="ecoTab-alexa" tabindex="0">
-              <div class="eco-detail-head">
-                <span class="eco-detail-icon" aria-hidden="true">&#128266;</span>
-                <div><h3 class="eco-detail-name">Amazon Alexa</h3><p class="eco-detail-tag">The most widely-compatible voice ecosystem &mdash; works with almost everything.</p></div>
-              </div>
-              <div class="eco-detail-body">
-                <div class="eco-col">
-                  <div class="eco-col-label">Devices we install</div>
-                  <ul class="eco-devices">
-                    <li>Echo speakers &amp; Echo Show displays</li>
-                    <li>Smart plugs, switches &amp; dimmers</li>
-                    <li>Thermostats &amp; climate control</li>
-                    <li>Cameras &amp; smart locks</li>
-                    <li>Custom Alexa Routines &amp; scenes</li>
-                  </ul>
-                </div>
-                <div class="eco-col">
-                  <div class="eco-col-label">Works with</div>
-                  <div class="eco-badges">
-                    <span class="eco-badge">Alexa app</span><span class="eco-badge">Echo devices</span><span class="eco-badge">Fire TV</span><span class="eco-badge">1000s of brands</span>
-                  </div>
-                  <div class="eco-bestfor"><span class="eco-bestfor-label">Best for</span>Maximum device compatibility and budget-friendly voice control across mixed-brand gear.</div>
-                </div>
-              </div>
-              <div class="eco-detail-cta"><button class="btn-primary eco-book">Plan an Alexa setup</button></div>
-            </div>
-
-            <!-- Z-Wave / Zigbee -->
-            <div class="eco-detail" id="ecoPanel-mesh" role="tabpanel" aria-labelledby="ecoTab-mesh" tabindex="0">
-              <div class="eco-detail-head">
-                <span class="eco-detail-icon" aria-hidden="true">&#128225;</span>
-                <div><h3 class="eco-detail-name">Z-Wave / Zigbee</h3><p class="eco-detail-tag">Low-power mesh networks that link hundreds of devices together, reliably.</p></div>
-              </div>
-              <div class="eco-detail-body">
-                <div class="eco-col">
-                  <div class="eco-col-label">Devices we install</div>
-                  <ul class="eco-devices">
-                    <li>Hubs (Hubitat, SmartThings, Home Assistant)</li>
-                    <li>Mesh switches, dimmers &amp; outlets</li>
-                    <li>Door, motion &amp; leak sensors</li>
-                    <li>Smart locks &amp; garage controls</li>
-                    <li>Repeaters for full-home coverage</li>
-                  </ul>
-                </div>
-                <div class="eco-col">
-                  <div class="eco-col-label">Works with</div>
-                  <div class="eco-badges">
-                    <span class="eco-badge">SmartThings</span><span class="eco-badge">Hubitat</span><span class="eco-badge">Home Assistant</span><span class="eco-badge">Alexa / Google</span>
-                  </div>
-                  <div class="eco-bestfor"><span class="eco-bestfor-label">Best for</span>Larger homes and power users who want one resilient network that isn't tied to a single brand.</div>
-                </div>
-              </div>
-              <div class="eco-detail-cta"><button class="btn-primary eco-book">Plan a mesh system</button></div>
-            </div>
-
-            <!-- Smart Panels -->
-            <div class="eco-detail" id="ecoPanel-panels" role="tabpanel" aria-labelledby="ecoTab-panels" tabindex="0">
-              <div class="eco-detail-head">
-                <span class="eco-detail-icon" aria-hidden="true">&#9889;</span>
-                <div><h3 class="eco-detail-name">Smart Panels</h3><p class="eco-detail-tag">The electrical panel itself goes smart &mdash; circuit-level monitoring and control.</p></div>
-              </div>
-              <div class="eco-detail-body">
-                <div class="eco-col">
-                  <div class="eco-col-label">Devices we install</div>
-                  <ul class="eco-devices">
-                    <li>Span &amp; smart load-center panels</li>
-                    <li>Smart breakers with per-circuit control</li>
-                    <li>Whole-home energy monitoring</li>
-                    <li>Solar, battery &amp; backup integration</li>
-                    <li>EV charger load management</li>
-                  </ul>
-                </div>
-                <div class="eco-col">
-                  <div class="eco-col-label">Works with</div>
-                  <div class="eco-badges">
-                    <span class="eco-badge">Span app</span><span class="eco-badge">Solar / battery</span><span class="eco-badge">EV chargers</span><span class="eco-badge">Backup power</span>
-                  </div>
-                  <div class="eco-bestfor"><span class="eco-bestfor-label">Best for</span>New builds, solar/battery homes, and anyone who wants whole-home energy control from the panel up. <em>This is our wheelhouse.</em></div>
-                </div>
-              </div>
-              <div class="eco-detail-cta"><button class="btn-primary eco-book">Plan a smart panel</button></div>
-            </div>
-          </div>
+        <div class="showroom-panel" id="showroomPanel">
+          <button class="showroom-close" id="showroomClose">✕</button>
+          <span class="showroom-icon" id="showroomIcon">💡</span>
+          <h3 class="showroom-name" id="showroomName">—</h3>
+          <p class="showroom-cat" id="showroomCat">—</p>
+          <p class="showroom-desc" id="showroomDesc"></p>
+          <ul class="showroom-features" id="showroomFeatures"></ul>
+          <button class="btn-primary showroom-cta">Plan this setup →</button>
         </div>
+
+        <div class="showroom-hint">Click any glowing device to explore</div>
       </div>
     </section>
 
@@ -592,31 +409,11 @@
       }
     });
 
-    // Ecosystem explorer
-    const ecoTiles = document.querySelectorAll('.eco-tile');
-    const ecoPanels = document.querySelectorAll('.eco-detail');
-    function selectEco(key) {
-      ecoTiles.forEach(t => {
-        const on = t.dataset.eco === key;
-        t.classList.toggle('is-active', on);
-        t.setAttribute('aria-selected', on ? 'true' : 'false');
-      });
-      ecoPanels.forEach(p => p.classList.toggle('is-active', p.id === 'ecoPanel-' + key));
-    }
-    ecoTiles.forEach(t => t.addEventListener('click', () => selectEco(t.dataset.eco)));
-    const ecoTabList = document.querySelector('.eco-tiles');
-    if (ecoTabList) {
-      ecoTabList.addEventListener('keydown', e => {
-        const tiles = [...ecoTiles];
-        const idx = tiles.indexOf(document.activeElement);
-        if (idx === -1) return;
-        let next = -1;
-        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = (idx + 1) % tiles.length;
-        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = (idx - 1 + tiles.length) % tiles.length;
-        if (next >= 0) { e.preventDefault(); tiles[next].focus(); selectEco(tiles[next].dataset.eco); }
-      });
-    }
-    document.querySelectorAll('.eco-book').forEach(b => b.addEventListener('click', e => { e.preventDefault(); openModal(); }));
+    // Device Showroom — panel controls
+    document.getElementById('showroomClose').addEventListener('click', () => {
+      document.getElementById('showroomPanel').classList.remove('open');
+    });
+    document.querySelector('.showroom-cta').addEventListener('click', () => { openModal(); });
   </script>
 
   <!-- SMART HOME 3D VISUAL -->
@@ -742,6 +539,196 @@
       } else {
         frame();
       }
+    })();
+  </script>
+
+  <!-- DEVICE SHOWROOM 3D -->
+  <script type="module">
+    (async () => {
+      if (!document.getElementById('showroomCanvas')) return;
+      let THREE;
+      try {
+        THREE = await import('https://unpkg.com/three@0.160.0/build/three.module.js');
+      } catch(e) { return; }
+
+      const canvas = document.getElementById('showroomCanvas');
+      const wrap = document.getElementById('showroomWrap');
+      const H = 540;
+      const W = () => wrap.clientWidth || 1200;
+
+      const scene = new THREE.Scene();
+      scene.background = new THREE.Color(0x03040a);
+      scene.fog = new THREE.FogExp2(0x03040a, 0.052);
+
+      const camera = new THREE.PerspectiveCamera(48, W() / H, 0.1, 100);
+      camera.position.set(0, 4.2, 11.5);
+      camera.lookAt(0, 0.6, 0);
+
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+      renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+      renderer.setSize(W(), H);
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+      // Lighting
+      scene.add(new THREE.AmbientLight(0x050515, 3));
+      const keyLight = new THREE.DirectionalLight(0x2030aa, 0.65);
+      keyLight.position.set(-6, 9, 5);
+      keyLight.castShadow = true;
+      keyLight.shadow.mapSize.width = 1024;
+      keyLight.shadow.mapSize.height = 1024;
+      scene.add(keyLight);
+
+      // Floor
+      const floor = new THREE.Mesh(
+        new THREE.PlaneGeometry(24, 18),
+        new THREE.MeshStandardMaterial({ color: 0x070910, roughness: 0.9, metalness: 0.1 })
+      );
+      floor.rotation.x = -Math.PI / 2;
+      floor.receiveShadow = true;
+      scene.add(floor);
+      scene.add(new THREE.GridHelper(24, 24, 0x141626, 0x0d0f1e));
+
+      // Back wall
+      const bwall = new THREE.Mesh(
+        new THREE.PlaneGeometry(24, 9),
+        new THREE.MeshStandardMaterial({ color: 0x060710, roughness: 0.95 })
+      );
+      bwall.position.set(0, 4.5, -6.5);
+      scene.add(bwall);
+
+      // Left wall
+      const lwall = new THREE.Mesh(
+        new THREE.PlaneGeometry(15, 9),
+        new THREE.MeshStandardMaterial({ color: 0x050610, roughness: 0.95 })
+      );
+      lwall.position.set(-7.5, 4.5, -0.5);
+      lwall.rotation.y = Math.PI / 2;
+      scene.add(lwall);
+
+      // Device definitions
+      const DEVICES = [
+        { icon:'💡', name:'Lutron Caséta Dimmer', cat:'Lighting Control',
+          color: 0xC9A227, pos: [-3.5, 0.95, -3.8],
+          geo: new THREE.BoxGeometry(0.22, 0.38, 0.06),
+          desc: 'Replaces your existing wall switch. No neutral wire needed. Works with HomeKit, Alexa, and Google Home.',
+          fx: ['No neutral wire required', 'Works with all major ecosystems', 'Pico remote included', 'Instant ~50ms response'] },
+        { icon:'🔊', name:'Apple HomePod mini', cat:'Smart Hub / Speaker',
+          color: 0xFF5555, pos: [-1, 0.48, -4.4],
+          geo: new THREE.CylinderGeometry(0.26, 0.22, 0.52, 20),
+          desc: 'Serves as your HomeKit hub for remote access while filling any room with rich spatial audio.',
+          fx: ['HomeKit & Matter hub', 'Siri voice control always-on', 'Spatial audio', 'Auto-pairs new devices'] },
+        { icon:'🌡️', name:'Ecobee Smart Thermostat', cat:'Climate Control',
+          color: 0x2FB8FF, pos: [1.5, 0.95, -4.6],
+          geo: new THREE.BoxGeometry(0.36, 0.42, 0.06),
+          desc: 'Room occupancy sensors adjust temps zone by zone so you stop heating empty rooms.',
+          fx: ['Occupancy-based zoning', 'Works with HomeKit/Alexa/Google', 'Energy savings reports', 'Smart scheduling'] },
+        { icon:'🔐', name:'Schlage Encode Plus', cat:'Smart Lock',
+          color: 0x8899EE, pos: [-5.2, 0.88, -0.5],
+          geo: new THREE.BoxGeometry(0.1, 0.44, 0.26),
+          desc: 'Keypad entry, app control, and Apple Home Key NFC. Know exactly who came and went.',
+          fx: ['Apple Home Key NFC', 'Remote lock & unlock', 'Guest access codes', 'No hub required'] },
+        { icon:'⚡', name:'Span Smart Panel', cat:'Electrical Panel',
+          color: 0x3FEEBB, pos: [5.2, 0.95, -0.5],
+          geo: new THREE.BoxGeometry(0.1, 0.7, 0.52),
+          desc: 'Replace your breaker box with one you control from your phone — down to the individual circuit.',
+          fx: ['Circuit-level app control', 'EV charger integration', 'Solar & battery ready', 'Real-time energy data'] },
+        { icon:'📷', name:'Arlo Pro 4', cat:'Security Camera',
+          color: 0xFFAA33, pos: [0, 2.2, -5.2],
+          geo: new THREE.BoxGeometry(0.16, 0.22, 0.22),
+          desc: 'Wire-free 2K HDR camera that integrates into Apple Home for automated security routines.',
+          fx: ['2K HDR + color night vision', 'HomeKit Secure Video', 'Motion zone alerts', 'No wiring needed'] }
+      ];
+
+      const meshes = [];
+      const glows = [];
+
+      DEVICES.forEach(d => {
+        const mat = new THREE.MeshStandardMaterial({
+          color: d.color, emissive: d.color, emissiveIntensity: 0.35,
+          roughness: 0.25, metalness: 0.6
+        });
+        const mesh = new THREE.Mesh(d.geo, mat);
+        mesh.position.set(...d.pos);
+        mesh.castShadow = true;
+        mesh.userData = d;
+        scene.add(mesh);
+        meshes.push(mesh);
+
+        const pl = new THREE.PointLight(d.color, 0.7, 2.8);
+        pl.position.set(...d.pos);
+        scene.add(pl);
+        glows.push({ light: pl, mesh, base: 0.7, baseE: 0.35 });
+
+        // Floor glow ring
+        const ring = new THREE.Mesh(
+          new THREE.CircleGeometry(0.4, 32),
+          new THREE.MeshBasicMaterial({ color: d.color, transparent: true, opacity: 0.07, side: THREE.DoubleSide })
+        );
+        ring.rotation.x = -Math.PI / 2;
+        ring.position.set(d.pos[0], 0.002, d.pos[2]);
+        scene.add(ring);
+      });
+
+      // Click detection
+      const raycaster = new THREE.Raycaster();
+      const mouse = new THREE.Vector2();
+      let activeM = null;
+
+      canvas.addEventListener('click', e => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+        mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+        raycaster.setFromCamera(mouse, camera);
+        const hits = raycaster.intersectObjects(meshes);
+        if (hits.length) {
+          activeM = hits[0].object;
+          const d = hits[0].object.userData;
+          document.getElementById('showroomIcon').textContent = d.icon;
+          document.getElementById('showroomName').textContent = d.name;
+          document.getElementById('showroomCat').textContent = d.cat;
+          document.getElementById('showroomDesc').textContent = d.desc;
+          document.getElementById('showroomFeatures').innerHTML = d.fx.map(f => `<li>${f}</li>`).join('');
+          document.getElementById('showroomPanel').classList.add('open');
+        }
+      });
+
+      // Cursor hint
+      canvas.addEventListener('mousemove', e => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+        mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+        raycaster.setFromCamera(mouse, camera);
+        canvas.style.cursor = raycaster.intersectObjects(meshes).length ? 'pointer' : 'default';
+      });
+
+      // Only animate when visible
+      let visible = false;
+      new IntersectionObserver(e => { visible = e[0].isIntersecting; }, { threshold: 0.1 }).observe(wrap);
+
+      const clock = new THREE.Clock();
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      (function loop() {
+        requestAnimationFrame(loop);
+        if (!visible) return;
+        const t = clock.getElapsedTime();
+        glows.forEach((g, i) => {
+          const pulse = Math.sin(t * 1.8 + i * 1.1) * 0.28 + 1;
+          if (!reduceMotion) {
+            g.light.intensity = g.mesh === activeM ? 2.4 + Math.sin(t * 5) * 0.4 : g.base * pulse;
+            g.mesh.material.emissiveIntensity = g.mesh === activeM ? 0.9 + Math.sin(t * 5) * 0.15 : g.baseE * pulse;
+          }
+        });
+        renderer.render(scene, camera);
+      })();
+
+      window.addEventListener('resize', () => {
+        const w = W();
+        camera.aspect = w / H;
+        camera.updateProjectionMatrix();
+        renderer.setSize(w, H);
+      });
     })();
   </script>
 </body>
