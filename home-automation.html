@@ -419,32 +419,41 @@
     // Floor plan room data
     const FP_DATA = {
       living: { room:'Living Room', title:'Entertainment Hub', devices:[
-        {t:'3× Lutron Caséta dimmers',c:'g'},{t:'Apple HomePod mini (hub)',c:'b'},
-        {t:'Motorized roller shades',c:'g'},{t:'Ecobee thermostat',c:'b'},
-        {t:'"Movie Night" scene button',c:'g'}
+        {t:'3× Lutron Caséta dimmers',c:'g',d:'Tap or app-control your lights from the wall, your phone, or a remote — no rewiring of existing switches.'},
+        {t:'Apple HomePod mini (hub)',c:'b',d:'The "brain" that lets you control everything by voice and ties all your smart devices together.'},
+        {t:'Motorized roller shades',c:'g',d:'Shades that open and close on a schedule or with one tap — great for sun glare and movie nights.'},
+        {t:'Ecobee thermostat',c:'b',d:'Learns your schedule and adjusts the temperature automatically to save on heating and cooling.'},
+        {t:'"Movie Night" scene button',c:'g',d:'One press dims the lights, lowers the shades, and gets the room ready for a film.'}
       ]},
       kitchen: { room:'Kitchen', title:'Hands-Free Control', devices:[
-        {t:'Under-cabinet LED strips',c:'g'},{t:'2× smart switches',c:'g'},
-        {t:'Amazon Echo (voice control)',c:'b'},{t:'"Cooking" lighting scene',c:'g'}
+        {t:'Under-cabinet LED strips',c:'g',d:'Bright, even task lighting for countertops that turns on with a tap or voice command.'},
+        {t:'2× smart switches',c:'g',d:'Replace standard switches so existing kitchen lights can be scheduled, dimmed, or voice-controlled.'},
+        {t:'Amazon Echo (voice control)',c:'b',d:'Set timers, play music, and control your kitchen lights hands-free while cooking.'},
+        {t:'"Cooking" lighting scene',c:'g',d:'One command brings every kitchen light to full brightness for meal prep.'}
       ]},
       master: { room:'Master Bedroom', title:'Sleep & Wake System', devices:[
-        {t:'Bedside dimmer + Pico remote',c:'g'},{t:'Schlage Encode Plus lock',c:'b'},
-        {t:'"Good Night" all-off scene',c:'g'},{t:'Gradual wake-up dimming',c:'g'}
+        {t:'Bedside dimmer + Pico remote',c:'g',d:'A small wireless remote on the nightstand to dim or shut off the lights without getting up.'},
+        {t:'Schlage Encode Plus lock',c:'b',d:'Lock the front door and check its status from your phone without leaving bed.'},
+        {t:'"Good Night" all-off scene',c:'g',d:'One tap turns off every light in the house and locks the doors before you sleep.'},
+        {t:'Gradual wake-up dimming',c:'g',d:'Lights slowly brighten before your alarm, helping you wake up more naturally.'}
       ]},
       bed2: { room:'Bedroom 2 / Office', title:'Smart & Simple', devices:[
-        {t:'1× Lutron smart dimmer',c:'g'},{t:'Smart plug for floor lamp',c:'b'},
-        {t:'Motion-activated night light',c:'g'}
+        {t:'1× Lutron smart dimmer',c:'g',d:'Adjust brightness from the wall or your phone — perfect for a home office or guest room.'},
+        {t:'Smart plug for floor lamp',c:'b',d:'Turn an existing lamp into a smart device you can schedule or control remotely.'},
+        {t:'Motion-activated night light',c:'g',d:'A soft light that turns on automatically when someone walks in, then shuts off on its own.'}
       ]},
       garage: { room:'Garage', title:'EV + Energy Control', devices:[
-        {t:'Span Smart Panel install',c:'b'},{t:'EV charger (Level 2, 48A)',c:'g'},
-        {t:'Garage opener integration',c:'g'},{t:'Solar/battery ready wiring',c:'b'}
+        {t:'Span Smart Panel install',c:'b',d:'A modern electrical panel that shows real-time power usage and lets you control circuits from an app.'},
+        {t:'EV charger (Level 2, 48A)',c:'g',d:'Charge an electric vehicle overnight at home instead of waiting at a public charging station.'},
+        {t:'Garage opener integration',c:'g',d:'Open, close, and check your garage door status from anywhere using your phone.'},
+        {t:'Solar/battery ready wiring',c:'b',d:'Pre-wired so adding solar panels or a home battery later is quick and affordable.'}
       ]}
     };
     function fpSelect(key) {
       const d = FP_DATA[key]; if (!d) return;
       document.getElementById('fpRoom').textContent = d.room;
       document.getElementById('fpTitle').textContent = d.title;
-      document.getElementById('fpDevices').innerHTML = d.devices.map(dv => `<li class="${dv.c}">${dv.t}</li>`).join('');
+      document.getElementById('fpDevices').innerHTML = d.devices.map(dv => `<li class="${dv.c}"><span class="fp-device-name">${dv.t}</span><span class="fp-device-desc">${dv.d}</span></li>`).join('');
       document.getElementById('fpPanel').style.display = '';
       document.getElementById('fpPanel').scrollIntoView({ behavior:'smooth', block:'nearest' });
       if (window.fpHighlight) window.fpHighlight(key);
