@@ -169,36 +169,24 @@
       <div class="container" style="text-align:center;padding-bottom:2.5rem">
         <div class="section-eyebrow fade-up" style="justify-content:center;">Smart Home Blueprint</div>
         <h2 class="section-title fade-up delay-1">See what we can do<br><em>in every room.</em></h2>
-        <p class="section-sub fade-up delay-2" style="margin:.75rem auto 0">Click any room below to see the exact devices we'd design and install — wired, configured, and working together from day one.</p>
+        <p class="section-sub fade-up delay-2" style="margin:.75rem auto 0">Drag to rotate the house, then tap a glowing icon to see the devices we'd design and install in that room.</p>
       </div>
 
       <div class="fp-wrap fade-up delay-2">
-        <div class="fp-iso-container">
-          <div class="fp-stage">
-            <div class="fp-zone fp-living" onclick="fpSelect('living')"><span class="fp-zone-label">Living Room</span></div>
-            <div class="fp-zone fp-hall fp-fixed"><span class="fp-zone-label">Hall</span></div>
-            <div class="fp-zone fp-kitchen" onclick="fpSelect('kitchen')"><span class="fp-zone-label">Kitchen</span></div>
-            <div class="fp-zone fp-dining fp-fixed"><span class="fp-zone-label">Dining</span></div>
-            <div class="fp-zone fp-master" onclick="fpSelect('master')"><span class="fp-zone-label">Master</span></div>
-            <div class="fp-zone fp-bath fp-fixed"><span class="fp-zone-label">Bath</span></div>
-            <div class="fp-zone fp-bed2" onclick="fpSelect('bed2')"><span class="fp-zone-label">Bedroom 2</span></div>
-            <div class="fp-zone fp-garage" onclick="fpSelect('garage')"><span class="fp-zone-label">Garage</span></div>
-            <div class="fp-hs fp-hs-g" style="top:35px;left:55px"></div>
-            <div class="fp-hs fp-hs-b" style="top:120px;left:190px"></div>
-            <div class="fp-hs fp-hs-g" style="top:30px;left:365px"></div>
-            <div class="fp-hs fp-hs-b" style="top:250px;left:45px"></div>
-            <div class="fp-hs fp-hs-g" style="top:245px;left:170px"></div>
-            <div class="fp-hs fp-hs-b" style="top:255px;left:340px"></div>
-            <div class="fp-hs fp-hs-g" style="top:415px;left:360px"></div>
+        <div class="fp-house-container" id="fpHouseContainer">
+          <canvas id="fpCanvas" aria-hidden="true"></canvas>
+          <div class="fp-house-fallback">
+            <div class="fp-zone fp-living"></div>
+            <div class="fp-zone fp-kitchen"></div>
+            <div class="fp-zone fp-master"></div>
+            <div class="fp-zone fp-bed2"></div>
+            <div class="fp-zone fp-garage"></div>
           </div>
+          <span class="fp-drag-hint" id="fpDragHint">↻ drag to rotate</span>
         </div>
 
-        <div class="fp-panel" id="fpPanel">
-          <div class="fp-empty" id="fpEmpty">
-            <span class="fp-arrow">←</span>
-            <p>Click any room to see<br>what we can install</p>
-          </div>
-          <div class="fp-content" id="fpContent" style="display:none">
+        <div class="fp-panel" id="fpPanel" style="display:none">
+          <div class="fp-content" id="fpContent">
             <p class="fp-room-eyebrow" id="fpRoom">Room</p>
             <h3 class="fp-panel-title" id="fpTitle">Title</h3>
             <ul class="fp-devices" id="fpDevices"></ul>
@@ -428,7 +416,7 @@
       }
     });
 
-    // Floor plan zone selector
+    // Floor plan room data
     const FP_DATA = {
       living: { room:'Living Room', title:'Entertainment Hub', devices:[
         {t:'3× Lutron Caséta dimmers',c:'g'},{t:'Apple HomePod mini (hub)',c:'b'},
@@ -453,16 +441,331 @@
       ]}
     };
     function fpSelect(key) {
-      document.querySelectorAll('.fp-zone').forEach(z => z.classList.toggle('active', z.classList.contains('fp-' + key)));
       const d = FP_DATA[key]; if (!d) return;
       document.getElementById('fpRoom').textContent = d.room;
       document.getElementById('fpTitle').textContent = d.title;
       document.getElementById('fpDevices').innerHTML = d.devices.map(dv => `<li class="${dv.c}">${dv.t}</li>`).join('');
-      document.getElementById('fpEmpty').style.display = 'none';
-      document.getElementById('fpContent').style.display = '';
+      document.getElementById('fpPanel').style.display = '';
       document.getElementById('fpPanel').scrollIntoView({ behavior:'smooth', block:'nearest' });
+      if (window.fpHighlight) window.fpHighlight(key);
     }
     window.fpSelect = fpSelect;
+  </script>
+
+  <!-- 3D DOLLHOUSE FLOOR PLAN -->
+  <script type="module">
+    (async () => {
+      const canvas = document.getElementById('fpCanvas');
+      const container = document.getElementById('fpHouseContainer');
+      const dragHint = document.getElementById('fpDragHint');
+      if (!canvas || !container) return;
+
+      let THREE;
+      try {
+        THREE = await import('https://unpkg.com/three@0.160.0/build/three.module.js');
+      } catch (e) {
+        const fb = container.querySelector('.fp-house-fallback');
+        if (fb) fb.classList.add('is-active');
+        return;
+      }
+
+      const S = 1 / 40; // px -> world units
+      const TOTAL_W = 430 * S, TOTAL_D = 460 * S;
+      const toWorld = (x, z, w, d) => ({
+        x: (x + w / 2) * S - TOTAL_W / 2,
+        z: (z + d / 2) * S - TOTAL_D / 2,
+        w: w * S, d: d * S
+      });
+
+      const ROOMS = [
+        { key:'living',  px:{x:0,  z:0,  w:260, h:200}, color:0x232b3d, label:'Living Room' },
+        { key:null,      px:{x:270,z:0,  w:60,  h:200}, color:0x1b2030, label:'Hall' },
+        { key:'kitchen', px:{x:340,z:0,  w:90,  h:120}, color:0x2a2f38, label:'Kitchen' },
+        { key:null,      px:{x:340,z:130,w:90,  h:70},  color:0x222838, label:'Dining' },
+        { key:'master',  px:{x:0,  z:210,w:190, h:160}, color:0x252233, label:'Master Bedroom' },
+        { key:null,      px:{x:200,z:210,w:70,  h:75},  color:0x202535, label:'Bath' },
+        { key:'bed2',    px:{x:280,z:210,w:150, h:160}, color:0x222a35, label:'Bedroom 2' },
+        { key:'garage',  px:{x:0,  z:380,w:430, h:80},  color:0x1d1f26, label:'Garage' }
+      ].map(r => Object.assign({}, r, toWorld(r.px.x, r.px.z, r.px.w, r.px.h)));
+
+      const ENCLOSED = ['master', 'bath' /*virtual*/, 'bed2'];
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
+      const target = new THREE.Vector3(0, 0, 0);
+
+      let renderer;
+      try {
+        renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+      } catch (e) {
+        const fb = container.querySelector('.fp-house-fallback');
+        if (fb) fb.classList.add('is-active');
+        return;
+      }
+      renderer.setClearColor(0x000000, 0);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+      function resize() {
+        const w = container.clientWidth, h = container.clientHeight;
+        if (w <= 0 || h <= 0) return;
+        renderer.setSize(w, h, false);
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+      }
+
+      const house = new THREE.Group();
+      scene.add(house);
+
+      const ambient = new THREE.AmbientLight(0xffffff, 0.65);
+      scene.add(ambient);
+      const sun = new THREE.DirectionalLight(0xfff2d6, 0.9);
+      sun.position.set(6, 10, 4);
+      scene.add(sun);
+      const fill = new THREE.DirectionalLight(0x2fb8ff, 0.25);
+      fill.position.set(-6, 4, -6);
+      scene.add(fill);
+
+      const floorMeshes = {};
+      const baseColors = {};
+
+      ROOMS.forEach(r => {
+        const floorGeo = new THREE.BoxGeometry(r.w, 0.12, r.d);
+        const mat = new THREE.MeshStandardMaterial({ color: r.color, roughness: 0.85, metalness: 0.05 });
+        const floor = new THREE.Mesh(floorGeo, mat);
+        floor.position.set(r.x, -0.06, r.z);
+        house.add(floor);
+        if (r.key) { floorMeshes[r.key] = floor; baseColors[r.key] = r.color; }
+
+        const edges = new THREE.LineSegments(
+          new THREE.EdgesGeometry(floorGeo),
+          new THREE.LineBasicMaterial({ color: 0xC9A227, transparent: true, opacity: 0.18 })
+        );
+        edges.position.copy(floor.position);
+        house.add(edges);
+      });
+
+      // Walls: full exterior perimeter + enclosed walls around bedrooms/bath
+      const wallMat = new THREE.MeshStandardMaterial({ color: 0x3a3f4d, roughness: 0.9, transparent: true, opacity: 0.9 });
+      const WT = 0.06; // wall thickness
+
+      function addWall(x1, z1, x2, z2, height, doorGap) {
+        const len = Math.hypot(x2 - x1, z2 - z1);
+        const segments = doorGap && len > doorGap + 0.6
+          ? [[0, (len - doorGap) / 2], [(len + doorGap) / 2, len]]
+          : [[0, len]];
+        const dx = (x2 - x1) / len, dz = (z2 - z1) / len;
+        segments.forEach(([a, b]) => {
+          const segLen = b - a;
+          if (segLen <= 0.02) return;
+          const geo = new THREE.BoxGeometry(segLen, height, WT);
+          const wall = new THREE.Mesh(geo, wallMat);
+          const midA = a + segLen / 2;
+          wall.position.set(x1 + dx * midA, height / 2 - 0.06, z1 + dz * midA);
+          wall.rotation.y = -Math.atan2(dz, dx);
+          house.add(wall);
+        });
+      }
+
+      const hx = TOTAL_W / 2, hz = TOTAL_D / 2;
+      const EXT_H = 1.35;
+      addWall(-hx, -hz, hx, -hz, EXT_H); // back
+      addWall(-hx, hz, hx, hz, EXT_H);   // front
+      addWall(-hx, -hz, -hx, hz, EXT_H); // left
+      addWall(hx, -hz, hx, hz, EXT_H, 1.0); // right (driveway opening)
+
+      function room(key) { return ROOMS.find(r => r.key === key); }
+      function enclose(key, doors) {
+        const r = room(key);
+        const x1 = r.x - r.w / 2, x2 = r.x + r.w / 2, z1 = r.z - r.d / 2, z2 = r.z + r.d / 2;
+        const H = 0.85;
+        addWall(x1, z1, x2, z1, H, doors.top || 0);
+        addWall(x1, z2, x2, z2, H, doors.bottom || 0);
+        addWall(x1, z1, x1, z2, H, doors.left || 0);
+        addWall(x2, z1, x2, z2, H, doors.right || 0);
+      }
+      enclose('master', { right: 0.8 });
+      enclose('bed2', { left: 0.8 });
+      const bath = ROOMS.find(r => r.label === 'Bath');
+      (function () {
+        const x1 = bath.x - bath.w / 2, x2 = bath.x + bath.w / 2, z1 = bath.z - bath.d / 2, z2 = bath.z + bath.d / 2;
+        const H = 0.85;
+        addWall(x1, z1, x2, z1, H);
+        addWall(x1, z2, x2, z2, H, 0.7);
+        addWall(x1, z1, x1, z2, H);
+        addWall(x2, z1, x2, z2, H);
+      })();
+
+      // Furniture helper
+      function box(w, h, d, color, x, y, z, ry) {
+        const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), new THREE.MeshStandardMaterial({ color, roughness: 0.7 }));
+        m.position.set(x, y, z);
+        if (ry) m.rotation.y = ry;
+        house.add(m);
+        return m;
+      }
+
+      (function furnish() {
+        const liv = room('living'), kit = room('kitchen'), mas = room('master'), b2 = room('bed2'), gar = room('garage');
+        const din = ROOMS.find(r => r.label === 'Dining');
+        const bathR = ROOMS.find(r => r.label === 'Bath');
+
+        // Living room: couch, TV, coffee table
+        box(1.6, 0.45, 0.6, 0x8a6a4a, liv.x - liv.w/2 + 1.0, 0.22, liv.z - liv.d/2 + 0.5, 0);
+        box(1.6, 0.25, 0.12, 0x222222, liv.x - liv.w/2 + 1.0, 0.55, liv.z - liv.d/2 + 0.16, 0); // TV-ish backrest accent
+        box(0.9, 0.32, 0.5, 0x2a2a2a, liv.x + liv.w/2 - 0.3, 0.4, liv.z - liv.d/2 + 0.4, 0); // TV unit
+        box(0.6, 0.22, 0.5, 0x6b5640, liv.x - liv.w/2 + 1.0, 0.11, liv.z + 0.6, 0); // coffee table
+
+        // Kitchen: L counter
+        box(kit.w - 0.3, 0.45, 0.4, 0x4a4f5c, kit.x, 0.22, kit.z - kit.d/2 + 0.25, 0);
+        box(0.4, 0.45, kit.d - 0.5, 0x4a4f5c, kit.x + kit.w/2 - 0.25, 0.22, kit.z, 0);
+
+        // Dining: table + chairs
+        box(0.9, 0.32, 0.6, 0x6b5640, din.x, 0.16, din.z, 0);
+        [[-0.55,-0.4],[0.55,0.4]].forEach(([dx,dz]) => box(0.25,0.3,0.25,0x3a3a3a, din.x+dx, 0.15, din.z+dz, 0));
+
+        // Master: bed + nightstand
+        box(1.2, 0.35, 1.6, 0x5d4a6b, mas.x - mas.w/2 + 0.8, 0.18, mas.z, 0);
+        box(1.2, 0.18, 0.12, 0x4a3a56, mas.x - mas.w/2 + 0.8, 0.35, mas.z - 0.8, 0); // pillow row accent
+        box(0.3, 0.3, 0.3, 0x3a3a3a, mas.x - mas.w/2 + 0.05, 0.15, mas.z - 0.85, 0);
+
+        // Bedroom 2: smaller bed + desk
+        box(0.9, 0.3, 1.3, 0x4a6b5d, b2.x - b2.w/2 + 0.6, 0.15, b2.z - 0.2, 0);
+        box(0.7, 0.32, 0.35, 0x4a4f5c, b2.x + b2.w/2 - 0.4, 0.16, b2.z + b2.d/2 - 0.3, 0);
+
+        // Bath: tub + sink
+        box(0.5, 0.3, 1.0, 0xdfe6ec, bathR.x - bathR.w/2 + 0.35, 0.15, bathR.z, 0);
+        box(0.35, 0.32, 0.25, 0xdfe6ec, bathR.x + bathR.w/2 - 0.25, 0.16, bathR.z - bathR.d/2 + 0.25, 0);
+
+        // Garage: car silhouette + EV charger
+        box(1.6, 0.5, 0.8, 0x2f4a6b, gar.x - gar.w/2 + 1.2, 0.25, gar.z, 0);
+        box(0.18, 0.5, 0.18, 0x1a1a1a, gar.x - gar.w/2 + 0.25, 0.25, gar.z - gar.d/2 + 0.25, 0);
+      })();
+
+      // Clickable glowing icons at room centers
+      const icons = [];
+      ROOMS.filter(r => r.key).forEach(r => {
+        const g = new THREE.Group();
+        g.position.set(r.x, 0.55, r.z);
+        house.add(g);
+
+        const dot = new THREE.Mesh(
+          new THREE.SphereGeometry(0.085, 20, 20),
+          new THREE.MeshStandardMaterial({ color: 0xC9A227, emissive: 0xC9A227, emissiveIntensity: 1.1 })
+        );
+        g.add(dot);
+
+        const ring = new THREE.Mesh(
+          new THREE.RingGeometry(0.14, 0.18, 32),
+          new THREE.MeshBasicMaterial({ color: 0xC9A227, transparent: true, opacity: 0.55, side: THREE.DoubleSide })
+        );
+        ring.rotation.x = -Math.PI / 2;
+        g.add(ring);
+
+        // generous invisible hit target for easy tapping
+        const hit = new THREE.Mesh(
+          new THREE.SphereGeometry(0.32, 8, 8),
+          new THREE.MeshBasicMaterial({ visible: false })
+        );
+        g.add(hit);
+
+        g.userData.key = r.key;
+        g.userData.dot = dot;
+        g.userData.baseY = 0.55;
+        icons.push(g);
+      });
+
+      window.fpHighlight = function (key) {
+        Object.keys(floorMeshes).forEach(k => {
+          floorMeshes[k].material.color.set(k === key ? 0x5a4317 : baseColors[k]);
+        });
+      };
+
+      // Orbit camera (drag to rotate)
+      let theta = Math.PI / 4, phi = 1.0, radius = Math.max(TOTAL_W, TOTAL_D) * 1.35;
+      const MIN_PHI = 0.45, MAX_PHI = 1.35;
+      let dragging = false, lastX = 0, lastY = 0, moved = 0, idleTimer = 0, autoRotate = false;
+
+      function updateCamera() {
+        camera.position.set(
+          target.x + radius * Math.sin(phi) * Math.sin(theta),
+          target.y + radius * Math.cos(phi),
+          target.z + radius * Math.sin(phi) * Math.cos(theta)
+        );
+        camera.lookAt(target);
+      }
+
+      function pointerPos(e) {
+        const t = e.touches ? e.touches[0] : e;
+        return { x: t.clientX, y: t.clientY };
+      }
+
+      canvas.style.touchAction = 'none';
+      canvas.style.cursor = 'grab';
+
+      function onDown(e) {
+        dragging = true; moved = 0; autoRotate = false; idleTimer = 0;
+        const p = pointerPos(e); lastX = p.x; lastY = p.y;
+        canvas.style.cursor = 'grabbing';
+        if (dragHint) dragHint.style.opacity = '0';
+      }
+      function onMove(e) {
+        if (!dragging) return;
+        const p = pointerPos(e);
+        const dx = p.x - lastX, dy = p.y - lastY;
+        moved += Math.abs(dx) + Math.abs(dy);
+        theta -= dx * 0.008;
+        phi = Math.min(MAX_PHI, Math.max(MIN_PHI, phi - dy * 0.008));
+        lastX = p.x; lastY = p.y;
+        updateCamera();
+      }
+      function onUp(e) {
+        if (!dragging) return;
+        dragging = false;
+        canvas.style.cursor = 'grab';
+        idleTimer = 0;
+        if (moved < 6) handleClick(e);
+      }
+
+      canvas.addEventListener('pointerdown', onDown);
+      window.addEventListener('pointermove', onMove);
+      window.addEventListener('pointerup', onUp);
+
+      const raycaster = new THREE.Raycaster();
+      const ndc = new THREE.Vector2();
+      function handleClick(e) {
+        const rect = canvas.getBoundingClientRect();
+        const p = pointerPos(e);
+        ndc.x = ((p.x - rect.left) / rect.width) * 2 - 1;
+        ndc.y = -((p.y - rect.top) / rect.height) * 2 + 1;
+        raycaster.setFromCamera(ndc, camera);
+        const hits = raycaster.intersectObjects(icons.map(g => g.children[2]));
+        if (hits.length) {
+          const key = hits[0].object.parent.userData.key;
+          window.fpSelect(key);
+        }
+      }
+
+      const ro = new ResizeObserver(resize);
+      ro.observe(container);
+      resize();
+      updateCamera();
+
+      const clock = new THREE.Clock();
+      function tick() {
+        const t = clock.getElapsedTime();
+        icons.forEach(g => { g.position.y = g.userData.baseY + Math.sin(t * 2 + g.position.x) * 0.04; });
+
+        if (!dragging) {
+          idleTimer += 1 / 60;
+          if (idleTimer > 3.5) autoRotate = true;
+        }
+        if (autoRotate) { theta += 0.0018; updateCamera(); }
+
+        renderer.render(scene, camera);
+        requestAnimationFrame(tick);
+      }
+      tick();
+    })();
   </script>
 
   <!-- SMART HOME 3D VISUAL -->
