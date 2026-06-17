@@ -175,18 +175,21 @@
       <div class="fp-wrap fade-up delay-2">
         <div class="fp-iso-container">
           <div class="fp-stage">
-            <div class="fp-zone fp-living" onclick="fpSelect('living')"></div>
-            <div class="fp-zone fp-kitchen" onclick="fpSelect('kitchen')"></div>
-            <div class="fp-zone fp-master" onclick="fpSelect('master')"></div>
-            <div class="fp-zone fp-bed2" onclick="fpSelect('bed2')"></div>
-            <div class="fp-zone fp-garage" onclick="fpSelect('garage')"></div>
-            <div class="fp-hs fp-hs-g" style="top:28px;left:55px"></div>
-            <div class="fp-hs fp-hs-b" style="top:85px;left:115px"></div>
-            <div class="fp-hs fp-hs-g" style="top:35px;left:255px"></div>
-            <div class="fp-hs fp-hs-b" style="top:15px;left:295px"></div>
-            <div class="fp-hs fp-hs-g" style="top:210px;left:75px"></div>
-            <div class="fp-hs fp-hs-b" style="top:205px;left:238px"></div>
-            <div class="fp-hs fp-hs-g" style="top:343px;left:105px"></div>
+            <div class="fp-zone fp-living" onclick="fpSelect('living')"><span class="fp-zone-label">Living Room</span></div>
+            <div class="fp-zone fp-hall fp-fixed"><span class="fp-zone-label">Hall</span></div>
+            <div class="fp-zone fp-kitchen" onclick="fpSelect('kitchen')"><span class="fp-zone-label">Kitchen</span></div>
+            <div class="fp-zone fp-dining fp-fixed"><span class="fp-zone-label">Dining</span></div>
+            <div class="fp-zone fp-master" onclick="fpSelect('master')"><span class="fp-zone-label">Master</span></div>
+            <div class="fp-zone fp-bath fp-fixed"><span class="fp-zone-label">Bath</span></div>
+            <div class="fp-zone fp-bed2" onclick="fpSelect('bed2')"><span class="fp-zone-label">Bedroom 2</span></div>
+            <div class="fp-zone fp-garage" onclick="fpSelect('garage')"><span class="fp-zone-label">Garage</span></div>
+            <div class="fp-hs fp-hs-g" style="top:35px;left:55px"></div>
+            <div class="fp-hs fp-hs-b" style="top:120px;left:190px"></div>
+            <div class="fp-hs fp-hs-g" style="top:30px;left:365px"></div>
+            <div class="fp-hs fp-hs-b" style="top:250px;left:45px"></div>
+            <div class="fp-hs fp-hs-g" style="top:245px;left:170px"></div>
+            <div class="fp-hs fp-hs-b" style="top:255px;left:340px"></div>
+            <div class="fp-hs fp-hs-g" style="top:415px;left:360px"></div>
           </div>
         </div>
 
@@ -457,6 +460,7 @@
       document.getElementById('fpDevices').innerHTML = d.devices.map(dv => `<li class="${dv.c}">${dv.t}</li>`).join('');
       document.getElementById('fpEmpty').style.display = 'none';
       document.getElementById('fpContent').style.display = '';
+      document.getElementById('fpPanel').scrollIntoView({ behavior:'smooth', block:'nearest' });
     }
     window.fpSelect = fpSelect;
   </script>
