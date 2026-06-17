@@ -492,7 +492,7 @@
 
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
-      const target = new THREE.Vector3(0, 0, 0);
+      const target = new THREE.Vector3(0, 0.5, 0);
 
       let renderer;
       try {
@@ -641,6 +641,41 @@
         box(0.18, 0.5, 0.18, 0x1a1a1a, gar.x - gar.w/2 + 0.25, 0.25, gar.z - gar.d/2 + 0.25, 0);
       })();
 
+      // Room name labels (canvas-texture sprites)
+      function makeLabel(text, faded) {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        const scale = 2;
+        const fontSize = 26 * scale;
+        ctx.font = `600 ${fontSize}px DM Sans, system-ui, sans-serif`;
+        const padX = 18 * scale;
+        const textW = ctx.measureText(text.toUpperCase()).width;
+        canvas.width = textW + padX * 2;
+        canvas.height = fontSize * 1.7;
+        ctx.font = `600 ${fontSize}px DM Sans, system-ui, sans-serif`;
+        ctx.textBaseline = 'middle';
+        ctx.textAlign = 'center';
+        ctx.fillStyle = faded ? 'rgba(255,255,255,0.55)' : 'rgba(245,232,192,0.95)';
+        ctx.shadowColor = 'rgba(0,0,0,0.85)';
+        ctx.shadowBlur = 10 * scale;
+        ctx.fillText(text.toUpperCase(), canvas.width / 2, canvas.height / 2);
+
+        const tex = new THREE.CanvasTexture(canvas);
+        tex.minFilter = THREE.LinearFilter;
+        const mat = new THREE.SpriteMaterial({ map: tex, transparent: true, depthTest: false });
+        const sprite = new THREE.Sprite(mat);
+        const aspect = canvas.width / canvas.height;
+        const h = 0.34;
+        sprite.scale.set(h * aspect, h, 1);
+        return sprite;
+      }
+
+      ROOMS.forEach(r => {
+        const label = makeLabel(r.label, !r.key);
+        label.position.set(r.x, 1.55, r.z);
+        house.add(label);
+      });
+
       // Clickable glowing icons at room centers
       const icons = [];
       ROOMS.filter(r => r.key).forEach(r => {
@@ -681,7 +716,7 @@
       };
 
       // Orbit camera (drag to rotate)
-      let theta = Math.PI / 4, phi = 1.0, radius = Math.max(TOTAL_W, TOTAL_D) * 1.35;
+      let theta = Math.PI / 4, phi = 1.0, radius = Math.sqrt(TOTAL_W * TOTAL_W + TOTAL_D * TOTAL_D) * 1.05;
       const MIN_PHI = 0.45, MAX_PHI = 1.35;
       let dragging = false, lastX = 0, lastY = 0, moved = 0, idleTimer = 0, autoRotate = false;
 
