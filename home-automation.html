@@ -488,15 +488,15 @@
       });
 
       const ROOMS = [
-        { key:'living',  px:{x:0,  z:0,  w:260, h:200}, color:0x232b3d, label:'Living Room' },
-        { key:null,      px:{x:260,z:0,  w:60,  h:200}, color:0x1b2030, label:'Hall' },
-        { key:'kitchen', px:{x:320,z:0,  w:110, h:120}, color:0x2a2f38, label:'Kitchen' },
-        { key:null,      px:{x:320,z:120,w:110, h:80},  color:0x222838, label:'Dining' },
-        { key:'master',  px:{x:0,  z:210,w:190, h:160}, color:0x252233, label:'Master Bedroom' },
-        { key:null,      px:{x:190,z:210,w:70,  h:160}, color:0x202535, label:'Bath' },
-        { key:null,      px:{x:260,z:210,w:60,  h:160}, color:0x1b2030, label:'' },
-        { key:'bed2',    px:{x:320,z:210,w:110, h:160}, color:0x222a35, label:'Bedroom 2' },
-        { key:'garage',  px:{x:0,  z:380,w:430, h:80},  color:0x1d1f26, label:'Garage' }
+        { key:'living',  px:{x:0,  z:0,  w:260, h:200}, color:0xe7d9c2, floor:'wood', label:'Living Room' },
+        { key:null,      px:{x:260,z:0,  w:60,  h:200}, color:0xe2d4bb, floor:'wood', label:'Hall' },
+        { key:'kitchen', px:{x:320,z:0,  w:110, h:120}, color:0xf0eee6, floor:'tile', label:'Kitchen' },
+        { key:null,      px:{x:320,z:120,w:110, h:80},  color:0xeeece4, floor:'tile', label:'Dining' },
+        { key:'master',  px:{x:0,  z:210,w:190, h:160}, color:0xe7d9c2, floor:'wood', label:'Master Bedroom' },
+        { key:null,      px:{x:190,z:210,w:70,  h:160}, color:0xeceae2, floor:'tile', label:'Bath' },
+        { key:null,      px:{x:260,z:210,w:60,  h:160}, color:0xe2d4bb, floor:'wood', label:'' },
+        { key:'bed2',    px:{x:320,z:210,w:110, h:160}, color:0xe7d9c2, floor:'wood', label:'Bedroom 2' },
+        { key:'garage',  px:{x:0,  z:380,w:430, h:80},  color:0xd4d5d6, floor:'concrete', label:'Garage' }
       ].map(r => Object.assign({}, r, toWorld(r.px.x, r.px.z, r.px.w, r.px.h)));
 
       const ENCLOSED = ['master', 'bath' /*virtual*/, 'bed2'];
@@ -555,12 +555,53 @@
       bounce.position.set(0, 1.6, 0);
       scene.add(bounce);
 
+      // Procedural floor textures for material realism (wood planks / tile grout / concrete speckle)
+      const floorTextures = (function () {
+        function canvas() { const c = document.createElement('canvas'); c.width = c.height = 256; return c; }
+        const out = {};
+
+        const wood = canvas(), wctx = wood.getContext('2d');
+        wctx.fillStyle = '#caa06c'; wctx.fillRect(0, 0, 256, 256);
+        for (let row = 0; row < 8; row++) {
+          wctx.fillStyle = row % 2 ? 'rgba(60,38,18,0.10)' : 'rgba(255,235,200,0.08)';
+          wctx.fillRect(0, row * 32, 256, 32);
+          wctx.fillStyle = 'rgba(40,24,12,0.35)';
+          wctx.fillRect(0, row * 32 + 31, 256, 1);
+          const offset = (row % 2) * 48;
+          wctx.fillStyle = 'rgba(40,24,12,0.22)';
+          for (let x = offset; x < 256; x += 96) wctx.fillRect(x, row * 32, 1, 32);
+        }
+        out.wood = wood;
+
+        const tile = canvas(), tctx = tile.getContext('2d');
+        tctx.fillStyle = '#e9e6df'; tctx.fillRect(0, 0, 256, 256);
+        tctx.strokeStyle = 'rgba(120,118,110,0.4)'; tctx.lineWidth = 3;
+        for (let i = 0; i <= 4; i++) {
+          tctx.beginPath(); tctx.moveTo(i * 64, 0); tctx.lineTo(i * 64, 256); tctx.stroke();
+          tctx.beginPath(); tctx.moveTo(0, i * 64); tctx.lineTo(256, i * 64); tctx.stroke();
+        }
+        out.tile = tile;
+
+        const concrete = canvas(), cctx = concrete.getContext('2d');
+        cctx.fillStyle = '#9b9d9f'; cctx.fillRect(0, 0, 256, 256);
+        for (let i = 0; i < 900; i++) {
+          cctx.fillStyle = `rgba(0,0,0,${(Math.random() * 0.08).toFixed(3)})`;
+          cctx.fillRect(Math.random() * 256, Math.random() * 256, 2, 2);
+        }
+        out.concrete = concrete;
+
+        return out;
+      })();
+
       const floorMeshes = {};
       const baseColors = {};
 
       ROOMS.forEach(r => {
         const floorGeo = new THREE.BoxGeometry(r.w, 0.12, r.d);
-        const mat = new THREE.MeshPhysicalMaterial({ color: r.color, roughness: 0.55, metalness: 0.06, clearcoat: 0.25, clearcoatRoughness: 0.4 });
+        const tex = new THREE.CanvasTexture(floorTextures[r.floor] || floorTextures.wood);
+        tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+        tex.repeat.set(Math.max(1, Math.round(r.w * 1.6)), Math.max(1, Math.round(r.d * 1.6)));
+        const mat = new THREE.MeshPhysicalMaterial({ color: r.color, map: tex, roughness: r.floor === 'tile' ? 0.35 : 0.6, metalness: 0.04, clearcoat: r.floor === 'tile' ? 0.4 : 0.15, clearcoatRoughness: 0.4 });
         const floor = new THREE.Mesh(floorGeo, mat);
         floor.position.set(r.x, -0.06, r.z);
         floor.receiveShadow = true;
@@ -605,6 +646,30 @@
       addWall(-hx, hz, hx, hz, EXT_H);   // front
       addWall(-hx, -hz, -hx, hz, EXT_H); // left
       addWall(hx, -hz, hx, hz, EXT_H, 1.0); // right (driveway opening)
+
+      // Glowing windows let warm light read through the exterior walls
+      function addWindow(x, y, z, w, h, faceX) {
+        const glowMat = new THREE.MeshBasicMaterial({ color: 0xffdca8, transparent: true, opacity: 0.85, side: THREE.DoubleSide });
+        glowMat.fog = false;
+        const glow = new THREE.Mesh(new THREE.PlaneGeometry(w, h), glowMat);
+        glow.position.set(x, y, z);
+        if (faceX) glow.rotation.y = Math.PI / 2;
+        house.add(glow);
+        // thin cross mullion sitting just in front of the glow, not a solid slab
+        const frameMat = new THREE.MeshBasicMaterial({ color: 0xf5f2ec });
+        frameMat.fog = false;
+        const nudge = faceX ? 0.025 : 0;
+        const nudgeZ = faceX ? 0 : 0.025;
+        const vBar = new THREE.Mesh(new THREE.BoxGeometry(faceX ? 0.015 : 0.03, h, faceX ? 0.03 : 0.015), frameMat);
+        vBar.position.set(x + nudge, y, z + nudgeZ);
+        house.add(vBar);
+        const hBar = new THREE.Mesh(new THREE.BoxGeometry(faceX ? 0.015 : w, 0.03, faceX ? w : 0.015), frameMat);
+        hBar.position.set(x + nudge, y, z + nudgeZ);
+        house.add(hBar);
+      }
+      const livingRoom = ROOMS.find(r => r.key === 'living'), masterRoom = ROOMS.find(r => r.key === 'master');
+      addWindow(livingRoom.x - 0.55, 0.68, -hz + 0.1, 0.9, 0.55, false); // living room, north wall
+      addWindow(-hx + 0.1, 0.68, masterRoom.z, 0.9, 0.55, true); // master bedroom, west wall
 
       function room(key) { return ROOMS.find(r => r.key === key); }
       function enclose(key, doors) {
