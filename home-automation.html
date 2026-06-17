@@ -443,10 +443,10 @@
         {t:'Motion-activated night light',c:'g',d:'A soft light that turns on automatically when someone walks in, then shuts off on its own.'}
       ]},
       garage: { room:'Garage', title:'EV + Energy Control', devices:[
-        {t:'Span Smart Panel install',c:'b',d:'A modern electrical panel that shows real-time power usage and lets you control circuits from an app.'},
+        {t:'Span Smart Panel install',c:'b',d:'Replaces your old breaker box with a smart panel that shows real-time power use circuit-by-circuit and lets you turn any circuit on or off from your phone.'},
         {t:'EV charger (Level 2, 48A)',c:'g',d:'Charge an electric vehicle overnight at home instead of waiting at a public charging station.'},
         {t:'Garage opener integration',c:'g',d:'Open, close, and check your garage door status from anywhere using your phone.'},
-        {t:'Solar/battery ready wiring',c:'b',d:'Pre-wired so adding solar panels or a home battery later is quick and affordable.'}
+        {t:'Span + solar & battery',c:'b',d:'When paired with solar panels and a battery, Span automatically directs sunlight to power your home first, sends backup power to the circuits you choose during an outage, and can shift usage to cheaper off-peak hours — getting the most value out of every panel.'}
       ]}
     };
     function fpSelect(key) {
@@ -712,6 +712,12 @@
         box(0.9, 0.2, 0.7, 0x141a22, gar.x - gar.w/2 + 1.2, 0.5, gar.z, 0, { roughness: 0.25, metalness: 0.5 });
         box(0.16, 0.55, 0.16, 0x202225, gar.x - gar.w/2 + 0.25, 0.27, gar.z - gar.d/2 + 0.25, 0, { roughness: 0.4, metalness: 0.4 });
         box(0.1, 0.12, 0.1, 0xC9A227, gar.x - gar.w/2 + 0.25, 0.58, gar.z - gar.d/2 + 0.25, 0, { roughness: 0.3, metalness: 0.6 });
+
+        // Span Smart Panel: wall-mounted unit on the back wall, wired toward solar/battery
+        const spanX = gar.x + gar.w/2 - 0.6, spanZ = gar.z + gar.d/2 - 0.05;
+        box(0.42, 0.62, 0.05, 0x16181c, spanX, 0.62, spanZ, 0, { roughness: 0.3, metalness: 0.45 });
+        box(0.32, 0.18, 0.02, 0x0d2a3a, spanX, 0.74, spanZ - 0.03, 0, { roughness: 0.2, metalness: 0.2 }); // status screen
+        box(0.32, 0.02, 0.02, 0xC9A227, spanX, 0.5, spanZ - 0.03, 0, { roughness: 0.3, metalness: 0.6 }); // accent strip
       })();
 
       // Room name labels (canvas-texture sprites)
