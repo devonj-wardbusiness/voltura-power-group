@@ -488,12 +488,13 @@
 
       const ROOMS = [
         { key:'living',  px:{x:0,  z:0,  w:260, h:200}, color:0x232b3d, label:'Living Room' },
-        { key:null,      px:{x:270,z:0,  w:60,  h:200}, color:0x1b2030, label:'Hall' },
-        { key:'kitchen', px:{x:340,z:0,  w:90,  h:120}, color:0x2a2f38, label:'Kitchen' },
-        { key:null,      px:{x:340,z:130,w:90,  h:70},  color:0x222838, label:'Dining' },
+        { key:null,      px:{x:260,z:0,  w:60,  h:200}, color:0x1b2030, label:'Hall' },
+        { key:'kitchen', px:{x:320,z:0,  w:110, h:120}, color:0x2a2f38, label:'Kitchen' },
+        { key:null,      px:{x:320,z:120,w:110, h:80},  color:0x222838, label:'Dining' },
         { key:'master',  px:{x:0,  z:210,w:190, h:160}, color:0x252233, label:'Master Bedroom' },
-        { key:null,      px:{x:200,z:210,w:70,  h:75},  color:0x202535, label:'Bath' },
-        { key:'bed2',    px:{x:280,z:210,w:150, h:160}, color:0x222a35, label:'Bedroom 2' },
+        { key:null,      px:{x:190,z:210,w:70,  h:160}, color:0x202535, label:'Bath' },
+        { key:null,      px:{x:260,z:210,w:60,  h:160}, color:0x1b2030, label:'' },
+        { key:'bed2',    px:{x:320,z:210,w:110, h:160}, color:0x222a35, label:'Bedroom 2' },
         { key:'garage',  px:{x:0,  z:380,w:430, h:80},  color:0x1d1f26, label:'Garage' }
       ].map(r => Object.assign({}, r, toWorld(r.px.x, r.px.z, r.px.w, r.px.h)));
 
@@ -614,16 +615,16 @@
         addWall(x1, z1, x1, z2, H, doors.left || 0);
         addWall(x2, z1, x2, z2, H, doors.right || 0);
       }
-      enclose('master', { right: 0.8 });
+      enclose('master', { top: 0.8 });
       enclose('bed2', { left: 0.8 });
       const bath = ROOMS.find(r => r.label === 'Bath');
       (function () {
         const x1 = bath.x - bath.w / 2, x2 = bath.x + bath.w / 2, z1 = bath.z - bath.d / 2, z2 = bath.z + bath.d / 2;
         const H = 0.85;
         addWall(x1, z1, x2, z1, H);
-        addWall(x1, z2, x2, z2, H, 0.7);
+        addWall(x1, z2, x2, z2, H);
         addWall(x1, z1, x1, z2, H);
-        addWall(x2, z1, x2, z2, H);
+        addWall(x2, z1, x2, z2, H, 0.8); // door faces the back hallway
       })();
 
       // Furniture helper
@@ -701,9 +702,9 @@
         groundShadow(0.9, 0.55, b2.x + b2.w/2 - 0.4, b2.z + b2.d/2 - 0.3);
         box(0.7, 0.32, 0.35, 0x4a4f5c, b2.x + b2.w/2 - 0.4, 0.16, b2.z + b2.d/2 - 0.3, 0, { roughness: 0.6 });
 
-        // Bath: tub + sink
-        box(0.5, 0.28, 1.0, 0xf2efe8, bathR.x - bathR.w/2 + 0.35, 0.14, bathR.z, 0, { roughness: 0.25, metalness: 0.1 });
-        box(0.35, 0.3, 0.25, 0xf2efe8, bathR.x + bathR.w/2 - 0.25, 0.15, bathR.z - bathR.d/2 + 0.25, 0, { roughness: 0.25, metalness: 0.1 });
+        // Bath: tub along the north wall, sink tucked away from the hallway door
+        box(bathR.w - 0.3, 0.28, 0.5, 0xf2efe8, bathR.x, 0.14, bathR.z - bathR.d/2 + 0.3, 0, { roughness: 0.25, metalness: 0.1 });
+        box(0.35, 0.3, 0.25, 0xf2efe8, bathR.x - bathR.w/2 + 0.25, 0.15, bathR.z + bathR.d/2 - 0.3, 0, { roughness: 0.25, metalness: 0.1 });
 
         // Garage: car silhouette + EV charger
         groundShadow(1.9, 1.0, gar.x - gar.w/2 + 1.2, gar.z);
@@ -743,6 +744,7 @@
       }
 
       ROOMS.forEach(r => {
+        if (!r.label) return;
         const label = makeLabel(r.label, !r.key);
         label.position.set(r.x, 1.55, r.z);
         house.add(label);
