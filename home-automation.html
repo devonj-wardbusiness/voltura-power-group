@@ -491,7 +491,8 @@
       const ENCLOSED = ['master', 'bath' /*virtual*/, 'bed2'];
 
       const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
+      scene.fog = new THREE.Fog(0x05060b, 14, 26);
+      const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 100);
       const target = new THREE.Vector3(0, 0.5, 0);
 
       let renderer;
@@ -504,6 +505,11 @@
       }
       renderer.setClearColor(0x000000, 0);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.15;
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
 
       function resize() {
         const w = container.clientWidth, h = container.clientHeight;
@@ -516,37 +522,51 @@
       const house = new THREE.Group();
       scene.add(house);
 
-      const ambient = new THREE.AmbientLight(0xffffff, 0.65);
-      scene.add(ambient);
-      const sun = new THREE.DirectionalLight(0xfff2d6, 0.9);
-      sun.position.set(6, 10, 4);
+      const hemi = new THREE.HemisphereLight(0x9fb6d9, 0x0a0c14, 0.55);
+      scene.add(hemi);
+
+      const sun = new THREE.DirectionalLight(0xfff0d2, 1.55);
+      sun.position.set(6.5, 9, 5);
+      sun.castShadow = true;
+      sun.shadow.mapSize.set(2048, 2048);
+      sun.shadow.camera.left = -9; sun.shadow.camera.right = 9;
+      sun.shadow.camera.top = 9; sun.shadow.camera.bottom = -9;
+      sun.shadow.camera.near = 1; sun.shadow.camera.far = 30;
+      sun.shadow.bias = -0.0015;
+      sun.shadow.radius = 4;
       scene.add(sun);
-      const fill = new THREE.DirectionalLight(0x2fb8ff, 0.25);
-      fill.position.set(-6, 4, -6);
-      scene.add(fill);
+
+      const rim = new THREE.DirectionalLight(0x2fb8ff, 0.4);
+      rim.position.set(-7, 5, -6);
+      scene.add(rim);
+
+      const bounce = new THREE.PointLight(0xC9A227, 0.5, 9, 2);
+      bounce.position.set(0, 1.6, 0);
+      scene.add(bounce);
 
       const floorMeshes = {};
       const baseColors = {};
 
       ROOMS.forEach(r => {
         const floorGeo = new THREE.BoxGeometry(r.w, 0.12, r.d);
-        const mat = new THREE.MeshStandardMaterial({ color: r.color, roughness: 0.85, metalness: 0.05 });
+        const mat = new THREE.MeshPhysicalMaterial({ color: r.color, roughness: 0.55, metalness: 0.06, clearcoat: 0.25, clearcoatRoughness: 0.4 });
         const floor = new THREE.Mesh(floorGeo, mat);
         floor.position.set(r.x, -0.06, r.z);
+        floor.receiveShadow = true;
         house.add(floor);
         if (r.key) { floorMeshes[r.key] = floor; baseColors[r.key] = r.color; }
 
         const edges = new THREE.LineSegments(
           new THREE.EdgesGeometry(floorGeo),
-          new THREE.LineBasicMaterial({ color: 0xC9A227, transparent: true, opacity: 0.18 })
+          new THREE.LineBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.25 })
         );
         edges.position.copy(floor.position);
         house.add(edges);
       });
 
       // Walls: full exterior perimeter + enclosed walls around bedrooms/bath
-      const wallMat = new THREE.MeshStandardMaterial({ color: 0x3a3f4d, roughness: 0.9, transparent: true, opacity: 0.9 });
-      const WT = 0.06; // wall thickness
+      const wallMat = new THREE.MeshStandardMaterial({ color: 0xc9c6bd, roughness: 0.95, metalness: 0 });
+      const WT = 0.07; // wall thickness
 
       function addWall(x1, z1, x2, z2, height, doorGap) {
         const len = Math.hypot(x2 - x1, z2 - z1);
@@ -562,6 +582,8 @@
           const midA = a + segLen / 2;
           wall.position.set(x1 + dx * midA, height / 2 - 0.06, z1 + dz * midA);
           wall.rotation.y = -Math.atan2(dz, dx);
+          wall.castShadow = true;
+          wall.receiveShadow = true;
           house.add(wall);
         });
       }
@@ -596,12 +618,38 @@
       })();
 
       // Furniture helper
-      function box(w, h, d, color, x, y, z, ry) {
-        const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), new THREE.MeshStandardMaterial({ color, roughness: 0.7 }));
+      function box(w, h, d, color, x, y, z, ry, opts) {
+        const o = opts || {};
+        const m = new THREE.Mesh(
+          new THREE.BoxGeometry(w, h, d),
+          new THREE.MeshStandardMaterial({ color, roughness: o.roughness ?? 0.75, metalness: o.metalness ?? 0.04 })
+        );
         m.position.set(x, y, z);
         if (ry) m.rotation.y = ry;
+        m.castShadow = true;
+        m.receiveShadow = true;
         house.add(m);
         return m;
+      }
+
+      // soft round contact shadow under furniture, for a grounded studio look
+      const shadowTex = (function () {
+        const c = document.createElement('canvas'); c.width = c.height = 128;
+        const ctx = c.getContext('2d');
+        const g = ctx.createRadialGradient(64, 64, 0, 64, 64, 64);
+        g.addColorStop(0, 'rgba(0,0,0,0.45)');
+        g.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = g; ctx.fillRect(0, 0, 128, 128);
+        return new THREE.CanvasTexture(c);
+      })();
+      function groundShadow(w, d, x, z) {
+        const m = new THREE.Mesh(
+          new THREE.PlaneGeometry(w, d),
+          new THREE.MeshBasicMaterial({ map: shadowTex, transparent: true, depthWrite: false })
+        );
+        m.rotation.x = -Math.PI / 2;
+        m.position.set(x, 0.001, z);
+        house.add(m);
       }
 
       (function furnish() {
@@ -610,35 +658,50 @@
         const bathR = ROOMS.find(r => r.label === 'Bath');
 
         // Living room: couch, TV, coffee table
-        box(1.6, 0.45, 0.6, 0x8a6a4a, liv.x - liv.w/2 + 1.0, 0.22, liv.z - liv.d/2 + 0.5, 0);
-        box(1.6, 0.25, 0.12, 0x222222, liv.x - liv.w/2 + 1.0, 0.55, liv.z - liv.d/2 + 0.16, 0); // TV-ish backrest accent
-        box(0.9, 0.32, 0.5, 0x2a2a2a, liv.x + liv.w/2 - 0.3, 0.4, liv.z - liv.d/2 + 0.4, 0); // TV unit
-        box(0.6, 0.22, 0.5, 0x6b5640, liv.x - liv.w/2 + 1.0, 0.11, liv.z + 0.6, 0); // coffee table
+        groundShadow(1.9, 0.9, liv.x - liv.w/2 + 1.0, liv.z - liv.d/2 + 0.5);
+        box(1.6, 0.4, 0.6, 0x3c4148, liv.x - liv.w/2 + 1.0, 0.2, liv.z - liv.d/2 + 0.5, 0, { roughness: 0.85 });
+        box(1.6, 0.22, 0.12, 0x2c3036, liv.x - liv.w/2 + 1.0, 0.5, liv.z - liv.d/2 + 0.16, 0, { roughness: 0.85 });
+        groundShadow(1.0, 0.6, liv.x + liv.w/2 - 0.3, liv.z - liv.d/2 + 0.4);
+        box(0.9, 0.06, 0.5, 0x14161a, liv.x + liv.w/2 - 0.3, 0.05, liv.z - liv.d/2 + 0.4, 0, { roughness: 0.4, metalness: 0.3 }); // TV console
+        box(0.7, 0.4, 0.04, 0x0c0d10, liv.x + liv.w/2 - 0.3, 0.32, liv.z - liv.d/2 + 0.12, 0, { roughness: 0.2, metalness: 0.5 }); // TV screen
+        groundShadow(0.7, 0.6, liv.x - liv.w/2 + 1.0, liv.z + 0.6);
+        box(0.6, 0.18, 0.5, 0x7a5f44, liv.x - liv.w/2 + 1.0, 0.1, liv.z + 0.6, 0, { roughness: 0.6 }); // coffee table
 
         // Kitchen: L counter
-        box(kit.w - 0.3, 0.45, 0.4, 0x4a4f5c, kit.x, 0.22, kit.z - kit.d/2 + 0.25, 0);
-        box(0.4, 0.45, kit.d - 0.5, 0x4a4f5c, kit.x + kit.w/2 - 0.25, 0.22, kit.z, 0);
+        groundShadow(kit.w - 0.1, 0.55, kit.x, kit.z - kit.d/2 + 0.25);
+        box(kit.w - 0.3, 0.42, 0.4, 0xe7e3da, kit.x, 0.21, kit.z - kit.d/2 + 0.25, 0, { roughness: 0.35 });
+        box(kit.w - 0.3, 0.04, 0.42, 0x2a2c30, kit.x, 0.43, kit.z - kit.d/2 + 0.25, 0, { roughness: 0.2, metalness: 0.3 }); // counter top
+        box(0.4, 0.42, kit.d - 0.5, 0xe7e3da, kit.x + kit.w/2 - 0.25, 0.21, kit.z, 0, { roughness: 0.35 });
 
         // Dining: table + chairs
-        box(0.9, 0.32, 0.6, 0x6b5640, din.x, 0.16, din.z, 0);
-        [[-0.55,-0.4],[0.55,0.4]].forEach(([dx,dz]) => box(0.25,0.3,0.25,0x3a3a3a, din.x+dx, 0.15, din.z+dz, 0));
+        groundShadow(1.1, 0.8, din.x, din.z);
+        box(0.9, 0.06, 0.6, 0x7a5f44, din.x, 0.3, din.z, 0, { roughness: 0.5 });
+        box(0.06, 0.28, 0.06, 0x5c4732, din.x, 0.14, din.z, 0);
+        [[-0.55,-0.4],[0.55,0.4]].forEach(([dx,dz]) => box(0.25,0.28,0.25,0x4a4d52, din.x+dx, 0.14, din.z+dz, 0, { roughness: 0.7 }));
 
         // Master: bed + nightstand
-        box(1.2, 0.35, 1.6, 0x5d4a6b, mas.x - mas.w/2 + 0.8, 0.18, mas.z, 0);
-        box(1.2, 0.18, 0.12, 0x4a3a56, mas.x - mas.w/2 + 0.8, 0.35, mas.z - 0.8, 0); // pillow row accent
-        box(0.3, 0.3, 0.3, 0x3a3a3a, mas.x - mas.w/2 + 0.05, 0.15, mas.z - 0.85, 0);
+        groundShadow(1.5, 1.9, mas.x - mas.w/2 + 0.8, mas.z);
+        box(1.2, 0.3, 1.6, 0xe9e4d8, mas.x - mas.w/2 + 0.8, 0.16, mas.z, 0, { roughness: 0.9 });
+        box(1.2, 0.16, 0.3, 0xd8d0c0, mas.x - mas.w/2 + 0.8, 0.36, mas.z - 0.7, 0, { roughness: 0.9 }); // pillows
+        box(0.3, 0.32, 0.3, 0x3a3a3a, mas.x - mas.w/2 + 0.05, 0.16, mas.z - 0.85, 0, { roughness: 0.6 });
 
         // Bedroom 2: smaller bed + desk
-        box(0.9, 0.3, 1.3, 0x4a6b5d, b2.x - b2.w/2 + 0.6, 0.15, b2.z - 0.2, 0);
-        box(0.7, 0.32, 0.35, 0x4a4f5c, b2.x + b2.w/2 - 0.4, 0.16, b2.z + b2.d/2 - 0.3, 0);
+        groundShadow(1.1, 1.5, b2.x - b2.w/2 + 0.6, b2.z - 0.2);
+        box(0.9, 0.28, 1.3, 0xdedad0, b2.x - b2.w/2 + 0.6, 0.15, b2.z - 0.2, 0, { roughness: 0.9 });
+        box(0.9, 0.14, 0.26, 0xcfc8b8, b2.x - b2.w/2 + 0.6, 0.32, b2.z - 0.78, 0, { roughness: 0.9 });
+        groundShadow(0.9, 0.55, b2.x + b2.w/2 - 0.4, b2.z + b2.d/2 - 0.3);
+        box(0.7, 0.32, 0.35, 0x4a4f5c, b2.x + b2.w/2 - 0.4, 0.16, b2.z + b2.d/2 - 0.3, 0, { roughness: 0.6 });
 
         // Bath: tub + sink
-        box(0.5, 0.3, 1.0, 0xdfe6ec, bathR.x - bathR.w/2 + 0.35, 0.15, bathR.z, 0);
-        box(0.35, 0.32, 0.25, 0xdfe6ec, bathR.x + bathR.w/2 - 0.25, 0.16, bathR.z - bathR.d/2 + 0.25, 0);
+        box(0.5, 0.28, 1.0, 0xf2efe8, bathR.x - bathR.w/2 + 0.35, 0.14, bathR.z, 0, { roughness: 0.25, metalness: 0.1 });
+        box(0.35, 0.3, 0.25, 0xf2efe8, bathR.x + bathR.w/2 - 0.25, 0.15, bathR.z - bathR.d/2 + 0.25, 0, { roughness: 0.25, metalness: 0.1 });
 
         // Garage: car silhouette + EV charger
-        box(1.6, 0.5, 0.8, 0x2f4a6b, gar.x - gar.w/2 + 1.2, 0.25, gar.z, 0);
-        box(0.18, 0.5, 0.18, 0x1a1a1a, gar.x - gar.w/2 + 0.25, 0.25, gar.z - gar.d/2 + 0.25, 0);
+        groundShadow(1.9, 1.0, gar.x - gar.w/2 + 1.2, gar.z);
+        box(1.6, 0.42, 0.8, 0x1f2733, gar.x - gar.w/2 + 1.2, 0.21, gar.z, 0, { roughness: 0.25, metalness: 0.5 });
+        box(0.9, 0.2, 0.7, 0x141a22, gar.x - gar.w/2 + 1.2, 0.5, gar.z, 0, { roughness: 0.25, metalness: 0.5 });
+        box(0.16, 0.55, 0.16, 0x202225, gar.x - gar.w/2 + 0.25, 0.27, gar.z - gar.d/2 + 0.25, 0, { roughness: 0.4, metalness: 0.4 });
+        box(0.1, 0.12, 0.1, 0xC9A227, gar.x - gar.w/2 + 0.25, 0.58, gar.z - gar.d/2 + 0.25, 0, { roughness: 0.3, metalness: 0.6 });
       })();
 
       // Room name labels (canvas-texture sprites)
@@ -677,21 +740,36 @@
       });
 
       // Clickable glowing icons at room centers
+      const haloTex = (function () {
+        const c = document.createElement('canvas'); c.width = c.height = 128;
+        const ctx = c.getContext('2d');
+        const g = ctx.createRadialGradient(64, 64, 0, 64, 64, 64);
+        g.addColorStop(0, 'rgba(245,225,150,0.9)');
+        g.addColorStop(0.35, 'rgba(201,162,39,0.35)');
+        g.addColorStop(1, 'rgba(201,162,39,0)');
+        ctx.fillStyle = g; ctx.fillRect(0, 0, 128, 128);
+        return new THREE.CanvasTexture(c);
+      })();
+
       const icons = [];
       ROOMS.filter(r => r.key).forEach(r => {
         const g = new THREE.Group();
         g.position.set(r.x, 0.55, r.z);
         house.add(g);
 
+        const halo = new THREE.Sprite(new THREE.SpriteMaterial({ map: haloTex, transparent: true, depthWrite: false }));
+        halo.scale.set(0.62, 0.62, 1);
+        g.add(halo);
+
         const dot = new THREE.Mesh(
-          new THREE.SphereGeometry(0.085, 20, 20),
-          new THREE.MeshStandardMaterial({ color: 0xC9A227, emissive: 0xC9A227, emissiveIntensity: 1.1 })
+          new THREE.SphereGeometry(0.08, 24, 24),
+          new THREE.MeshStandardMaterial({ color: 0xF5E8C0, emissive: 0xC9A227, emissiveIntensity: 1.6, roughness: 0.25, metalness: 0.2 })
         );
         g.add(dot);
 
         const ring = new THREE.Mesh(
-          new THREE.RingGeometry(0.14, 0.18, 32),
-          new THREE.MeshBasicMaterial({ color: 0xC9A227, transparent: true, opacity: 0.55, side: THREE.DoubleSide })
+          new THREE.RingGeometry(0.13, 0.165, 40),
+          new THREE.MeshBasicMaterial({ color: 0xF5E8C0, transparent: true, opacity: 0.65, side: THREE.DoubleSide })
         );
         ring.rotation.x = -Math.PI / 2;
         g.add(ring);
@@ -705,6 +783,7 @@
 
         g.userData.key = r.key;
         g.userData.dot = dot;
+        g.userData.hit = hit;
         g.userData.baseY = 0.55;
         icons.push(g);
       });
@@ -773,7 +852,7 @@
         ndc.x = ((p.x - rect.left) / rect.width) * 2 - 1;
         ndc.y = -((p.y - rect.top) / rect.height) * 2 + 1;
         raycaster.setFromCamera(ndc, camera);
-        const hits = raycaster.intersectObjects(icons.map(g => g.children[2]));
+        const hits = raycaster.intersectObjects(icons.map(g => g.userData.hit));
         if (hits.length) {
           const key = hits[0].object.parent.userData.key;
           window.fpSelect(key);
