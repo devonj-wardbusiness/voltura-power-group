@@ -959,12 +959,12 @@
         const positions = new Float32Array(6);
         const lineGeo = new THREE.BufferGeometry();
         lineGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-        const line = new THREE.Line(lineGeo, new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.35 }));
+        const line = new THREE.Line(lineGeo, new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.6 }));
         group.add(line);
 
         return {
           mesh, line,
-          radius: 1.8 + (i % 2) * 0.3,
+          radius: 1.45 + (i % 2) * 0.15,
           speed: 0.15 + i * 0.05,
           offset: i * (Math.PI * 2 / nodeColors.length),
           vertical: i % 2 === 0,
